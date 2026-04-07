@@ -1,0 +1,933 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Venu Gopal Martha — Staff Software Engineer</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Mono:wght@300;400;500&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #0a0a0f;
+    --surface: #111118;
+    --surface2: #17171f;
+    --border: #1e1e2a;
+    --accent: #4fffb0;
+    --accent2: #7b61ff;
+    --accent3: #ff6b6b;
+    --text: #e8e8f0;
+    --muted: #6b6b82;
+    --dim: #3a3a50;
+  }
+
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: 'DM Sans', sans-serif;
+    font-weight: 300;
+    line-height: 1.6;
+    overflow-x: hidden;
+  }
+
+  /* Grid noise texture overlay */
+  body::before {
+    content: '';
+    position: fixed;
+    inset: 0;
+    background-image:
+      repeating-linear-gradient(0deg, transparent, transparent 40px, rgba(255,255,255,0.012) 40px, rgba(255,255,255,0.012) 41px),
+      repeating-linear-gradient(90deg, transparent, transparent 40px, rgba(255,255,255,0.012) 40px, rgba(255,255,255,0.012) 41px);
+    pointer-events: none;
+    z-index: 0;
+  }
+
+  /* Ambient glow */
+  body::after {
+    content: '';
+    position: fixed;
+    top: -20%;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 800px;
+    height: 500px;
+    background: radial-gradient(ellipse, rgba(79,255,176,0.04) 0%, transparent 70%);
+    pointer-events: none;
+    z-index: 0;
+  }
+
+  /* ── NAV ── */
+  nav {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 100;
+    padding: 20px 48px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: rgba(10,10,15,0.7);
+    backdrop-filter: blur(20px);
+    border-bottom: 1px solid var(--border);
+  }
+
+  .nav-logo {
+    font-family: 'DM Mono', monospace;
+    font-size: 13px;
+    color: var(--accent);
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+  }
+
+  .nav-links {
+    display: flex;
+    gap: 36px;
+    list-style: none;
+  }
+
+  .nav-links a {
+    font-family: 'DM Mono', monospace;
+    font-size: 12px;
+    color: var(--muted);
+    text-decoration: none;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    transition: color 0.2s;
+  }
+
+  .nav-links a:hover { color: var(--text); }
+
+  /* ── HERO ── */
+  .hero {
+    position: relative;
+    min-height: 100vh;
+    display: grid;
+    place-items: center;
+    padding: 120px 48px 80px;
+    z-index: 1;
+  }
+
+  .hero-inner {
+    max-width: 900px;
+    width: 100%;
+  }
+
+  .hero-tag {
+    font-family: 'DM Mono', monospace;
+    font-size: 11px;
+    color: var(--accent);
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    margin-bottom: 28px;
+    opacity: 0;
+    animation: fadeUp 0.7s 0.1s forwards;
+  }
+
+  .hero-tag::before {
+    content: '//';
+    margin-right: 8px;
+    opacity: 0.5;
+  }
+
+  h1 {
+    font-family: 'DM Serif Display', serif;
+    font-size: clamp(52px, 8vw, 96px);
+    line-height: 1.0;
+    letter-spacing: -0.02em;
+    margin-bottom: 32px;
+    opacity: 0;
+    animation: fadeUp 0.8s 0.2s forwards;
+  }
+
+  h1 em {
+    font-style: italic;
+    color: var(--accent);
+  }
+
+  .hero-desc {
+    font-size: 17px;
+    color: var(--muted);
+    max-width: 580px;
+    line-height: 1.8;
+    margin-bottom: 48px;
+    opacity: 0;
+    animation: fadeUp 0.8s 0.35s forwards;
+  }
+
+  .hero-stats {
+    display: flex;
+    gap: 40px;
+    flex-wrap: wrap;
+    margin-bottom: 52px;
+    opacity: 0;
+    animation: fadeUp 0.8s 0.45s forwards;
+  }
+
+  .stat {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+  }
+
+  .stat-number {
+    font-family: 'DM Serif Display', serif;
+    font-size: 36px;
+    color: var(--text);
+    line-height: 1;
+  }
+
+  .stat-number span {
+    color: var(--accent);
+  }
+
+  .stat-label {
+    font-family: 'DM Mono', monospace;
+    font-size: 10px;
+    color: var(--muted);
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+  }
+
+  .hero-cta {
+    display: flex;
+    gap: 16px;
+    flex-wrap: wrap;
+    opacity: 0;
+    animation: fadeUp 0.8s 0.55s forwards;
+  }
+
+  .btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 13px 28px;
+    font-family: 'DM Mono', monospace;
+    font-size: 12px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    text-decoration: none;
+    border-radius: 2px;
+    transition: all 0.2s;
+    cursor: pointer;
+  }
+
+  .btn-primary {
+    background: var(--accent);
+    color: #0a0a0f;
+    border: 1px solid var(--accent);
+  }
+
+  .btn-primary:hover {
+    background: transparent;
+    color: var(--accent);
+  }
+
+  .btn-secondary {
+    background: transparent;
+    color: var(--text);
+    border: 1px solid var(--border);
+  }
+
+  .btn-secondary:hover {
+    border-color: var(--dim);
+    color: var(--text);
+  }
+
+  /* ── SECTIONS ── */
+  section {
+    position: relative;
+    z-index: 1;
+    padding: 100px 48px;
+    max-width: 1000px;
+    margin: 0 auto;
+  }
+
+  .section-label {
+    font-family: 'DM Mono', monospace;
+    font-size: 11px;
+    color: var(--accent);
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    margin-bottom: 16px;
+  }
+
+  .section-label::before {
+    content: '//';
+    margin-right: 8px;
+    opacity: 0.5;
+  }
+
+  h2 {
+    font-family: 'DM Serif Display', serif;
+    font-size: clamp(32px, 4vw, 48px);
+    line-height: 1.1;
+    margin-bottom: 56px;
+    letter-spacing: -0.01em;
+  }
+
+  /* ── DIVIDER ── */
+  .divider {
+    width: 100%;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, var(--border), transparent);
+    margin: 0 48px;
+    max-width: calc(1000px - 96px);
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  /* ── EXPERIENCE ── */
+  .exp-list {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+  }
+
+  .exp-item {
+    border: 1px solid var(--border);
+    border-radius: 4px;
+    overflow: hidden;
+    transition: border-color 0.2s;
+  }
+
+  .exp-item:hover { border-color: var(--dim); }
+
+  .exp-header {
+    display: grid;
+    grid-template-columns: 1fr auto;
+    align-items: center;
+    gap: 16px;
+    padding: 24px 28px;
+    cursor: pointer;
+    user-select: none;
+  }
+
+  .exp-left { display: flex; flex-direction: column; gap: 6px; }
+
+  .exp-title {
+    font-family: 'DM Serif Display', serif;
+    font-size: 20px;
+    color: var(--text);
+  }
+
+  .exp-meta {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    flex-wrap: wrap;
+  }
+
+  .exp-company {
+    font-family: 'DM Mono', monospace;
+    font-size: 12px;
+    color: var(--accent);
+    letter-spacing: 0.05em;
+  }
+
+  .exp-location {
+    font-family: 'DM Mono', monospace;
+    font-size: 11px;
+    color: var(--muted);
+  }
+
+  .exp-dates {
+    font-family: 'DM Mono', monospace;
+    font-size: 11px;
+    color: var(--muted);
+    text-align: right;
+    white-space: nowrap;
+  }
+
+  .exp-toggle {
+    font-family: 'DM Mono', monospace;
+    font-size: 18px;
+    color: var(--dim);
+    transition: transform 0.3s, color 0.2s;
+    width: 28px;
+    text-align: center;
+  }
+
+  .exp-item.open .exp-toggle {
+    transform: rotate(45deg);
+    color: var(--accent);
+  }
+
+  .exp-body {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.4s ease;
+  }
+
+  .exp-item.open .exp-body { max-height: 800px; }
+
+  .exp-bullets {
+    padding: 0 28px 28px 28px;
+    border-top: 1px solid var(--border);
+    padding-top: 24px;
+  }
+
+  .exp-bullets ul {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+  }
+
+  .exp-bullets li {
+    font-size: 14px;
+    color: var(--muted);
+    line-height: 1.7;
+    padding-left: 20px;
+    position: relative;
+  }
+
+  .exp-bullets li::before {
+    content: '→';
+    position: absolute;
+    left: 0;
+    color: var(--accent);
+    font-size: 12px;
+    top: 3px;
+  }
+
+  /* ── SKILLS ── */
+  .skills-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 16px;
+  }
+
+  .skill-card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 4px;
+    padding: 24px;
+    transition: border-color 0.2s, transform 0.2s;
+  }
+
+  .skill-card:hover {
+    border-color: var(--dim);
+    transform: translateY(-2px);
+  }
+
+  .skill-category {
+    font-family: 'DM Mono', monospace;
+    font-size: 10px;
+    color: var(--accent);
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    margin-bottom: 14px;
+  }
+
+  .skill-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+  }
+
+  .tag {
+    background: var(--surface2);
+    border: 1px solid var(--border);
+    color: var(--muted);
+    font-family: 'DM Mono', monospace;
+    font-size: 11px;
+    padding: 4px 10px;
+    border-radius: 2px;
+    letter-spacing: 0.02em;
+  }
+
+  /* ── HIGHLIGHTS ── */
+  .highlights-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+    gap: 16px;
+    margin-bottom: 0;
+  }
+
+  .highlight-card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 4px;
+    padding: 28px 24px;
+    transition: border-color 0.2s;
+  }
+
+  .highlight-card:hover { border-color: var(--accent2); }
+
+  .highlight-num {
+    font-family: 'DM Serif Display', serif;
+    font-size: 40px;
+    color: var(--accent);
+    line-height: 1;
+    margin-bottom: 8px;
+  }
+
+  .highlight-label {
+    font-family: 'DM Mono', monospace;
+    font-size: 11px;
+    color: var(--muted);
+    letter-spacing: 0.08em;
+    line-height: 1.5;
+  }
+
+  /* ── CONTACT ── */
+  .contact-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
+  }
+
+  .contact-link {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    padding: 20px 24px;
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 4px;
+    text-decoration: none;
+    color: var(--text);
+    transition: all 0.2s;
+  }
+
+  .contact-link:hover {
+    border-color: var(--accent);
+    color: var(--accent);
+  }
+
+  .contact-icon {
+    font-family: 'DM Mono', monospace;
+    font-size: 18px;
+    color: var(--accent);
+    width: 32px;
+  }
+
+  .contact-text {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+  }
+
+  .contact-type {
+    font-family: 'DM Mono', monospace;
+    font-size: 10px;
+    color: var(--muted);
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+  }
+
+  .contact-value {
+    font-size: 14px;
+  }
+
+  /* ── FOOTER ── */
+  footer {
+    position: relative;
+    z-index: 1;
+    text-align: center;
+    padding: 40px 48px;
+    border-top: 1px solid var(--border);
+    font-family: 'DM Mono', monospace;
+    font-size: 11px;
+    color: var(--dim);
+    letter-spacing: 0.1em;
+  }
+
+  /* ── ANIMATIONS ── */
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(24px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+
+  .fade-in {
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 0.6s ease, transform 0.6s ease;
+  }
+
+  .fade-in.visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  /* ── RESPONSIVE ── */
+  @media (max-width: 768px) {
+    nav { padding: 16px 24px; }
+    .nav-links { display: none; }
+    .hero { padding: 100px 24px 60px; }
+    section { padding: 60px 24px; }
+    .divider { margin: 0 24px; max-width: calc(100% - 48px); }
+    .hero-stats { gap: 24px; }
+    .contact-grid { grid-template-columns: 1fr; }
+  }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <div class="nav-logo">VGM</div>
+  <ul class="nav-links">
+    <li><a href="#experience">Experience</a></li>
+    <li><a href="#highlights">Highlights</a></li>
+    <li><a href="#skills">Skills</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-inner">
+    <div class="hero-tag">Staff Software Engineer</div>
+    <h1>Venu Gopal<br><em>Martha</em></h1>
+    <p class="hero-desc">
+      Building distributed backend systems and cloud-native infrastructure at production scale.
+      7+ years owning event-driven architectures across regulated industries —
+      healthcare, finance, and FDA-cleared medical devices.
+    </p>
+    <div class="hero-stats">
+      <div class="stat">
+        <div class="stat-number">500<span>+</span></div>
+        <div class="stat-label">Enterprise Clients</div>
+      </div>
+      <div class="stat">
+        <div class="stat-number">7K<span>+</span></div>
+        <div class="stat-label">Connected Devices</div>
+      </div>
+      <div class="stat">
+        <div class="stat-number">99.99<span>%</span></div>
+        <div class="stat-label">Uptime</div>
+      </div>
+      <div class="stat">
+        <div class="stat-number">7<span>+</span></div>
+        <div class="stat-label">Years Experience</div>
+      </div>
+    </div>
+    <div class="hero-cta">
+      <a href="#contact" class="btn btn-primary">Get in Touch</a>
+      <a href="https://linkedin.com/in/venu-gopal-martha" target="_blank" class="btn btn-secondary">LinkedIn →</a>
+      <a href="https://github.com/venumartha" target="_blank" class="btn btn-secondary">GitHub →</a>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- EXPERIENCE -->
+<section id="experience">
+  <div class="section-label fade-in">Career</div>
+  <h2 class="fade-in">Professional<br>Experience</h2>
+
+  <div class="exp-list">
+
+    <div class="exp-item open fade-in">
+      <div class="exp-header" onclick="toggleExp(this)">
+        <div class="exp-left">
+          <div class="exp-title">Staff Software Engineer</div>
+          <div class="exp-meta">
+            <span class="exp-company">Outset Medical</span>
+            <span class="exp-location">San Diego, CA</span>
+          </div>
+        </div>
+        <div style="display:flex;flex-direction:column;align-items:flex-end;gap:8px">
+          <div class="exp-dates">Feb 2026 – Present</div>
+          <div class="exp-toggle">+</div>
+        </div>
+      </div>
+      <div class="exp-body">
+        <div class="exp-bullets">
+          <ul>
+            <li>Defined technical roadmap and org-wide engineering standards for a field service platform spanning 500+ healthcare providers, 1,200+ hospital locations, and 7,000+ connected devices; partnered with Clinical, Regulatory, and Security stakeholders across 4 engineering teams.</li>
+            <li>Built CloudWatch RUM and Synthetics canary platform adopted across all production microservices; reduced mean time to root cause from hours to under 20 minutes and cut on-call burden across teams.</li>
+            <li>Led phased cybersecurity controls rollout across 20+ services spanning 5 releases to satisfy FDA 510(k) submission; owned deployment sequencing, rollback planning, and zero production incidents across all releases.</li>
+            <li>Conducted Staff and Principal Engineer hiring loops advancing two candidates to offer; mentored 3 engineers across two teams through design reviews and structured growth conversations.</li>
+            <li>Authored architecture decision records and cross-team design documents adopted as platform standards; led quarterly architecture reviews aligning roadmap with compliance, scalability, and operational goals.</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <div class="exp-item fade-in">
+      <div class="exp-header" onclick="toggleExp(this)">
+        <div class="exp-left">
+          <div class="exp-title">Senior Software Engineer</div>
+          <div class="exp-meta">
+            <span class="exp-company">Outset Medical</span>
+            <span class="exp-location">San Diego, CA</span>
+          </div>
+        </div>
+        <div style="display:flex;flex-direction:column;align-items:flex-end;gap:8px">
+          <div class="exp-dates">Apr 2023 – Feb 2026</div>
+          <div class="exp-toggle">+</div>
+        </div>
+      </div>
+      <div class="exp-body">
+        <div class="exp-bullets">
+          <ul>
+            <li>Architected end-to-end HL7 v2 integration with a major health system EMR via mTLS: serverless pipeline using Kinesis Firehose, Lambda, S3, and DynamoDB ingesting clinical records from 1,200+ hospital locations at sub-minute latency with 99.9%+ delivery reliability.</li>
+            <li>Eliminated silent PHI data corruption by diagnosing a segment ordering defect in the HL7 transformer, cutting error rate 25%; optimized Lambda p99 from 2.8s to 800ms by removing redundant DynamoDB lookups within a hard 3-second Firehose timeout.</li>
+            <li>Prevented silent duplicate-write bugs by formally evaluating DynamoDB vs. Redis for idempotent processing across 12 MSK/Kafka topics; chose DynamoDB after modeling consistency under network partition.</li>
+            <li>Resolved silent Kafka data loss by building a custom MSK Kafka Connect sink connector with S3-sourced plugin and IAM SASL_SSL auth, replacing an off-the-shelf solution with an undetected replication lag defect.</li>
+            <li>Established encrypted VPN infrastructure for 15+ enterprise clients via AWS VGW with AES-256; eliminated drift that caused 3–4 hour incident response cycles.</li>
+            <li>Automated 40% of manual release workflows via full CodePipeline CI/CD; compressed release cycle from biweekly to daily with zero-downtime blue/green deploys.</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <div class="exp-item fade-in">
+      <div class="exp-header" onclick="toggleExp(this)">
+        <div class="exp-left">
+          <div class="exp-title">Software Engineer</div>
+          <div class="exp-meta">
+            <span class="exp-company">Outset Medical</span>
+            <span class="exp-location">San Diego, CA</span>
+          </div>
+        </div>
+        <div style="display:flex;flex-direction:column;align-items:flex-end;gap:8px">
+          <div class="exp-dates">Apr 2022 – Apr 2023</div>
+          <div class="exp-toggle">+</div>
+        </div>
+      </div>
+      <div class="exp-body">
+        <div class="exp-bullets">
+          <ul>
+            <li>Built Lambda handlers and DynamoDB data models for continuous telemetry ingestion from 7,000+ medical devices; owned Kinesis Firehose deduplication pipeline and IAM/Secrets Manager security posture.</li>
+            <li>Delivered MSK Kafka Connect infrastructure and CloudWatch alarms for MSK and ECS metrics by severity; established the monitoring baseline the org-wide observability platform was later built on.</li>
+            <li>Automated dynamic VPN tunnel modification detection that eliminated a manual per-deployment operational step, reducing misconfiguration risk across all enterprise client connections.</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <div class="exp-item fade-in">
+      <div class="exp-header" onclick="toggleExp(this)">
+        <div class="exp-left">
+          <div class="exp-title">Software Engineer</div>
+          <div class="exp-meta">
+            <span class="exp-company">Vanguard</span>
+            <span class="exp-location">Malvern, PA</span>
+          </div>
+        </div>
+        <div style="display:flex;flex-direction:column;align-items:flex-end;gap:8px">
+          <div class="exp-dates">Nov 2019 – Apr 2022</div>
+          <div class="exp-toggle">+</div>
+        </div>
+      </div>
+      <div class="exp-body">
+        <div class="exp-bullets">
+          <ul>
+            <li>Built Java and Spring Boot microservices for portfolio rebalancing and trade execution; maintained 99.99% uptime across 1,500+ ECS Fargate tasks using circuit breakers and idempotency guards.</li>
+            <li>Designed a GraphQL API layer with AWS AppSync; request batching and Redis caching cut database call volume 20% and reduced p95 trading dashboard latency from 1.4s to 600ms.</li>
+            <li>Led RCA on three P1 incidents; fixes targeting missing idempotency and uncapped retry loops achieved zero recurrence over 18 months across 12 financial services.</li>
+            <li>Hardened ECS networking and IAM boundaries across 12 financial services; enforced 90%+ test coverage via SonarQube quality gates and contributed to a clean SOC 2 audit cycle.</li>
+            <li>Managed PostgreSQL schema evolution across 12+ microservices using Liquibase migration scripts; enabled zero-downtime deployments and eliminated manual schema drift across environments.</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- HIGHLIGHTS -->
+<section id="highlights">
+  <div class="section-label fade-in">Impact</div>
+  <h2 class="fade-in">By the Numbers</h2>
+
+  <div class="highlights-grid">
+    <div class="highlight-card fade-in">
+      <div class="highlight-num">500+</div>
+      <div class="highlight-label">Healthcare Providers<br>on Production Platform</div>
+    </div>
+    <div class="highlight-card fade-in">
+      <div class="highlight-num">7K+</div>
+      <div class="highlight-label">Connected Medical<br>Devices at Sub-min Latency</div>
+    </div>
+    <div class="highlight-card fade-in">
+      <div class="highlight-num">20+</div>
+      <div class="highlight-label">Services Hardened for<br>FDA 510(k) Submission</div>
+    </div>
+    <div class="highlight-card fade-in">
+      <div class="highlight-num">&lt;20m</div>
+      <div class="highlight-label">MTTR After Observability<br>Platform Rollout</div>
+    </div>
+    <div class="highlight-card fade-in">
+      <div class="highlight-num">40%</div>
+      <div class="highlight-label">Manual Release Workflows<br>Automated via CI/CD</div>
+    </div>
+    <div class="highlight-card fade-in">
+      <div class="highlight-num">25%</div>
+      <div class="highlight-label">PHI Error Rate Reduction<br>via HL7 Transformer Fix</div>
+    </div>
+    <div class="highlight-card fade-in">
+      <div class="highlight-num">800ms</div>
+      <div class="highlight-label">Lambda p99 After<br>Optimization (from 2.8s)</div>
+    </div>
+    <div class="highlight-card fade-in">
+      <div class="highlight-num">0</div>
+      <div class="highlight-label">Production Incidents<br>Across All 5 Releases</div>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- SKILLS -->
+<section id="skills">
+  <div class="section-label fade-in">Stack</div>
+  <h2 class="fade-in">Technical Skills</h2>
+
+  <div class="skills-grid">
+    <div class="skill-card fade-in">
+      <div class="skill-category">Languages</div>
+      <div class="skill-tags">
+        <span class="tag">Java</span>
+        <span class="tag">TypeScript</span>
+        <span class="tag">Python</span>
+        <span class="tag">SQL</span>
+        <span class="tag">Bash</span>
+        <span class="tag">JavaScript</span>
+      </div>
+    </div>
+    <div class="skill-card fade-in">
+      <div class="skill-category">AWS & Cloud</div>
+      <div class="skill-tags">
+        <span class="tag">Lambda</span>
+        <span class="tag">Amazon MSK</span>
+        <span class="tag">Kinesis Firehose</span>
+        <span class="tag">DynamoDB</span>
+        <span class="tag">CDK</span>
+        <span class="tag">ECS Fargate</span>
+        <span class="tag">S3</span>
+        <span class="tag">RDS</span>
+        <span class="tag">KMS</span>
+        <span class="tag">IAM</span>
+        <span class="tag">AppSync</span>
+      </div>
+    </div>
+    <div class="skill-card fade-in">
+      <div class="skill-category">Frameworks & APIs</div>
+      <div class="skill-tags">
+        <span class="tag">Spring Boot</span>
+        <span class="tag">Spring MVC</span>
+        <span class="tag">Node.js</span>
+        <span class="tag">REST</span>
+        <span class="tag">GraphQL</span>
+        <span class="tag">gRPC</span>
+        <span class="tag">HL7 v2</span>
+        <span class="tag">FHIR</span>
+      </div>
+    </div>
+    <div class="skill-card fade-in">
+      <div class="skill-category">Data & Streaming</div>
+      <div class="skill-tags">
+        <span class="tag">Apache Kafka</span>
+        <span class="tag">PostgreSQL</span>
+        <span class="tag">Redis</span>
+        <span class="tag">Elasticsearch</span>
+        <span class="tag">Liquibase</span>
+        <span class="tag">DynamoDB Streams</span>
+      </div>
+    </div>
+    <div class="skill-card fade-in">
+      <div class="skill-category">Observability & Security</div>
+      <div class="skill-tags">
+        <span class="tag">CloudWatch RUM</span>
+        <span class="tag">Datadog</span>
+        <span class="tag">Splunk</span>
+        <span class="tag">PagerDuty</span>
+        <span class="tag">mTLS</span>
+        <span class="tag">AES-256</span>
+        <span class="tag">SecurityHub</span>
+      </div>
+    </div>
+    <div class="skill-card fade-in">
+      <div class="skill-category">Practices</div>
+      <div class="skill-tags">
+        <span class="tag">Distributed Systems</span>
+        <span class="tag">Event-Driven</span>
+        <span class="tag">Serverless</span>
+        <span class="tag">IaC</span>
+        <span class="tag">CI/CD</span>
+        <span class="tag">HIPAA</span>
+        <span class="tag">SOC 2</span>
+        <span class="tag">FDA Compliance</span>
+        <span class="tag">TDD</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- CONTACT -->
+<section id="contact">
+  <div class="section-label fade-in">Connect</div>
+  <h2 class="fade-in">Get in Touch</h2>
+
+  <div class="contact-grid fade-in">
+    <a href="mailto:venu.martha96@gmail.com" class="contact-link">
+      <div class="contact-icon">@</div>
+      <div class="contact-text">
+        <span class="contact-type">Email</span>
+        <span class="contact-value">venu.martha96@gmail.com</span>
+      </div>
+    </a>
+    <a href="tel:5132231081" class="contact-link">
+      <div class="contact-icon">#</div>
+      <div class="contact-text">
+        <span class="contact-type">Phone</span>
+        <span class="contact-value">(513) 223-1081</span>
+      </div>
+    </a>
+    <a href="https://linkedin.com/in/venu-gopal-martha" target="_blank" class="contact-link">
+      <div class="contact-icon">in</div>
+      <div class="contact-text">
+        <span class="contact-type">LinkedIn</span>
+        <span class="contact-value">venu-gopal-martha</span>
+      </div>
+    </a>
+    <a href="https://github.com/venumartha" target="_blank" class="contact-link">
+      <div class="contact-icon">{}</div>
+      <div class="contact-text">
+        <span class="contact-type">GitHub</span>
+        <span class="contact-value">venumartha</span>
+      </div>
+    </a>
+  </div>
+</section>
+
+<footer>
+  venumartha.dev &nbsp;·&nbsp; San Diego, CA &nbsp;·&nbsp; Built with GitHub Pages
+</footer>
+
+<script>
+  // Accordion toggle
+  function toggleExp(header) {
+    const item = header.closest('.exp-item');
+    item.classList.toggle('open');
+  }
+
+  // Scroll fade-in
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach((entry, i) => {
+      if (entry.isIntersecting) {
+        setTimeout(() => {
+          entry.target.classList.add('visible');
+        }, 80);
+        observer.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.08 });
+
+  document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+</script>
+</body>
+</html>
