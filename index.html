@@ -157,7 +157,7 @@ h2 em { font-style: normal; color: var(--accent); }
 .cert:hover { border-color: var(--accent4); color: var(--accent4); }
 
 .arch-wrap { position: relative; background: var(--surface); border: 1px solid var(--border); border-radius: 6px; padding: 44px 32px 32px; overflow: hidden; margin-bottom: 52px; }
-.arch-wrap::before { content: 'EVENT-DRIVEN PLATFORM OVERVIEW'; position: absolute; top: 14px; left: 24px; font-family: 'Space Mono', monospace; font-size: 9px; color: var(--muted); letter-spacing: .18em; }
+.arch-wrap::before { content: 'BACKEND SYSTEM ARCHITECTURE'; position: absolute; top: 14px; left: 24px; font-family: 'Space Mono', monospace; font-size: 9px; color: var(--muted); letter-spacing: .18em; }
 .arch-wrap::after { content: 'INTERACTIVE'; position: absolute; top: 14px; right: 24px; font-family: 'Space Mono', monospace; font-size: 9px; color: var(--accent); letter-spacing: .15em; animation: blink 2s step-end infinite; }
 @keyframes blink { 0%,100% { opacity: 1; } 50% { opacity: 0; } }
 #arch { width: 100%; display: block; }
@@ -222,9 +222,9 @@ footer span { color: var(--muted); }
     <div class="hero-eyebrow"><span class="hl"></span>Staff Software Engineer · San Diego, CA</div>
     <h1>Venu Gopal<br><span class="grad">Martha</span></h1>
     <p class="hero-sub">
-      I build <strong>distributed systems</strong> that handle real traffic at scale. Over the past seven years I've owned
-      event-driven backends, Kafka pipelines, and cloud-native infrastructure
-      across companies where <strong>uptime and data correctness</strong> are non-negotiable.
+      I design and ship <strong>backend systems</strong> that teams rely on at scale. Seven years
+      building APIs, services, and the reliability layer underneath them — the kind of work
+      where a wrong decision at the design stage shows up as a <strong>3am incident six months later</strong>.
     </p>
     <div class="stat-row">
       <div class="stat"><div class="stat-n">500+</div><div class="stat-l">Enterprise<br>Clients</div></div>
@@ -249,19 +249,19 @@ footer span { color: var(--muted); }
   <h2 class="fi">How I <em>work</em></h2>
   <div class="tilt-cards">
     <div class="tilt-card fi">
-      <span class="tc-icon">⚡</span>
-      <div class="tc-title">Systems at Scale</div>
-      <div class="tc-desc">I think about what breaks when traffic doubles overnight. That means idempotency, backpressure, and partition tolerance before they become incidents at 2am.</div>
+      <span class="tc-icon">🔧</span>
+      <div class="tc-title">Backend Systems</div>
+      <div class="tc-desc">I design APIs and services meant to be built on top of. Versioning, contracts, failure modes — getting these right early saves teams months of painful migrations later.</div>
     </div>
     <div class="tilt-card fi fi-d1">
-      <span class="tc-icon">🛰️</span>
-      <div class="tc-title">Event-Driven Pipelines</div>
-      <div class="tc-desc">Kafka and I have a long history. I've built connectors from scratch when the off-the-shelf ones silently dropped data. Getting at-least-once guarantees actually right is the work.</div>
+      <span class="tc-icon">⚡</span>
+      <div class="tc-title">Reliability Engineering</div>
+      <div class="tc-desc">I've led RCAs, written the runbooks, and been in the incident bridge. The pattern is always the same: missing idempotency or an uncapped retry loop. I fix the root cause, not the symptom.</div>
     </div>
     <div class="tilt-card fi fi-d2">
       <span class="tc-icon">🏗️</span>
-      <div class="tc-title">Platform Engineering</div>
-      <div class="tc-desc">I set up the CI/CD, CDK constructs, and observability so other engineers ship faster and sleep better. The best infrastructure is the kind nobody has to think about.</div>
+      <div class="tc-title">Technical Leadership</div>
+      <div class="tc-desc">At the Staff level I spend as much time on ADRs and design reviews as I do on code. The best technical decisions I've made were the ones that made the obvious path also the correct path.</div>
     </div>
   </div>
 </section>
@@ -289,11 +289,11 @@ footer span { color: var(--muted); }
       <div class="exp-body">
         <div class="exp-content">
           <ul>
-            <li>Set the technical direction for a platform connecting 500+ enterprise clients, 1,200+ locations, and 7,000+ endpoints. Wrote the ADRs, ran the architecture reviews, and kept four teams building toward the same set of tradeoffs instead of four different ones.</li>
-            <li>Built a CloudWatch RUM and Synthetics canary layer that every production service now uses. Before this, root-cause investigations took hours of log diving. After, it's under 20 minutes and the on-call engineer usually knows what happened before finishing their coffee.</li>
-            <li>Ran a phased rollout of security controls across 20+ services. Five releases, no production incidents. Owned the deployment sequencing, wrote the rollback runbooks, and sat in the incident bridge for all of them.</li>
-            <li>Closed two Staff and Principal Engineer hires. Also mentored three engineers through structured design reviews — turned out to be the thing I spent the most time on and got the most back from.</li>
-            <li>Wrote cross-team design documents that got adopted as platform standards. The best ones weren't the most technically clever. They were the ones that made the boring path the obvious path.</li>
+            <li>Owned the technical direction for a backend platform serving 500+ enterprise clients across 1,200+ locations. Wrote the ADRs, ran quarterly architecture reviews, and kept four teams aligned on the same tradeoffs instead of four different ones.</li>
+            <li>Shipped an observability layer using CloudWatch RUM and Synthetics that every production service now runs on. Engineers went from hours of log diving to knowing what broke and why in under 20 minutes. On-call load dropped noticeably across teams.</li>
+            <li>Led a five-release rollout of security controls across 20+ services. Owned the sequencing, rollback runbooks, and release coordination. Zero production incidents across all five.</li>
+            <li>Closed two Staff and Principal Engineer hires and mentored three engineers through structured design reviews. The mentorship ended up being the most useful thing I did — one of them is now leading their own subsystem.</li>
+            <li>Wrote cross-team design documents that became platform standards. The ones that stuck weren't the cleverest technically. They were the ones that made the right path also the path of least resistance.</li>
           </ul>
           <div class="etag-row"><span class="etag">AWS CDK</span><span class="etag">CloudWatch RUM</span><span class="etag">Synthetics</span><span class="etag">Java</span><span class="etag">TypeScript</span><span class="etag">ECS Fargate</span><span class="etag">ADRs</span></div>
         </div>
@@ -314,11 +314,11 @@ footer span { color: var(--muted); }
       <div class="exp-body">
         <div class="exp-content">
           <ul>
-            <li>Designed a serverless ingestion pipeline using Kinesis Firehose, Lambda, S3, and DynamoDB behind mTLS. Sub-minute latency, 99.9%+ delivery. Covered 1,200+ locations and had to be correct because the data downstream was high-stakes.</li>
-            <li>Caught a bug where the pipeline transformer was silently writing duplicate segments with identical field identifiers. Found it by reading the actual wire format. Fixing it cut the error rate 25% and dropped Lambda p99 from 2.8 seconds to 800ms as a side effect of removing redundant DynamoDB lookups.</li>
-            <li>Chose DynamoDB over Redis for idempotent deduplication across 12 Kafka topics after modeling behavior under network partition. The math wasn't exciting but the decision mattered because silent duplicate writes at this scale are very hard to clean up later.</li>
-            <li>Replaced an off-the-shelf Kafka connector that had an undetected replication lag bug with a custom MSK sink connector built with an S3-sourced plugin and IAM SASL_SSL auth. The data loss had been invisible for weeks before I found it.</li>
-            <li>Automated 40% of the manual release process through CodePipeline CI/CD. We went from biweekly releases to daily, zero-downtime blue/green. The engineers who owned the old release checklist now spend that time on things that matter.</li>
+            <li>Designed and built a real-time data integration between our backend and a major health system's platform. Serverless architecture behind mTLS, covering 1,200+ locations at sub-minute latency with 99.9%+ delivery. The integration had to be correct end-to-end because downstream systems consumed it directly.</li>
+            <li>Diagnosed a silent correctness bug in the integration layer that was generating duplicate records with identical field identifiers. Nobody had caught it because the output still looked valid. Fixed it by reading the actual wire format. Error rate dropped 25% and Lambda p99 fell from 2.8s to 800ms as a side effect of removing redundant reads.</li>
+            <li>Made the idempotency decision for our async processing layer — DynamoDB over Redis across 12 topics — after modeling what happens to each under network partition. Boring work but the kind of thing that's very hard to fix after the fact when you have millions of records in flight.</li>
+            <li>Replaced a third-party messaging connector that had a replication lag bug nobody had noticed. Built a custom replacement with proper auth and per-deployment versioning. The data loss had been invisible for weeks before I traced it.</li>
+            <li>Rebuilt the release process end to end. Went from biweekly manual releases to daily automated deployments with zero-downtime blue/green. Automated 40% of the steps that engineers used to do by hand.</li>
           </ul>
           <div class="etag-row"><span class="etag">Apache Kafka</span><span class="etag">Amazon MSK</span><span class="etag">Kinesis Firehose</span><span class="etag">Lambda</span><span class="etag">DynamoDB</span><span class="etag">mTLS</span><span class="etag">CodePipeline</span></div>
         </div>
@@ -339,9 +339,9 @@ footer span { color: var(--muted); }
       <div class="exp-body">
         <div class="exp-content">
           <ul>
-            <li>Built Lambda handlers and DynamoDB data models for telemetry ingestion from 7,000+ connected endpoints. Owned the Kinesis Firehose deduplication pipeline, the IAM policies, and Secrets Manager rotation from day one.</li>
-            <li>Delivered the MSK Kafka Connect infrastructure and CloudWatch alarms bucketed by severity across MSK and ECS. This became the observability baseline everything else was built on top of.</li>
-            <li>Automated detection of VPN tunnel configuration drift across all enterprise client connections. Eliminated a manual per-deployment step that had been causing misconfiguration incidents nobody could explain.</li>
+            <li>Built the service layer and data models for telemetry ingestion from 7,000+ connected endpoints. Owned the deduplication logic, security posture, and secrets rotation from day one — not bolted on later.</li>
+            <li>Set up the messaging infrastructure and alerting across the backend. Bucketed alarms by severity so the on-call engineer got signal, not noise. This became the observability baseline that everything else was built on top of.</li>
+            <li>Automated detection of client connectivity configuration drift. Eliminated a manual per-deployment step that had been causing intermittent incidents nobody could fully explain.</li>
           </ul>
           <div class="etag-row"><span class="etag">Lambda</span><span class="etag">DynamoDB</span><span class="etag">Kinesis</span><span class="etag">Kafka Connect</span><span class="etag">CloudWatch</span><span class="etag">IAM</span></div>
         </div>
@@ -362,10 +362,10 @@ footer span { color: var(--muted); }
       <div class="exp-body">
         <div class="exp-content">
           <ul>
-            <li>Built Java and Spring Boot microservices for trade execution and portfolio rebalancing. 1,500+ ECS Fargate tasks, 99.99% uptime. The circuit breakers and idempotency guards weren't interesting to write but were what kept P1 incidents rare.</li>
-            <li>Designed a GraphQL API layer with AWS AppSync, request batching, and Redis caching. Cut database call volume 20% and brought p95 latency from 1.4 seconds to 600ms. Most of the gain came from one cache key design decision.</li>
-            <li>Led RCA on three P1 incidents. Root causes were always some combination of missing idempotency and uncapped retry loops. The fixes held — zero recurrence over the next 18 months across 12 services.</li>
-            <li>Managed PostgreSQL schema evolution across 12+ microservices with Liquibase. Zero-downtime deployments, no manual schema drift. Clean SOC 2 audit cycle.</li>
+            <li>Built microservices for trade execution and portfolio rebalancing in Java and Spring Boot. 1,500+ ECS tasks, 99.99% uptime. The reliability came from circuit breakers and idempotency guards written before anyone asked for them.</li>
+            <li>Designed a GraphQL API layer that cut database call volume 20% and brought p95 latency from 1.4s to 600ms. Most of the gain came from one cache key design decision, not a major refactor.</li>
+            <li>Led RCA on three P1 incidents across 12 services. Root cause was always some combination of missing idempotency and uncapped retry loops. Fixed both. Zero recurrence over the next 18 months.</li>
+            <li>Managed schema evolution across 12+ microservices with migration tooling. Zero-downtime deployments every time. Clean compliance audit as a result.</li>
           </ul>
           <div class="etag-row"><span class="etag">Java</span><span class="etag">Spring Boot</span><span class="etag">GraphQL</span><span class="etag">AWS AppSync</span><span class="etag">Redis</span><span class="etag">PostgreSQL</span><span class="etag">Liquibase</span><span class="etag">ECS Fargate</span></div>
         </div>
@@ -383,13 +383,13 @@ footer span { color: var(--muted); }
   <div class="sl fi"><span class="sl-line"></span>Impact</div>
   <h2 class="fi">By the <em>numbers</em></h2>
   <div class="numbers-grid fi">
-    <div class="n-card"><div class="n-num"><span class="cu" data-t="500" data-s="+">0</span></div><div class="n-lab">Enterprise clients on<br>production platform</div></div>
-    <div class="n-card"><div class="n-num"><span class="cu" data-t="7000" data-d="7K+">0</span></div><div class="n-lab">Connected endpoints<br>at sub-minute latency</div></div>
-    <div class="n-card"><div class="n-num"><span class="cu" data-t="20" data-s="+">0</span></div><div class="n-lab">Services shipped in<br>phased security rollout</div></div>
-    <div class="n-card"><div class="n-num" style="color:var(--accent4)">&lt;20m</div><div class="n-lab">MTTR after observability<br>platform went live</div></div>
-    <div class="n-card"><div class="n-num" style="color:var(--accent2)"><span class="cu" data-t="40" data-s="%">0</span></div><div class="n-lab">Manual release steps<br>automated via CI/CD</div></div>
-    <div class="n-card"><div class="n-num" style="color:var(--accent2)"><span class="cu" data-t="25" data-s="%">0</span></div><div class="n-lab">Error rate drop after<br>pipeline bug fix</div></div>
-    <div class="n-card"><div class="n-num" style="color:var(--accent3)">800ms</div><div class="n-lab">Lambda p99 (was 2.8s)<br>after optimization</div></div>
+    <div class="n-card"><div class="n-num"><span class="cu" data-t="500" data-s="+">0</span></div><div class="n-lab">Enterprise clients served<br>by backend platform</div></div>
+    <div class="n-card"><div class="n-num"><span class="cu" data-t="7000" data-d="7K+">0</span></div><div class="n-lab">Connected endpoints<br>handled in real time</div></div>
+    <div class="n-card"><div class="n-num"><span class="cu" data-t="20" data-s="+">0</span></div><div class="n-lab">Services shipped across<br>a coordinated rollout</div></div>
+    <div class="n-card"><div class="n-num" style="color:var(--accent4)">&lt;20m</div><div class="n-lab">MTTR after new<br>observability layer shipped</div></div>
+    <div class="n-card"><div class="n-num" style="color:var(--accent2)"><span class="cu" data-t="40" data-s="%">0</span></div><div class="n-lab">Manual release steps<br>eliminated via CI/CD</div></div>
+    <div class="n-card"><div class="n-num" style="color:var(--accent2)"><span class="cu" data-t="25" data-s="%">0</span></div><div class="n-lab">Error rate drop from<br>one correctness fix</div></div>
+    <div class="n-card"><div class="n-num" style="color:var(--accent3)">800ms</div><div class="n-lab">API p99 latency<br>down from 2.8s</div></div>
     <div class="n-card"><div class="n-num" style="color:var(--accent3)">0</div><div class="n-lab">Production incidents<br>across five releases</div></div>
   </div>
 </section>
@@ -530,14 +530,14 @@ const archC=document.getElementById('arch'),ac=archC.getContext('2d');
 function rsza(){archC.width=archC.parentElement.clientWidth-64;archC.height=230;}
 rsza();window.addEventListener('resize',rsza);
 const AN=[
-  {x:.06,y:.5,label:'Clients\n& Devices',icon:'◈',col:'#00ffe5'},
-  {x:.22,y:.22,label:'Kinesis\nFirehose',icon:'◉',col:'#7b61ff'},
-  {x:.22,y:.78,label:'MSK\nKafka',icon:'◉',col:'#7b61ff'},
-  {x:.44,y:.5,label:'Lambda\nProcessors',icon:'⬡',col:'#ffb700'},
-  {x:.64,y:.28,label:'DynamoDB',icon:'◈',col:'#00ffe5'},
-  {x:.64,y:.72,label:'S3 Storage',icon:'◈',col:'#00ffe5'},
-  {x:.80,y:.5,label:'Observability\nCDK',icon:'◆',col:'#ff3e6c'},
-  {x:.95,y:.5,label:'APIs\nClients',icon:'◈',col:'#7b61ff'},
+  {x:.06,y:.5,label:'Client\nLayer',icon:'◈',col:'#00ffe5'},
+  {x:.22,y:.22,label:'REST\nAPIs',icon:'◉',col:'#7b61ff'},
+  {x:.22,y:.78,label:'Async\nServices',icon:'◉',col:'#7b61ff'},
+  {x:.44,y:.5,label:'Core\nBackend',icon:'⬡',col:'#ffb700'},
+  {x:.64,y:.28,label:'Primary\nStore',icon:'◈',col:'#00ffe5'},
+  {x:.64,y:.72,label:'Cache\n& Search',icon:'◈',col:'#00ffe5'},
+  {x:.80,y:.5,label:'Observability\n& Infra',icon:'◆',col:'#ff3e6c'},
+  {x:.95,y:.5,label:'External\nAPIs',icon:'◈',col:'#7b61ff'},
 ];
 const AE=[[0,1],[0,2],[1,3],[2,3],[3,4],[3,5],[4,6],[5,6],[6,7]];
 let archT=0,hovN=-1;
@@ -573,13 +573,13 @@ const term=document.getElementById('terminal'),tb=document.getElementById('term-
 let tOpen=false;
 const CMDS={
   help:()=>`<div class="term-out">Commands: <span style="color:var(--accent4)">about · skills · why · fun · hire · clear · uname · ls</span></div>`,
-  about:()=>`<div class="term-out">Staff SWE. 7 years building things that can't go down.<br>Kafka, AWS, distributed systems. Also makes decent biryani.</div>`,
-  skills:()=>`<div class="term-out">Java · TypeScript · Python · Spring Boot · Apache Kafka<br>AWS Lambda · DynamoDB · CDK · ECS · Redis · PostgreSQL<br>The short version: events go in, correct data comes out, nothing falls over.</div>`,
-  why:()=>`<div class="term-out">I like hard problems. The kind where the bug has been running for weeks and<br>nobody noticed because it looked like valid data. That's my wheelhouse.</div>`,
-  fun:()=>`<div class="term-out">Found a Kafka connector replication bug that had been silent for weeks.<br>The fix was 40 lines. The investigation was 3 days. Worth it.</div>`,
+  about:()=>`<div class="term-out">Staff SWE. 7 years designing backend systems that other teams build on top of.<br>APIs, service reliability, and the hard decisions that show up as 3am incidents if you get them wrong.</div>`,
+  skills:()=>`<div class="term-out">Java · TypeScript · Python · Spring Boot · GraphQL · REST · gRPC<br>AWS · DynamoDB · PostgreSQL · Redis · CDK · CI/CD<br>Short version: I design services, own their reliability, and write the ADRs nobody wants to write.</div>`,
+  why:()=>`<div class="term-out">I like problems where the bug has been running for weeks undetected<br>because the output still looked valid. Tracing those back to the source is satisfying work.</div>`,
+  fun:()=>`<div class="term-out">Found a correctness bug in a third-party connector that had been silently<br>losing data for weeks. Fix was 40 lines. The investigation was 3 days. Worth it.</div>`,
   hire:()=>`<div class="term-out">Yes. &nbsp;<a href="mailto:venu.martha96@gmail.com" style="color:var(--accent)">venu.martha96@gmail.com</a></div>`,
   clear:()=>{tb.innerHTML='';return null;},
-  uname:()=>`<div class="term-out">VenuOS 7.0.0 LTS (Distributed-Edition) x86_64 · uptime 7y</div>`,
+  uname:()=>`<div class="term-out">VenuOS 7.0.0 LTS (Backend-Edition) x86_64 · uptime 7y</div>`,
   ls:()=>`<div class="term-out">experience/ &nbsp; impact/ &nbsp; skills/ &nbsp; contact/</div>`,
   pwd:()=>`<div class="term-out">/venumartha.github.io</div>`,
   whoami:()=>`<div class="term-out">venu · staff-swe · san-diego · open-to-work</div>`,
