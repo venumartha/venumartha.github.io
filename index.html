@@ -334,6 +334,14 @@
     #chat-input::placeholder { color:var(--text3); }
     .chat-send { background:transparent; border:none; border-left:1px solid var(--border); color:var(--cyan); font-size:16px; cursor:pointer; padding:0 16px; font-family:var(--mono); transition:background .15s; }
     .chat-send:hover { background:var(--cyan-d); }
+    .chat-mic { background:transparent; border:none; border-left:1px solid var(--border); color:var(--text3); font-size:15px; cursor:pointer; padding:0 13px; transition:all .15s; position:relative; }
+    .chat-mic:hover { color:var(--purple); background:var(--purple-d); }
+    .chat-mic.listening { color:var(--red); animation:mic-pulse .8s ease-in-out infinite; }
+    .chat-mic.no-support { opacity:.3; cursor:not-allowed; }
+    .chat-tts { background:transparent; border:none; border-left:1px solid var(--border); color:var(--text3); font-size:13px; cursor:pointer; padding:0 11px; transition:all .15s; }
+    .chat-tts:hover { color:var(--cyan); background:var(--cyan-d); }
+    .chat-tts.active { color:var(--cyan); }
+    @keyframes mic-pulse { 0%,100%{opacity:1;transform:scale(1)} 50%{opacity:.5;transform:scale(1.15)} }
 
     /* ══ CONTACT ══ */
     #contact { background:var(--bg2); border-top:1px solid var(--border); }
@@ -1070,6 +1078,8 @@
   </div>
   <div class="chat-input-row">
     <input type="text" id="chat-input" placeholder="Ask anything about Venu..." onkeydown="handleChatKey(event)">
+    <button id="chat-mic" class="chat-mic" onclick="toggleMic()" title="Voice input">🎤</button>
+    <button id="chat-tts" class="chat-tts" onclick="toggleTTS()" title="Voice replies on/off">🔇</button>
     <button class="chat-send" onclick="sendChat()">↗</button>
   </div>
 </div>
@@ -1251,6 +1261,120 @@ function sendSug(text){
 }
 
 function handleChatKey(e){if(e.key==='Enter') sendChat();}
+
+/* ── VOICE MODE ── */
+(function(){
+  const SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition;
+  const micBtn  = document.getElementById('chat-mic');
+  const ttsBtn  = document.getElementById('chat-tts');
+  const inp     = document.getElementById('chat-input');
+
+  let recognition = null;
+  let isListening = false;
+  let ttsEnabled  = false;
+
+  // ── TTS TOGGLE ──
+  window.toggleTTS = function(){
+    ttsEnabled = !ttsEnabled;
+    ttsBtn.textContent = ttsEnabled ? '🔊' : '🔇';
+    ttsBtn.classList.toggle('active', ttsEnabled);
+    ttsBtn.title = ttsEnabled ? 'Voice replies on (click to mute)' : 'Voice replies off (click to enable)';
+  };
+
+  // ── SPEAK BOT REPLY ──
+  window._speakReply = function(text){
+    if(!ttsEnabled) return;
+    if(!window.speechSynthesis) return;
+    window.speechSynthesis.cancel();
+    // strip markdown-ish symbols before speaking
+    const clean = text.replace(/[*_`#↗→]/g,' ').replace(/\s+/g,' ').trim();
+    const utt = new SpeechSynthesisUtterance(clean);
+    utt.rate  = 1.05;
+    utt.pitch = 1;
+    // pick a natural voice if available
+    const voices = window.speechSynthesis.getVoices();
+    const preferred = voices.find(v => /Google US English|Samantha|Alex|Daniel/.test(v.name));
+    if(preferred) utt.voice = preferred;
+    window.speechSynthesis.speak(utt);
+  };
+
+  // ── MIC TOGGLE ──
+  if(!SpeechRecognition){
+    micBtn.classList.add('no-support');
+    micBtn.title = 'Voice input not supported in this browser (try Chrome)';
+    window.toggleMic = function(){ alert('Voice input requires Chrome or Edge.'); };
+    return;
+  }
+
+  recognition = new SpeechRecognition();
+  recognition.lang        = 'en-US';
+  recognition.interimResults = true;
+  recognition.maxAlternatives = 1;
+
+  recognition.onstart = function(){
+    isListening = true;
+    micBtn.classList.add('listening');
+    micBtn.title = 'Listening… click to stop';
+    inp.placeholder = '🎤 Listening…';
+  };
+
+  recognition.onend = function(){
+    isListening = false;
+    micBtn.classList.remove('listening');
+    micBtn.title = 'Voice input';
+    inp.placeholder = 'Ask anything about Venu…';
+  };
+
+  recognition.onerror = function(e){
+    isListening = false;
+    micBtn.classList.remove('listening');
+    inp.placeholder = 'Ask anything about Venu…';
+    if(e.error === 'not-allowed'){
+      inp.placeholder = '⚠ Mic permission denied';
+      setTimeout(()=>{ inp.placeholder='Ask anything about Venu…'; }, 3000);
+    }
+  };
+
+  let finalTranscript = '';
+  recognition.onresult = function(e){
+    let interim = '';
+    finalTranscript = '';
+    for(let i = e.resultIndex; i < e.results.length; i++){
+      const t = e.results[i][0].transcript;
+      if(e.results[i].isFinal) finalTranscript += t;
+      else interim += t;
+    }
+    inp.value = finalTranscript || interim;
+  };
+
+  recognition.onspeechend = function(){
+    recognition.stop();
+    // small delay so finalTranscript populates
+    setTimeout(()=>{
+      if(finalTranscript.trim()) sendChat();
+    }, 300);
+  };
+
+  window.toggleMic = function(){
+    if(isListening){
+      recognition.stop();
+    } else {
+      finalTranscript = '';
+      inp.value = '';
+      try { recognition.start(); }
+      catch(err){ /* already started */ }
+    }
+  };
+
+  // hook TTS into sendChat — patch addMsg to call _speakReply for bot msgs
+  const _origAddMsg = window.addMsg;
+  if(typeof _origAddMsg === 'function'){
+    window.addMsg = function(text, role){
+      _origAddMsg(text, role);
+      if(role === 'bot') window._speakReply(text);
+    };
+  }
+})();
 </script>
 </body>
 </html>
