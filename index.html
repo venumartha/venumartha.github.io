@@ -383,27 +383,79 @@
       #chat-panel{width:calc(100vw - 32px); right:16px;}
       #chat-toggle{right:16px; bottom:16px;}
     }
+
+    /* ══ SCROLL PROGRESS ══ */
+    #scroll-progress { position:fixed; top:0; left:0; height:2px; z-index:600; background:linear-gradient(90deg,var(--cyan),var(--purple),var(--cyan)); background-size:200% 100%; animation:shimmer 3s linear infinite; width:0; pointer-events:none; transition:width .06s linear; }
+
+    /* ══ PHOTO ══ */
+    .hero-photo-wrap { display:flex; justify-content:center; margin-bottom:1.5rem; animation:fadein .7s .15s both; }
+    .hero-photo-frame { position:relative; display:inline-block; }
+    .hero-photo-ring { position:absolute; inset:-3px; border-radius:50%; background:conic-gradient(from 0deg, var(--cyan), var(--purple), var(--cyan)); animation:rotate 5s linear infinite; z-index:0; }
+    .hero-photo-mask { position:absolute; inset:0; border-radius:50%; background:var(--bg); z-index:1; }
+    .hero-photo { display:block; width:200px; height:200px; border-radius:50%; object-fit:cover; object-position:center top; position:relative; z-index:2; }
+    .hero-photo-fallback { display:none; width:200px; height:200px; border-radius:50%; background:linear-gradient(135deg,var(--bg3),var(--bg4)); align-items:center; justify-content:center; font-size:64px; position:relative; z-index:2; }
+    .hero-photo-decor { position:absolute; border-radius:50%; border:1px dashed; pointer-events:none; z-index:0; }
+    .hpd1 { inset:-22px; border-color:rgba(0,200,255,.12); animation:rotate 18s linear infinite; }
+    .hpd2 { inset:-42px; border-color:rgba(155,92,245,.08); animation:rotate 28s linear infinite reverse; }
+    .hero-photo-badge { position:absolute; bottom:8px; right:-8px; background:rgba(16,217,138,.12); border:1px solid rgba(16,217,138,.35); color:var(--green); font-size:9px; padding:4px 9px; border-radius:20px; font-family:var(--mono); letter-spacing:.08em; z-index:3; white-space:nowrap; display:flex; align-items:center; gap:5px; }
+
+    /* ══ SECTION HEADERS ══ */
+    .sec-head { margin-bottom:2.8rem; }
+    .sec-tag { font-size:10px; letter-spacing:.2em; color:var(--cyan); font-family:var(--mono); display:block; margin-bottom:.6rem; }
+    .sec-tag.purple { color:var(--purple); }
+    .sec-head h2 { font-size:clamp(1.9rem,3.5vw,2.8rem); font-weight:600; line-height:1.1; letter-spacing:-.02em; margin-bottom:.75rem; }
+    .sec-sub { font-family:var(--sans); font-size:15px; color:var(--text2); max-width:540px; line-height:1.7; }
+    .sec-num { font-size:10px; color:var(--text3); font-family:var(--mono); letter-spacing:.1em; margin-bottom:.4rem; display:block; }
+
+    /* ══ STAGGER ══ */
+    .stagger > * { opacity:0; transform:translateY(22px); transition:opacity .55s ease, transform .55s ease; }
+    .stagger.visible > *:nth-child(1) { transition-delay:.04s; }
+    .stagger.visible > *:nth-child(2) { transition-delay:.13s; }
+    .stagger.visible > *:nth-child(3) { transition-delay:.22s; }
+    .stagger.visible > *:nth-child(4) { transition-delay:.31s; }
+    .stagger.visible > *:nth-child(5) { transition-delay:.40s; }
+    .stagger.visible > *:nth-child(6) { transition-delay:.49s; }
+    .stagger.visible > * { opacity:1; transform:none; }
+
+    /* ══ ENHANCED CARD HOVER ══ */
+    .card { transition:transform .2s, border-color .2s, box-shadow .2s; }
+    .card:hover { box-shadow:0 12px 40px rgba(0,0,0,.4); }
+    .card-ai:hover { box-shadow:0 12px 40px rgba(155,92,245,.14); }
+    .tilt-wrap { perspective:800px; }
+
+    /* ══ NAV ACTIVE UNDERLINE ══ */
+    .nav-links li { position:relative; }
+    .nav-links a { position:relative; padding-bottom:2px; }
+    .nav-links a.active::after { content:''; position:absolute; bottom:-2px; left:0; right:0; height:1px; background:var(--cyan); border-radius:1px; }
+
+    /* ══ SECTION DIVIDER LINE ══ */
+    .sec-divider { display:flex; align-items:center; gap:14px; font-size:10px; letter-spacing:.2em; color:var(--text3); text-transform:uppercase; margin-bottom:2.5rem; }
+    .sec-divider .lbl { color:var(--cyan); }
+    .sec-divider.purple .lbl { color:var(--purple); }
+    .sec-divider::after { content:''; flex:1; height:1px; background:linear-gradient(90deg,var(--border2),transparent); }
+    .sec-divider::before { content:''; width:4px; height:4px; border-radius:50%; background:var(--cyan); flex-shrink:0; }
+    .sec-divider.purple::before { background:var(--purple); }
   </style>
 </head>
 <body>
 
+<div id="scroll-progress"></div>
+
 <!-- ══ NAV ══ -->
 <nav class="nav">
   <div class="nav-id">
-    <span class="nav-logo grad">VENU_MARTHA</span>
-    <span class="nav-sep">//</span>
-    <span class="nav-path">INCIDENT_ROOM v2</span>
+    <span class="nav-logo grad">Venu Martha</span>
     <span class="nav-sep">·</span>
-    <div class="nav-pill"><div class="dot-blink"></div>ENGINEER ONLINE</div>
+    <div class="nav-pill"><div class="dot-blink"></div>Open to Work</div>
   </div>
   <ul class="nav-links">
-    <li><a href="#about">OVERVIEW</a></li>
-    <li><a href="#ai">AI SYSTEMS</a></li>
-    <li><a href="#projects">PROJECTS</a></li>
-    <li><a href="#experience">ON-CALL</a></li>
-    <li><a href="#incidents">INCIDENTS</a></li>
-    <li><a href="#skills">STACK</a></li>
-    <li><a href="#contact">CONTACT</a></li>
+    <li><a href="#about">About</a></li>
+    <li><a href="#ai">AI Work</a></li>
+    <li><a href="#projects">Projects</a></li>
+    <li><a href="#experience">Experience</a></li>
+    <li><a href="#incidents">Key Work</a></li>
+    <li><a href="#skills">Skills</a></li>
+    <li><a href="#contact">Contact</a></li>
   </ul>
   <div class="nav-right">
     <div class="nav-clock" id="nav-clock">00:00:00 UTC</div>
@@ -435,7 +487,26 @@
         </div>
       </div>
 
-      <div class="status-panel" style="position:relative;z-index:1;">
+      <div style="position:relative;z-index:1;display:flex;flex-direction:column;gap:1.5rem;">
+
+        <!-- PHOTO -->
+        <div class="hero-photo-wrap">
+          <div class="hero-photo-frame">
+            <div class="hero-photo-decor hpd1"></div>
+            <div class="hero-photo-decor hpd2"></div>
+            <div class="hero-photo-ring"></div>
+            <div class="hero-photo-mask"></div>
+            <img src="venu-photo.png"
+                 class="hero-photo"
+                 alt="Venu Martha"
+                 onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
+            <div class="hero-photo-fallback">👤</div>
+            <div class="hero-photo-badge"><div class="dot-blink" style="width:5px;height:5px;background:var(--green)"></div>Open to Work</div>
+          </div>
+        </div>
+
+        <!-- STATUS PANEL -->
+        <div class="status-panel">
         <div class="sp-head">
           <span>SYSTEM STATUS · LIVE TELEMETRY</span>
           <span class="sp-live"><div class="dot-blink" style="width:5px;height:5px;"></div>MONITORING</span>
@@ -449,6 +520,8 @@
         <div class="sp-row"><span class="sp-key">deploy.pipeline</span><div class="sp-val"><div class="sdot sdot-g"></div><span style="color:var(--green)">automated · daily</span></div></div>
         <div class="sp-row"><span class="sp-key">engineer.status</span><div class="sp-val"><div class="sdot sdot-c pulse-c"></div><span style="color:var(--cyan);font-weight:600">OPEN TO WORK</span></div></div>
       </div>
+        </div><!-- /status-panel -->
+      </div><!-- /right col -->
     </div>
   </div>
 </section>
@@ -532,7 +605,12 @@
 <!-- ══ ABOUT ══ -->
 <section id="about">
   <div class="wrap">
-    <div class="sec-label"><span class="lbl-txt">// SYSTEM_OVERVIEW</span></div>
+    <div class="sec-head reveal">
+      <span class="sec-num">01 —</span>
+      <span class="sec-tag">// about</span>
+      <h2>Who I Am &amp; <span class="grad">What I Build</span></h2>
+      <p class="sec-sub">Staff engineer at the intersection of distributed systems and production AI — building backends that scale and AI pipelines that ship.</p>
+    </div>
     <div class="about-grid reveal">
       <div class="about-prose">
         <p>I build <strong>backend systems meant to be built on top of</strong> — APIs with versioning, failure modes, and idempotency baked in from the first commit. And increasingly, I extend those systems with <strong>AI capabilities that make them genuinely smarter</strong>.</p>
@@ -559,7 +637,12 @@
 <!-- ══ AI SPOTLIGHT ══ -->
 <section id="ai">
   <div class="wrap">
-    <div class="sec-label"><span class="lbl-txt" style="color:var(--purple)">// AI_CAPABILITIES</span>&nbsp;· PRODUCTION LLM SYSTEMS</div>
+    <div class="sec-head reveal">
+      <span class="sec-num">02 —</span>
+      <span class="sec-tag purple">// ai work</span>
+      <h2>Production <span class="grad">AI Systems</span></h2>
+      <p class="sec-sub">RAG pipelines, LLM integrations, and agentic workflows — shipped to production, not just prototyped.</p>
+    </div>
 
     <div class="ai-top reveal">
       <!-- RAG System Card -->
@@ -618,8 +701,8 @@
     </div>
 
     <!-- AI Tooling Grid -->
-    <div class="sec-label" style="margin-top:1rem;"><span class="lbl-txt" style="color:var(--purple)">// AI_TOOLING</span>&nbsp;· DAILY WORKFLOW</div>
-    <div class="ai-tools-grid reveal">
+    <div class="sec-divider purple" style="margin-top:2rem;"><span class="lbl">// ai tooling used daily</span></div>
+    <div class="ai-tools-grid stagger reveal">
       <div class="tool-card">
         <span class="tool-icon">🤖</span>
         <div class="tool-name">Claude Code</div>
@@ -653,12 +736,13 @@
 <section id="projects">
   <div class="wrap">
     <div class="sec-head reveal">
+      <span class="sec-num">03 —</span>
       <span class="sec-tag">// open_source</span>
       <h2>AI <span class="grad">Projects</span></h2>
       <p class="sec-sub">Production-grade systems built with LLMs, RAG, and real-time streaming — all open source on GitHub.</p>
     </div>
 
-    <div class="grid-3 reveal">
+    <div class="grid-3 stagger reveal">
 
       <!-- PROJECT 1 -->
       <div class="card card-ai" style="border-color:rgba(155,92,245,0.3); position:relative; overflow:hidden;">
@@ -773,7 +857,12 @@
 <!-- ══ EXPERIENCE ══ -->
 <section id="experience">
   <div class="wrap">
-    <div class="sec-label"><span class="lbl-txt">// ON_CALL_ROSTER</span>&nbsp;· CAREER HISTORY</div>
+    <div class="sec-head reveal">
+      <span class="sec-num">04 —</span>
+      <span class="sec-tag">// experience</span>
+      <h2>Career <span class="grad">History</span></h2>
+      <p class="sec-sub">Seven years building distributed backends and AI systems — from financial transaction platforms to medical device infrastructure.</p>
+    </div>
     <div class="timeline reveal">
 
       <div class="tl-item">
@@ -854,8 +943,13 @@
 <!-- ══ INCIDENTS ══ -->
 <section id="incidents">
   <div class="wrap">
-    <div class="sec-label"><span class="lbl-txt">// RESOLVED_INCIDENTS</span>&nbsp;· SELECTED IMPACT</div>
-    <div class="incidents-grid reveal">
+    <div class="sec-head reveal">
+      <span class="sec-num">05 —</span>
+      <span class="sec-tag purple">// key_work</span>
+      <h2>Selected <span class="grad">Impact</span></h2>
+      <p class="sec-sub">The incidents that defined the platform — P0 outages diagnosed, data loss eliminated, and AI systems shipped to production.</p>
+    </div>
+    <div class="incidents-grid stagger reveal">
 
       <div class="inc-card ai">
         <div class="inc-head">
@@ -950,8 +1044,13 @@
 <!-- ══ SKILLS ══ -->
 <section id="skills">
   <div class="wrap">
-    <div class="sec-label"><span class="lbl-txt">// SYSTEM_HEALTH</span>&nbsp;· FULL TECH STACK</div>
-    <div class="skills-grid reveal" id="skills-grid">
+    <div class="sec-head reveal">
+      <span class="sec-num">06 —</span>
+      <span class="sec-tag">// skills</span>
+      <h2>Full <span class="grad">Tech Stack</span></h2>
+      <p class="sec-sub">Deep expertise across AI/LLM systems, distributed backends, AWS cloud, and production observability.</p>
+    </div>
+    <div class="skills-grid stagger reveal" id="skills-grid">
 
       <div class="skill-group ai-group">
         <div class="sg-title p">AI &amp; LLM Systems</div>
@@ -1007,7 +1106,12 @@
 <!-- ══ CONTACT ══ -->
 <section id="contact">
   <div class="wrap">
-    <div class="sec-label"><span class="lbl-txt">// OPEN_CHANNEL</span>&nbsp;· CONTACT</div>
+    <div class="sec-head reveal">
+      <span class="sec-num">07 —</span>
+      <span class="sec-tag">// contact</span>
+      <h2>Open <span class="grad">Channel</span></h2>
+      <p class="sec-sub">Senior or Staff roles in distributed systems, AI/LLM integration, or backend infrastructure — let's talk.</p>
+    </div>
     <div class="contact-grid reveal">
       <div>
         <div class="contact-cta">Ready to resolve your next P0<br>— or <span class="grad">ship your next AI system.</span></div>
@@ -1191,6 +1295,45 @@ if(skillsGrid) sObs.observe(skillsGrid);
 const reveals=document.querySelectorAll('.reveal');
 const rObs=new IntersectionObserver(ents=>{ents.forEach(e=>{if(e.isIntersecting){e.target.classList.add('visible');}});},{threshold:.1});
 reveals.forEach(el=>rObs.observe(el));
+
+/* ── SCROLL PROGRESS BAR ── */
+(function(){
+  const sp=document.getElementById('scroll-progress');
+  function updateProgress(){
+    if(!sp) return;
+    const scrolled=window.scrollY;
+    const maxScroll=document.body.scrollHeight-window.innerHeight;
+    sp.style.width=(maxScroll>0?(scrolled/maxScroll*100):0)+'%';
+  }
+  window.addEventListener('scroll',updateProgress,{passive:true});
+  updateProgress();
+})();
+
+/* ── STAGGER OBSERVER ── */
+(function(){
+  const staggerEls=document.querySelectorAll('.stagger');
+  const staggerObs=new IntersectionObserver(ents=>{
+    ents.forEach(e=>{if(e.isIntersecting) e.target.classList.add('visible');});
+  },{threshold:.08});
+  staggerEls.forEach(el=>staggerObs.observe(el));
+})();
+
+/* ── 3D CARD TILT ── */
+(function(){
+  document.querySelectorAll('.card,.inc-card,.skill-group,.tool-card,.ai-highlight-card').forEach(card=>{
+    card.addEventListener('mousemove',e=>{
+      const r=card.getBoundingClientRect();
+      const x=(e.clientX-r.left)/r.width-.5;
+      const y=(e.clientY-r.top)/r.height-.5;
+      card.style.transform=`perspective(700px) rotateY(${x*8}deg) rotateX(${-y*8}deg) translateY(-4px)`;
+      card.style.transition='transform .1s';
+    });
+    card.addEventListener('mouseleave',()=>{
+      card.style.transform='';
+      card.style.transition='transform .35s ease';
+    });
+  });
+})();
 
 /* ── NAV ACTIVE ── */
 const secs=document.querySelectorAll('section[id]');
