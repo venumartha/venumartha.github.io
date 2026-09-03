@@ -1,1558 +1,988 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Venu Martha · AI + Backend Engineer</title>
-  <meta name="description" content="Staff Software Engineer · RAG Systems · LLM Integration · Distributed Backends · AWS">
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@300;400;500;600&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
-  <style>
-    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Venu Martha — Staff Software Engineer</title>
+<meta name="description" content="Senior / Staff Software Engineer specializing in distributed systems, IoT platforms, cloud architecture, and applied AI engineering. Seven years building backend platforms for financial and medical device systems.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  *,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+  :root{
+    --paper:#F2F1EC;
+    --card:#FBFAF6;
+    --ink:#141A1E;
+    --ink-soft:#4A5359;
+    --ink-faint:#828A8C;
+    --line:#DCDACE;
 
-    :root {
-      --bg:   #060916;
-      --bg2:  #0a0f24;
-      --bg3:  #0f162e;
-      --bg4:  #151e3a;
-      --cyan:     #00c8ff;
-      --cyan-d:   rgba(0,200,255,0.08);
-      --cyan-b:   rgba(0,200,255,0.22);
-      --purple:   #9b5cf5;
-      --purple-d: rgba(155,92,245,0.08);
-      --purple-b: rgba(155,92,245,0.22);
-      --green:    #10d98a;
-      --green-d:  rgba(16,217,138,0.09);
-      --green-b:  rgba(16,217,138,0.24);
-      --red:      #ff4d6a;
-      --red-d:    rgba(255,77,106,0.09);
-      --red-b:    rgba(255,77,106,0.26);
-      --amber:    #ffb340;
-      --amber-d:  rgba(255,179,64,0.09);
-      --amber-b:  rgba(255,179,64,0.26);
-      --text:  #e8edf5;
-      --text2: #a8bcd4;
-      --text3: #5a7a96;
-      --border:  #101d33;
-      --border2: #1a3050;
-      --mono: 'JetBrains Mono','Fira Code',monospace;
-      --sans: 'Inter',system-ui,sans-serif;
-    }
+    /* layer hues — each platform layer owns one colour */
+    --stream:#1E6FA8;      /* streaming / IoT ingest */
+    --stream-soft:rgba(30,111,168,.10);
+    --ai:#6B4CA8;          /* AI / RAG */
+    --ai-soft:rgba(107,76,168,.10);
+    --analytics:#B4761C;   /* analytics / multi-tenant */
+    --analytics-soft:rgba(180,118,28,.12);
+    --reliability:#2F7D5B; /* reliability / observability */
+    --reliability-soft:rgba(47,125,91,.10);
+    --archive:#A6452E;     /* earlier work / fintech */
+    --archive-soft:rgba(166,69,46,.10);
 
-    html { scroll-behavior: smooth; }
-    body { background: var(--bg); color: var(--text); font-family: var(--mono); font-size: 14px; line-height: 1.6; overflow-x: hidden; }
-    a { color: var(--cyan); text-decoration: none; }
-    a:hover { text-decoration: underline; }
-    ::selection { background: rgba(0,200,255,0.18); }
-    ::-webkit-scrollbar { width: 5px; }
-    ::-webkit-scrollbar-track { background: var(--bg); }
-    ::-webkit-scrollbar-thumb { background: var(--border2); border-radius: 3px; }
+    --accent:var(--stream);
+    --accent-soft:var(--stream-soft);
+    --accent-line:rgba(30,111,168,.4);
+    --signal:#B23B2E;
+    --live:#2F9E6B;
 
-    /* ── ANIMATIONS ── */
-    @keyframes blink    { 0%,100%{opacity:1}  50%{opacity:.15} }
-    @keyframes pulse    { 0%{box-shadow:0 0 0 0 rgba(0,200,255,.4)} 70%{box-shadow:0 0 0 8px rgba(0,200,255,0)} 100%{box-shadow:0 0 0 0 rgba(0,200,255,0)} }
-    @keyframes pulse-p  { 0%{box-shadow:0 0 0 0 rgba(155,92,245,.4)} 70%{box-shadow:0 0 0 8px rgba(155,92,245,0)} 100%{box-shadow:0 0 0 0 rgba(155,92,245,0)} }
-    @keyframes cursor-b { 0%,100%{opacity:1} 50%{opacity:0} }
-    @keyframes fadein   { from{opacity:0;transform:translateY(16px)} to{opacity:1;transform:translateY(0)} }
-    @keyframes slideup  { from{opacity:0;transform:translateY(30px)} to{opacity:1;transform:translateY(0)} }
-    @keyframes flow     { from{left:-60px} to{left:100%} }
-    @keyframes marquee  { from{transform:translateX(0)} to{transform:translateX(-50%)} }
-    @keyframes float    { 0%,100%{transform:translateY(0)} 50%{transform:translateY(-6px)} }
-    @keyframes rotate   { to{transform:rotate(360deg)} }
-    @keyframes shimmer  { from{background-position:200% center} to{background-position:-200% center} }
-    @keyframes glow-pulse { 0%,100%{opacity:.6} 50%{opacity:1} }
+    --serif:'Fraunces',Georgia,serif;
+    --sans:'IBM Plex Sans',system-ui,-apple-system,sans-serif;
+    --mono:'IBM Plex Mono','Courier New',monospace;
+  }
+  html{scroll-behavior:smooth;}
+  @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto;}*{animation:none!important;transition:none!important;}}
+  body{background:var(--paper);color:var(--ink);font-family:var(--sans);font-size:16px;line-height:1.65;-webkit-font-smoothing:antialiased;}
+  a{color:var(--accent);text-decoration:none;border-bottom:1px solid var(--accent-line);}
+  a:hover{border-bottom-color:var(--accent);}
+  ::selection{background:rgba(47,107,79,.18);}
+  img{max-width:100%;display:block;}
+  button{font-family:inherit;cursor:pointer;background:none;border:none;color:inherit;}
+  :focus-visible{outline:2px solid var(--accent);outline-offset:3px;}
 
-    /* ── HELPERS ── */
-    .wrap { max-width: 1160px; margin: 0 auto; padding: 0 2.5rem; }
-    section { padding: 5.5rem 0; }
-    .grad { background: linear-gradient(135deg,var(--cyan),var(--purple)); -webkit-background-clip:text; -webkit-text-fill-color:transparent; background-clip:text; }
-    .grad-border { position: relative; }
-    .grad-border::before { content:''; position:absolute; inset:-1px; border-radius: inherit; padding:1px; background:linear-gradient(135deg,var(--cyan-b),var(--purple-b)); -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0); -webkit-mask-composite: xor; mask-composite: exclude; pointer-events:none; }
+  .wrap{max-width:1080px;margin:0 auto;padding:0 1.75rem;}
+  .col{max-width:640px;}
+  section{padding:5rem 0;border-bottom:1px solid var(--line);}
+  section:last-of-type{border-bottom:none;}
 
-    .sec-label {
-      display: flex; align-items: center; gap: 14px;
-      font-size: 10px; letter-spacing: .2em; color: var(--text3); text-transform: uppercase; margin-bottom: 2.5rem;
-    }
-    .sec-label .lbl-txt { color: var(--cyan); }
-    .sec-label::after { content:''; flex:1; height:1px; background:linear-gradient(90deg,var(--border2),transparent); }
+  h1,h2,h3{font-family:var(--serif);font-weight:500;letter-spacing:-.01em;color:var(--ink);}
+  h2{font-size:2rem;margin-bottom:.6rem;}
+  h3{font-size:1.2rem;font-weight:600;}
+  .sec-intro{color:var(--ink-soft);max-width:560px;margin-bottom:2.75rem;font-size:15.5px;}
+  p{color:var(--ink-soft);}
+  strong{color:var(--ink);font-weight:600;}
+  .mono{font-family:var(--mono);}
 
-    .badge { display:inline-flex; align-items:center; gap:4px; font-size:9px; font-weight:500; letter-spacing:.1em; padding:3px 8px; border-radius:2px; white-space:nowrap; flex-shrink:0; }
-    .b-active  { background:var(--cyan-d);   color:var(--cyan);   border:1px solid var(--cyan-b); }
-    .b-done    { background:var(--bg4);       color:var(--text3);  border:1px solid var(--border2); }
-    .b-p0      { background:var(--red-d);     color:var(--red);    border:1px solid var(--red-b); }
-    .b-p1      { background:var(--amber-d);   color:var(--amber);  border:1px solid var(--amber-b); }
-    .b-ai      { background:var(--purple-d);  color:var(--purple); border:1px solid var(--purple-b); }
-    .b-res     { background:var(--green-d);   color:var(--green);  border:1px solid var(--green-b); }
+  /* status bar */
+  .statusbar{background:var(--ink);color:var(--paper);font-family:var(--mono);font-size:12px;padding:.5rem 0;letter-spacing:.02em;}
+  .statusbar .wrap{display:flex;align-items:center;gap:.5rem;flex-wrap:wrap;}
+  .statusbar .dot{width:6px;height:6px;border-radius:50%;background:#5FBF8F;flex-shrink:0;position:relative;}
+  .statusbar .dot::after{content:'';position:absolute;inset:-3px;border-radius:50%;border:1px solid #5FBF8F;animation:pulse 2.4s ease-out infinite;}
+  @keyframes pulse{0%{transform:scale(.6);opacity:.9;}100%{transform:scale(1.9);opacity:0;}}
+  @media(prefers-reduced-motion:reduce){.statusbar .dot::after{animation:none;}}
+  .statusbar .sep{opacity:.4;}
+  .statusbar .fade{opacity:.65;}
 
-    .tag { font-size:10px; padding:2px 8px; background:var(--bg3); border:1px solid var(--border2); border-radius:2px; color:var(--text3); letter-spacing:.04em; }
-    .tag-ai { border-color:var(--purple-b); color:var(--purple); background:var(--purple-d); }
-    .tag-row { display:flex; flex-wrap:wrap; gap:6px; margin-top:12px; }
+  header{position:sticky;top:0;z-index:50;background:rgba(240,240,234,.94);backdrop-filter:blur(6px);border-bottom:1px solid var(--line);}
+  .nav-row{display:flex;align-items:center;justify-content:space-between;padding:1.1rem 0;}
+  .brand{font-family:var(--serif);font-size:1.15rem;font-weight:500;color:var(--ink);border:none;}
+  .nav-links{display:flex;gap:1.75rem;list-style:none;}
+  .nav-links a{color:var(--ink-soft);font-size:14.5px;border:none;}
+  .nav-links a:hover{color:var(--ink);}
+  .nav-toggle{display:none;border:1px solid var(--line);border-radius:6px;padding:.4rem .6rem;font-size:13px;}
+  @media(max-width:760px){
+    .nav-links{position:absolute;top:100%;left:0;right:0;background:var(--paper);flex-direction:column;gap:0;border-bottom:1px solid var(--line);padding:.5rem 1.75rem 1rem;display:none;}
+    .nav-links.open{display:flex;}
+    .nav-links li{border-top:1px solid var(--line);}
+    .nav-links a{display:block;padding:.85rem 0;}
+    .nav-toggle{display:block;}
+  }
 
-    .card { background:var(--bg2); border:1px solid var(--border); border-radius:6px; overflow:hidden; transition:transform .2s,border-color .2s; }
-    .card:hover { border-color:var(--border2); transform:translateY(-2px); }
-    .card-ai { border-color:rgba(155,92,245,.2); }
-    .card-ai:hover { border-color:rgba(155,92,245,.4); box-shadow:0 0 28px rgba(155,92,245,.1); }
+  /* terminal window chrome */
+  .panel{border:1px solid var(--line);background:var(--card);}
+  .panel-bar{display:flex;align-items:center;gap:.5rem;padding:.6rem .9rem;border-bottom:1px solid var(--line);background:#EBEBE4;}
+  .panel-dots{display:flex;gap:5px;}
+  .panel-dots span{width:8px;height:8px;border-radius:50%;background:var(--line);border:1px solid #C6C9BC;}
+  .panel-title{font-family:var(--mono);font-size:12px;color:var(--ink-faint);margin-left:.3rem;}
 
-    .reveal { opacity:0; transform:translateY(20px); transition:opacity .6s ease,transform .6s ease; }
-    .reveal.visible { opacity:1; transform:none; }
+  /* hero */
+  .hero{padding-top:3.5rem;}
+  .report-field{font-family:var(--mono);font-size:12.5px;color:var(--ink-soft);display:flex;flex-wrap:wrap;gap:.4rem 2rem;padding-bottom:1.6rem;border-bottom:1px solid var(--line);}
+  .report-field div{display:flex;gap:.6rem;}
+  .report-field dt{color:var(--ink-faint);}
+  .report-field dd{color:var(--ink);}
+  .hero h1{font-size:clamp(1.95rem,4.2vw,2.95rem);line-height:1.2;margin:2rem 0 1.5rem;max-width:900px;}
+  .hero-lede{max-width:620px;font-size:1.06rem;color:var(--ink-soft);margin-bottom:2.2rem;}
+  .hero-links{display:flex;flex-wrap:wrap;gap:1.5rem;font-size:14.5px;}
+  svg.diagram{width:100%;height:auto;display:block;}
+  .dnode{cursor:pointer;}
+  .dnode rect{fill:var(--card);stroke:var(--line);stroke-width:1.5;transition:stroke .15s,fill .15s;}
+  .dnode:hover rect,.dnode:focus rect,.dnode.active rect{stroke:var(--accent);fill:var(--accent-soft);}
+  .dnode text{fill:var(--ink);font-family:var(--mono);font-size:11.5px;}
+  .dedge{stroke:var(--ink-faint);stroke-width:1.3;fill:none;}
 
-    /* ══ NAV ══ */
-    .nav {
-      position:fixed; top:0; left:0; right:0; z-index:500;
-      height:54px; background:rgba(6,9,22,.92); backdrop-filter:blur(12px);
-      border-bottom:1px solid var(--border);
-      display:flex; align-items:center; justify-content:space-between; padding:0 2.5rem;
-    }
-    .nav-id { display:flex; align-items:center; gap:10px; font-size:12px; }
-    .nav-logo { font-weight:600; font-size:13px; }
-    .nav-sep { color:var(--text3); }
-    .nav-path { color:var(--text2); }
-    .nav-pill { display:flex; align-items:center; gap:6px; background:var(--cyan-d); border:1px solid var(--cyan-b); border-radius:2px; padding:3px 10px; font-size:10px; color:var(--cyan); letter-spacing:.12em; }
-    .dot-blink { width:6px; height:6px; border-radius:50%; background:var(--cyan); animation:blink 2s ease-in-out infinite; }
-    .nav-links { display:flex; gap:28px; list-style:none; font-size:10px; letter-spacing:.1em; }
-    .nav-links a { color:var(--text3); transition:color .15s; }
-    .nav-links a:hover, .nav-links a.active { color:var(--cyan); text-decoration:none; }
-    .nav-right { display:flex; align-items:center; gap:16px; }
-    .nav-clock { font-size:10px; color:var(--text3); font-variant-numeric:tabular-nums; }
+  /* dna */
+  .dna-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:1px;background:var(--line);}
+  .dna-item{background:var(--card);padding:1.6rem 1.7rem;}
+  .dna-item h3{margin-bottom:.5rem;font-size:1.05rem;}
+  .dna-item p{font-size:14.5px;}
+  .dna-tag{font-family:var(--mono);font-size:11px;color:var(--accent);margin-bottom:.5rem;display:block;text-transform:uppercase;letter-spacing:.07em;font-weight:500;}
+  @media(max-width:700px){.dna-grid{grid-template-columns:1fr;}}
 
-    /* ══ HERO ══ */
-    #hero { min-height:100vh; padding-top:54px; display:flex; align-items:center; position:relative; overflow:hidden; }
-    #particle-canvas { position:absolute; inset:0; opacity:.7; pointer-events:none; }
-    .hero-glow-1 { position:absolute; top:-200px; right:-100px; width:700px; height:700px; background:radial-gradient(circle,rgba(0,200,255,.06) 0%,transparent 65%); pointer-events:none; }
-    .hero-glow-2 { position:absolute; bottom:-200px; left:-100px; width:600px; height:600px; background:radial-gradient(circle,rgba(155,92,245,.05) 0%,transparent 65%); pointer-events:none; }
-    .hero-grid { display:grid; grid-template-columns:1fr 400px; gap:4rem; align-items:center; position:relative; z-index:1; }
-    .hero-badge { display:inline-flex; align-items:center; gap:8px; background:var(--cyan-d); border:1px solid var(--cyan-b); border-radius:2px; padding:5px 13px; font-size:10px; letter-spacing:.14em; color:var(--cyan); margin-bottom:1.75rem; }
-    .hero-name { font-size:clamp(3.2rem,6.5vw,5.8rem); font-weight:600; line-height:.9; letter-spacing:-.025em; margin-bottom:1rem; }
-    .hero-sub { font-size:13px; color:var(--text2); letter-spacing:.06em; margin-bottom:.4rem; min-height:20px; }
-    .typing-cursor { display:inline-block; width:2px; height:14px; background:var(--cyan); vertical-align:middle; margin-left:2px; animation:cursor-b 1s step-end infinite; }
-    .hero-loc { font-size:11px; color:var(--text3); margin-bottom:2rem; }
-    .hero-desc { font-family:var(--sans); font-size:15px; line-height:1.75; color:var(--text2); max-width:540px; margin-bottom:2.5rem; }
-    .hero-desc strong { color:var(--text); font-weight:500; }
-    .hero-ctas { display:flex; gap:12px; flex-wrap:wrap; }
-    .btn-pri { display:inline-flex; align-items:center; gap:8px; background:linear-gradient(135deg,var(--cyan),var(--purple)); color:#060916; font-family:var(--mono); font-size:11px; font-weight:600; padding:11px 24px; border-radius:2px; letter-spacing:.06em; transition:opacity .15s; }
-    .btn-pri:hover { opacity:.85; text-decoration:none; color:#060916; }
-    .btn-sec { display:inline-flex; align-items:center; gap:8px; background:transparent; color:var(--text2); font-family:var(--mono); font-size:11px; padding:11px 22px; border:1px solid var(--border2); border-radius:2px; letter-spacing:.06em; transition:all .15s; }
-    .btn-sec:hover { border-color:var(--cyan-b); color:var(--cyan); text-decoration:none; }
+  /* system map */
+  svg.sysmap{width:100%;height:auto;display:block;}
+  .mnode rect{fill:var(--card);stroke:var(--line);stroke-width:1.4;transition:stroke .15s,fill .15s;cursor:pointer;}
+  .mnode:hover rect,.mnode:focus rect{stroke:var(--accent);fill:var(--accent-soft);}
+  .mnode text{fill:var(--ink);font-family:var(--mono);font-size:11.5px;}
+  .mnode .msub{fill:var(--ink-faint);font-size:9.5px;}
+  .mnode .mdot{fill:#5FBF8F;}
+  .medge{stroke:var(--ink-faint);stroke-width:1.3;fill:none;opacity:.5;}
+  .map-hint{padding:0 1.2rem 1.1rem;font-size:12.5px;color:var(--ink-faint);font-family:var(--mono);}
+  .map-inner{padding:1.2rem;}
 
-    /* Status panel */
-    .status-panel { background:var(--bg2); border:1px solid rgba(0,200,255,.15); border-radius:6px; overflow:hidden; animation:fadein .8s ease .3s both; box-shadow:0 0 40px rgba(0,200,255,.07); }
-    .sp-head { background:var(--bg3); border-bottom:1px solid var(--border); padding:10px 18px; display:flex; align-items:center; justify-content:space-between; font-size:10px; color:var(--text3); letter-spacing:.1em; }
-    .sp-live { display:flex; align-items:center; gap:5px; color:var(--cyan); font-size:10px; }
-    .sp-row { display:flex; align-items:center; justify-content:space-between; padding:10px 18px; border-bottom:1px solid var(--border); font-size:12px; transition:background .15s; }
-    .sp-row:last-child { border-bottom:none; }
-    .sp-row:hover { background:var(--bg3); }
-    .sp-key { color:var(--text2); }
-    .sp-val { display:flex; align-items:center; gap:7px; font-weight:500; }
-    .sdot { width:6px; height:6px; border-radius:50%; flex-shrink:0; }
-    .sdot-c { background:var(--cyan); }
-    .sdot-p { background:var(--purple); }
-    .sdot-g { background:var(--green); }
-    .sdot-a { background:var(--amber); }
-    .pulse-c { animation:pulse 2s ease-out infinite; }
-    .pulse-p { animation:pulse-p 2s ease-out infinite; }
+  /* timeline / deploy log */
+  .tl2{border-top:1px solid var(--line);}
+  .tl-item{border-bottom:1px solid var(--line);}
+  .tl-item summary{list-style:none;cursor:pointer;padding:1.3rem 1.2rem;display:flex;align-items:baseline;gap:1.5rem;flex-wrap:wrap;}
+  .tl-item summary::-webkit-details-marker{display:none;}
+  .tl-date{font-family:var(--mono);font-size:12.5px;color:var(--accent);min-width:150px;}
+  .tl-role{font-family:var(--serif);font-size:1.1rem;color:var(--ink);}
+  .tl-org{font-size:14px;color:var(--ink-soft);}
+  .tl-plus{margin-left:auto;font-family:var(--mono);font-size:16px;color:var(--ink-faint);}
+  .tl-item[open] .tl-plus{transform:rotate(45deg);}
+  .tl-body{padding:0 1.2rem 1.8rem;max-width:680px;}
+  .tl-body p{font-size:15px;margin-bottom:1rem;}
+  .tl-body ul{padding-left:1.2rem;margin-bottom:1rem;}
+  .tl-body li{font-size:14.5px;color:var(--ink-soft);margin-bottom:.55rem;}
+  .tl-body li::marker{color:var(--accent);}
+  .tl-tags{display:flex;flex-wrap:wrap;gap:.5rem;}
+  .tag{font-family:var(--mono);font-size:11.5px;color:var(--ink-soft);border:1px solid var(--line);border-radius:4px;padding:.2rem .5rem;}
 
-    /* ══ MARQUEE ══ */
-    .marquee-strip { overflow:hidden; border-top:1px solid var(--border); border-bottom:1px solid var(--border); padding:12px 0; background:var(--bg2); }
-    .marquee-inner { display:flex; gap:0; white-space:nowrap; animation:marquee 35s linear infinite; }
-    .marquee-item { display:inline-flex; align-items:center; gap:10px; padding:0 28px; font-size:11px; color:var(--text3); letter-spacing:.06em; border-right:1px solid var(--border); }
-    .marquee-item .dot { width:4px; height:4px; border-radius:50%; }
-    .marquee-item.ai-item { color:var(--purple); }
-    .marquee-item.ai-item .dot { background:var(--purple); }
-    .marquee-item.be-item .dot { background:var(--cyan); }
-    .marquee-item.be-item { color:var(--cyan); }
+  /* incident tickets */
+  .cs-card{margin-bottom:1.75rem;transition:box-shadow .2s;}
+  .cs-card.flash{box-shadow:0 0 0 3px var(--accent-line);}
+  .ticket-bar{display:flex;align-items:center;flex-wrap:wrap;gap:.6rem;padding:.7rem 1.2rem;border-bottom:1px solid var(--line);background:#EBEBE4;font-family:var(--mono);font-size:12px;}
+  .ticket-id{color:var(--ink);font-weight:600;}
+  .ticket-sev{padding:.15rem .5rem;border-radius:3px;font-weight:600;}
+  .ticket-sev.p0{background:rgba(178,59,46,.12);color:var(--signal);}
+  .ticket-sev.p1{background:rgba(178,59,46,.08);color:#8A4030;}
+  .ticket-sev.ai{background:var(--accent-soft);color:var(--accent);}
+  .ticket-status{margin-left:auto;color:#2F6B4F;display:flex;align-items:center;gap:.4rem;}
+  .ticket-status .dot{width:6px;height:6px;border-radius:50%;background:#5FBF8F;}
+  .cs-head{padding:1.5rem 1.8rem 1.1rem;}
+  .cs-eyebrow{font-size:13px;color:var(--accent);margin-bottom:.4rem;font-weight:500;font-family:var(--mono);}
+  .cs-head h3{font-size:1.3rem;margin-bottom:.5rem;}
+  .cs-head p{font-size:14.5px;}
+  .cs-pills{display:flex;flex-wrap:wrap;gap:.4rem;padding:1rem 1.8rem;border-top:1px solid var(--line);border-bottom:1px solid var(--line);}
+  .cs-pill{font-size:12.5px;padding:.4rem .8rem;border:1px solid var(--line);border-radius:20px;color:var(--ink-soft);font-family:var(--mono);}
+  .cs-pill[aria-selected="true"]{background:var(--ink);color:var(--paper);border-color:var(--ink);}
+  .cs-panel{padding:1.6rem 1.8rem 1.9rem;font-size:15px;}
+  .cs-panel p{margin-bottom:0;}
+  .cs-scale{display:flex;flex-wrap:wrap;gap:1.6rem;padding:1.3rem 1.8rem;border-top:1px solid var(--line);}
+  .cs-scale div{font-family:var(--mono);font-size:12.5px;}
+  .cs-scale .num{color:var(--signal);font-size:16px;display:block;}
+  .diagram-wrap{padding:1.5rem 1.8rem;border-top:1px solid var(--line);}
+  .diagram-caption{margin-top:1rem;font-size:13.5px;color:var(--ink-soft);min-height:2.4em;border-left:2px solid var(--accent);padding-left:.9rem;font-family:var(--mono);}
 
-    /* ══ METRICS ══ */
-    .metrics { background:var(--bg2); border-top:1px solid var(--border); border-bottom:1px solid var(--border); }
-    .metrics-grid { display:grid; grid-template-columns:repeat(5,1fr); }
-    .metric { padding:2rem 1.75rem; border-right:1px solid var(--border); }
-    .metric:last-child { border-right:none; }
-    .m-label { font-size:10px; letter-spacing:.14em; color:var(--text3); text-transform:uppercase; margin-bottom:10px; }
-    .m-val { font-size:2.2rem; font-weight:600; line-height:1; margin-bottom:6px; }
-    .m-val .u { font-size:1rem; color:var(--text2); font-weight:300; }
-    .m-sub { font-size:10px; letter-spacing:.04em; }
-    .m-sub.c { color:var(--cyan); }
-    .m-sub.p { color:var(--purple); }
+  /* ai tools */
+  .tool-row{display:flex;flex-wrap:wrap;gap:.7rem;margin-top:1.5rem;}
+  .tool-chip{border:1px solid var(--line);padding:.55rem 1rem;font-size:13.5px;background:var(--card);}
+  .tool-chip strong{display:block;font-size:14px;}
+  .tool-chip span{color:var(--ink-faint);font-size:12.5px;}
 
-    /* ══ ABOUT ══ */
-    .about-grid { display:grid; grid-template-columns:1fr 1fr; gap:4rem; align-items:start; }
-    .about-prose { font-family:var(--sans); font-size:15px; line-height:1.8; color:var(--text2); }
-    .about-prose p { margin-bottom:1.1rem; }
-    .about-prose strong { color:var(--text); font-weight:500; }
-    .cert-card { display:flex; align-items:center; gap:10px; background:var(--bg2); border:1px solid var(--border); border-left:2px solid var(--cyan); padding:11px 14px; border-radius:2px; font-size:12px; color:var(--text2); margin-bottom:8px; }
-    .cert-arr { color:var(--cyan); font-size:13px; flex-shrink:0; }
-    .mttr-card { background:var(--bg2); border:1px solid var(--border); border-radius:4px; padding:14px; margin-top:8px; }
-    .mttr-r { display:flex; justify-content:space-between; font-size:11px; margin-bottom:6px; }
-    .mttr-r.bef { color:var(--text3); } .mttr-r.aft { color:var(--green); }
-    .mttr-track { height:4px; background:var(--border); border-radius:2px; overflow:hidden; margin-bottom:8px; }
-    .mttr-fill { height:100%; background:linear-gradient(90deg,var(--cyan),var(--green)); border-radius:2px; width:13%; }
-    .mttr-note { font-size:10px; color:var(--text3); }
+  /* philosophy */
+  .quote-block{border-left:2px solid var(--signal);padding-left:1.6rem;font-family:var(--serif);font-size:1.3rem;line-height:1.5;color:var(--ink);max-width:680px;margin:1.5rem 0;}
 
-    /* ══ AI SPOTLIGHT ══ */
-    #ai { background:linear-gradient(180deg,var(--bg2) 0%,rgba(155,92,245,.04) 50%,var(--bg2) 100%); border-top:1px solid var(--border); border-bottom:1px solid var(--border); }
-    .ai-top { display:grid; grid-template-columns:1fr 1fr; gap:3rem; margin-bottom:3rem; }
-    .ai-highlight-card { background:var(--bg3); border:1px solid rgba(155,92,245,.2); border-radius:8px; padding:1.75rem; box-shadow:0 0 40px rgba(155,92,245,.08); }
-    .ai-card-title { display:flex; align-items:center; gap:10px; margin-bottom:1rem; }
-    .ai-card-icon { width:36px; height:36px; background:var(--purple-d); border:1px solid var(--purple-b); border-radius:6px; display:flex; align-items:center; justify-content:center; font-size:18px; }
-    .ai-card-name { font-size:14px; font-weight:600; color:var(--text); }
-    .ai-card-sub  { font-size:10px; color:var(--purple); letter-spacing:.1em; }
-    .ai-detail { font-family:var(--sans); font-size:13px; color:var(--text2); line-height:1.7; margin-bottom:1rem; }
-    .ai-stat-row { display:flex; gap:1.5rem; flex-wrap:wrap; }
-    .ai-stat { text-align:center; }
-    .ai-stat-num { font-size:1.4rem; font-weight:600; color:var(--purple); }
-    .ai-stat-lbl { font-size:10px; color:var(--text3); letter-spacing:.08em; }
+  /* skills */
+  .skill-cols{display:grid;grid-template-columns:repeat(3,1fr);gap:2rem;}
+  .skill-cols h4{font-size:12.5px;text-transform:uppercase;letter-spacing:.04em;color:var(--ink-faint);margin-bottom:.8rem;font-weight:500;font-family:var(--mono);}
+  .skill-cols p{font-size:14.5px;color:var(--ink-soft);}
+  @media(max-width:700px){.skill-cols{grid-template-columns:1fr;gap:1.6rem;}}
 
-    /* RAG pipeline */
-    .rag-pipeline { background:var(--bg3); border:1px solid rgba(155,92,245,.18); border-radius:8px; padding:1.75rem; }
-    .rag-title { font-size:10px; letter-spacing:.18em; color:var(--purple); text-transform:uppercase; margin-bottom:1.25rem; }
-    .rag-row { display:flex; align-items:center; margin-bottom:.9rem; }
-    .rag-row:last-child { margin-bottom:0; }
-    .rag-node { font-size:10px; font-weight:500; color:var(--text); background:var(--bg4); border:1px solid var(--border2); border-radius:4px; padding:7px 12px; white-space:nowrap; flex-shrink:0; text-align:center; min-width:90px; }
-    .rag-node.purple { border-color:var(--purple-b); color:var(--purple); background:var(--purple-d); }
-    .rag-node.cyan { border-color:var(--cyan-b); color:var(--cyan); background:var(--cyan-d); }
-    .rag-node.green { border-color:var(--green-b); color:var(--green); background:var(--green-d); }
-    .rag-arrow { flex:1; height:2px; background:var(--border2); margin:0 6px; position:relative; overflow:hidden; min-width:20px; }
-    .rag-arrow::after { content:''; position:absolute; top:-1px; left:-60px; width:60px; height:4px; background:linear-gradient(90deg,transparent,var(--purple)); animation:flow 1.8s linear infinite; }
-    .rag-arrow.cyan-flow::after { background:linear-gradient(90deg,transparent,var(--cyan)); }
-    .rag-arrow.green-flow::after { background:linear-gradient(90deg,transparent,var(--green)); }
-    .rag-label { font-size:9px; color:var(--text3); letter-spacing:.08em; margin-left:8px; flex-shrink:0; }
+  /* contact */
+  .contact-grid{display:grid;grid-template-columns:1fr 1fr;gap:1px;background:var(--line);border:1px solid var(--line);margin-top:2rem;}
+  .contact-item{background:var(--card);padding:1.3rem 1.5rem;}
+  .contact-item .label{font-size:11.5px;color:var(--ink-faint);margin-bottom:.3rem;font-family:var(--mono);}
+  .contact-item a,.contact-item span{font-size:15px;border:none;color:var(--ink);}
+  @media(max-width:600px){.contact-grid{grid-template-columns:1fr;}}
 
-    /* AI tools grid */
-    .ai-tools-grid { display:grid; grid-template-columns:repeat(5,1fr); gap:12px; margin-top:2.5rem; }
-    .tool-card { background:var(--bg3); border:1px solid var(--border); border-radius:6px; padding:1rem; transition:all .2s; text-align:center; }
-    .tool-card:hover { border-color:var(--purple-b); box-shadow:0 0 20px rgba(155,92,245,.1); transform:translateY(-3px); }
-    .tool-icon { font-size:24px; margin-bottom:8px; display:block; }
-    .tool-name { font-size:11px; font-weight:600; color:var(--text); margin-bottom:4px; }
-    .tool-use  { font-size:10px; color:var(--text3); font-family:var(--sans); line-height:1.4; }
+  footer{padding:2.2rem 0;text-align:center;font-size:12.5px;color:var(--ink-faint);font-family:var(--mono);}
 
-    /* ══ PROJECTS ══ */
-    #projects { background:var(--bg2); }
-    .grid-3 { display:grid; grid-template-columns:repeat(3,1fr); gap:22px; }
-    @media(max-width:960px){ .grid-3{ grid-template-columns:1fr 1fr; } }
-    @media(max-width:640px){ .grid-3{ grid-template-columns:1fr; } }
+  /* iot scale grid */
+  /* fleet telemetry panel */
+  .tele-metrics{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--line);border-bottom:1px solid var(--line);}
+  .tele-metric{background:var(--card);padding:1.2rem 1.4rem;}
+  .tele-metric .lbl{font-family:var(--mono);font-size:11px;color:var(--ink-faint);text-transform:uppercase;letter-spacing:.06em;display:block;margin-bottom:.35rem;}
+  .tele-metric .num{font-family:var(--mono);font-size:1.65rem;line-height:1.1;display:block;color:var(--stream);}
+  .tele-metric .sub{font-size:12.5px;color:var(--ink-soft);}
+  .tele-metric:nth-child(2) .num{color:var(--ai);}
+  .tele-metric:nth-child(3) .num{color:var(--reliability);}
+  .tele-metric .num em{font-style:normal;color:var(--ink-faint);margin:0 .15rem;}
+  .tele-metric[data-layer] .num{color:var(--c);}
+  .bar{margin-top:.85rem;display:flex;flex-direction:column;gap:5px;}
+  .bar i{display:block;height:7px;border-radius:2px;width:0;transition:width .9s cubic-bezier(.2,.7,.3,1);}
+  .bar .b-before{background:var(--line);}
+  .bar .b-after{background:var(--c,var(--stream));}
+  @media(prefers-reduced-motion:reduce){.bar i{transition:none;}}
 
-    /* ══ EXPERIENCE ══ */
-    #experience { background:var(--bg); }
-    .timeline { position:relative; }
-    .timeline::before { content:''; position:absolute; left:110px; top:0; bottom:0; width:1px; background:linear-gradient(180deg,var(--cyan-b),var(--border),transparent); }
-    .tl-item { display:grid; grid-template-columns:110px 1fr; position:relative; margin-bottom:2.8rem; }
-    .tl-item:last-child { margin-bottom:0; }
-    .tl-period { font-size:10px; color:var(--text3); letter-spacing:.04em; padding:1.5rem 1.4rem 0 0; text-align:right; line-height:1.7; }
-    .tl-node { position:absolute; left:105px; top:1.75rem; width:10px; height:10px; border-radius:50%; border:2px solid var(--bg); z-index:1; }
-    .tl-node-on { background:var(--cyan); animation:pulse 2s ease-out infinite; }
-    .tl-node-off { background:var(--text3); }
-    .tl-body { padding:1.4rem 0 1.4rem 2rem; }
-    .tl-head { display:flex; align-items:flex-start; gap:12px; margin-bottom:10px; }
-    .tl-role { font-size:14px; font-weight:600; color:var(--text); }
-    .tl-company { font-size:12px; color:var(--text2); margin-top:2px; }
-    .tl-bullets { list-style:none; display:flex; flex-direction:column; gap:7px; }
-    .tl-bullets li { display:flex; gap:10px; font-size:12px; color:var(--text2); line-height:1.55; font-family:var(--sans); }
-    .tl-bullets li::before { content:'▸'; color:var(--cyan); flex-shrink:0; margin-top:1px; }
-    .tl-bullets li.ai-bullet::before { content:'✦'; color:var(--purple); }
+  .ship-rows{display:flex;flex-direction:column;}
+  .ship-row{display:grid;grid-template-columns:1fr auto;gap:1rem;align-items:baseline;padding:.6rem 0;border-bottom:1px solid rgba(220,218,206,.7);border-left:2px solid transparent;padding-left:.8rem;transition:border-left-color .2s ease,background .2s ease;}
+  .ship-row:last-child{border-bottom:none;}
+  .ship-row:hover{border-left-color:var(--c,var(--stream));background:var(--c-soft,var(--stream-soft));}
+  .sh-what{font-size:14.5px;color:var(--ink);}
+  .sh-out{font-family:var(--mono);font-size:12px;color:var(--c,var(--stream));white-space:nowrap;}
+  @media(max-width:700px){
+    .ship-row{grid-template-columns:1fr;gap:.2rem;}
+    .sh-out{white-space:normal;}
+  }
 
-    /* ══ INCIDENTS ══ */
-    #incidents { background:var(--bg2); border-top:1px solid var(--border); border-bottom:1px solid var(--border); }
-    .incidents-grid { display:grid; grid-template-columns:repeat(2,1fr); gap:14px; }
-    .inc-card { background:var(--bg); border:1px solid var(--border); border-radius:6px; overflow:hidden; transition:all .2s; }
-    .inc-card:hover { transform:translateY(-2px); }
-    .inc-card.p0 { border-left:2px solid var(--red); }
-    .inc-card.p1 { border-left:2px solid var(--amber); }
-    .inc-card.ai { border-left:2px solid var(--purple); box-shadow:0 0 20px rgba(155,92,245,.08); }
-    .inc-head { background:var(--bg3); border-bottom:1px solid var(--border); padding:12px 16px; display:flex; align-items:flex-start; justify-content:space-between; gap:8px; }
-    .inc-id { font-size:10px; color:var(--text3); letter-spacing:.08em; margin-bottom:5px; }
-    .inc-badges { display:flex; gap:6px; flex-wrap:wrap; }
-    .inc-clear { display:flex; align-items:center; gap:5px; font-size:10px; color:var(--green); flex-shrink:0; margin-top:2px; }
-    .inc-body { padding:16px; }
-    .inc-title { font-size:13px; font-weight:500; color:var(--text); line-height:1.45; margin-bottom:14px; }
-    .inc-row { display:flex; gap:10px; margin-bottom:7px; font-size:11px; }
-    .inc-k { color:var(--text3); min-width:84px; flex-shrink:0; letter-spacing:.04em; }
-    .inc-v { color:var(--text2); font-family:var(--sans); line-height:1.5; }
-    .inc-impact { margin-top:12px; background:var(--green-d); border-left:2px solid var(--green); padding:7px 12px; font-size:11px; font-weight:500; color:var(--green); font-family:var(--sans); }
-    .inc-impact.purple { background:var(--purple-d); border-color:var(--purple); color:var(--purple); }
+  .tele-feed{padding:1rem 1.4rem 1.2rem;}
+  .tele-feed-head{display:flex;align-items:center;gap:.5rem;font-family:var(--mono);font-size:11px;color:var(--ink-faint);text-transform:uppercase;letter-spacing:.06em;margin-bottom:.6rem;}
+  @media(max-width:700px){
+    .tele-metrics{grid-template-columns:1fr;}
+  }
 
-    /* ══ SKILLS ══ */
-    #skills { background:var(--bg); }
-    .skills-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:14px; }
-    .skill-group { background:var(--bg2); border:1px solid var(--border); border-radius:6px; padding:18px; }
-    .skill-group.ai-group { border-color:rgba(155,92,245,.2); background:linear-gradient(135deg,var(--bg2),rgba(155,92,245,.04)); }
-    .sg-title { font-size:10px; letter-spacing:.16em; color:var(--text3); text-transform:uppercase; margin-bottom:16px; display:flex; align-items:center; gap:10px; }
-    .sg-title.c { color:var(--cyan); }
-    .sg-title.p { color:var(--purple); }
-    .sg-title::after { content:''; flex:1; height:1px; background:var(--border); }
-    .sk-item { margin-bottom:12px; }
-    .sk-item:last-child { margin-bottom:0; }
-    .sk-header { display:flex; justify-content:space-between; align-items:center; margin-bottom:5px; font-size:11px; }
-    .sk-name { color:var(--text2); }
-    .sk-level { color:var(--text3); font-size:10px; }
-    .sk-track { height:3px; background:var(--border2); border-radius:2px; overflow:hidden; }
-    .sk-fill { height:100%; border-radius:2px; width:0; transition:width 1.4s cubic-bezier(.16,1,.3,1); }
-    .sk-fill.c { background:linear-gradient(90deg,var(--cyan),rgba(0,200,255,.4)); }
-    .sk-fill.p { background:linear-gradient(90deg,var(--purple),rgba(155,92,245,.4)); }
-    .sk-fill.g { background:linear-gradient(90deg,var(--green),rgba(16,217,138,.4)); }
+  /* scroll reveal */
+  .reveal{opacity:0;transform:translateY(14px);transition:opacity .55s ease,transform .55s ease;}
+  .reveal.in{opacity:1;transform:none;}
+  @media(prefers-reduced-motion:reduce){.reveal{opacity:1;transform:none;transition:none;}}
 
-    /* ══ CHAT WIDGET ══ */
-    #chat-toggle {
-      position:fixed; bottom:28px; right:28px; z-index:900;
-      background:linear-gradient(135deg,var(--cyan),var(--purple));
-      color:#060916; font-family:var(--mono); font-size:11px; font-weight:600;
-      padding:11px 20px; border-radius:24px; border:none; cursor:pointer;
-      letter-spacing:.06em; box-shadow:0 4px 24px rgba(155,92,245,.35);
-      display:flex; align-items:center; gap:8px;
-      animation:float 3s ease-in-out infinite;
-      transition:transform .15s, box-shadow .15s;
-    }
-    #chat-toggle:hover { transform:translateY(-2px) scale(1.02); box-shadow:0 8px 32px rgba(155,92,245,.5); }
-    #chat-toggle .chat-dot { width:8px; height:8px; border-radius:50%; background:#060916; animation:blink 1.5s infinite; }
+  /* micro-interactions */
+  .cs-card.panel{transition:box-shadow .25s ease,transform .25s ease;}
+  .cs-card.panel:hover{box-shadow:0 6px 20px rgba(20,24,26,.06);transform:translateY(-2px);}
+  .nav-links a{position:relative;}
+  .nav-links a::after{content:'';position:absolute;left:0;right:100%;bottom:-2px;height:1px;background:var(--accent);transition:right .2s ease;}
+  .nav-links a:hover::after{right:0;}
+  .hero-links a,.contact-item a{transition:border-color .2s ease,color .2s ease;}
+  .tool-chip{transition:border-color .2s ease,transform .2s ease;}
+  .tool-chip:hover{border-color:var(--accent);transform:translateY(-1px);}
+  .tag{transition:border-color .2s ease,color .2s ease;}
+  .cs-pill{transition:background .15s ease,color .15s ease,border-color .15s ease;}
+  .flowdot{fill:var(--accent);opacity:.85;}
 
-    #chat-panel {
-      position:fixed; bottom:92px; right:28px; z-index:900;
-      width:360px; background:var(--bg2); border:1px solid rgba(155,92,245,.3);
-      border-radius:10px; overflow:hidden; box-shadow:0 8px 40px rgba(0,0,0,.6),0 0 60px rgba(155,92,245,.15);
-      display:none; flex-direction:column;
-      animation:fadein .25s ease;
-    }
-    #chat-panel.open { display:flex; }
-    .chat-head { background:var(--bg3); border-bottom:1px solid var(--border); padding:12px 16px; display:flex; align-items:center; justify-content:space-between; }
-    .chat-head-left { display:flex; align-items:center; gap:10px; }
-    .chat-ai-dot { width:28px; height:28px; border-radius:50%; background:linear-gradient(135deg,var(--cyan),var(--purple)); display:flex; align-items:center; justify-content:center; font-size:13px; flex-shrink:0; }
-    .chat-title { font-size:12px; font-weight:600; color:var(--text); }
-    .chat-subtitle { font-size:10px; color:var(--purple); }
-    .chat-close { background:none; border:none; color:var(--text3); font-size:16px; cursor:pointer; padding:4px; line-height:1; }
-    .chat-close:hover { color:var(--text); }
-    .chat-msgs { flex:1; overflow-y:auto; padding:14px; display:flex; flex-direction:column; gap:12px; max-height:340px; }
-    .chat-msgs::-webkit-scrollbar { width:4px; }
-    .chat-msgs::-webkit-scrollbar-thumb { background:var(--border2); }
-    .msg { font-size:12px; font-family:var(--sans); line-height:1.55; max-width:88%; white-space:pre-wrap; }
-    .msg-bot { align-self:flex-start; background:var(--bg3); border:1px solid var(--border); border-radius:0 8px 8px 8px; padding:10px 13px; color:var(--text2); }
-    .msg-user { align-self:flex-end; background:var(--purple-d); border:1px solid var(--purple-b); border-radius:8px 0 8px 8px; padding:10px 13px; color:var(--text); }
-    .msg-thinking { align-self:flex-start; background:var(--bg3); border:1px solid var(--border); border-radius:0 8px 8px 8px; padding:10px 13px; color:var(--text3); font-size:11px; font-family:var(--mono); }
-    .msg-thinking span { animation:blink 1s infinite; }
-    .suggestions { display:flex; flex-wrap:wrap; gap:6px; }
-    .sug-btn { font-size:10px; background:var(--bg4); border:1px solid var(--border2); border-radius:2px; color:var(--text2); padding:5px 10px; cursor:pointer; font-family:var(--mono); letter-spacing:.04em; transition:all .15s; }
-    .sug-btn:hover { border-color:var(--purple-b); color:var(--purple); background:var(--purple-d); }
-    .chat-input-row { border-top:1px solid var(--border); display:flex; gap:0; }
-    #chat-input { flex:1; background:var(--bg3); border:none; outline:none; color:var(--text); font-family:var(--mono); font-size:12px; padding:12px 14px; }
-    #chat-input::placeholder { color:var(--text3); }
-    .chat-send { background:transparent; border:none; border-left:1px solid var(--border); color:var(--cyan); font-size:16px; cursor:pointer; padding:0 16px; font-family:var(--mono); transition:background .15s; }
-    .chat-send:hover { background:var(--cyan-d); }
-    .chat-mic { background:transparent; border:none; border-left:1px solid var(--border); color:var(--text3); font-size:15px; cursor:pointer; padding:0 13px; transition:all .15s; position:relative; }
-    .chat-mic:hover { color:var(--purple); background:var(--purple-d); }
-    .chat-mic.listening { color:var(--red); animation:mic-pulse .8s ease-in-out infinite; }
-    .chat-mic.no-support { opacity:.3; cursor:not-allowed; }
-    .chat-tts { background:transparent; border:none; border-left:1px solid var(--border); color:var(--text3); font-size:13px; cursor:pointer; padding:0 11px; transition:all .15s; }
-    .chat-tts:hover { color:var(--cyan); background:var(--cyan-d); }
-    .chat-tts.active { color:var(--cyan); }
-    @keyframes mic-pulse { 0%,100%{opacity:1;transform:scale(1)} 50%{opacity:.5;transform:scale(1.15)} }
+  /* layer theming — a card or node adopts its layer's hue */
+  [data-layer]{--c:var(--stream);--c-soft:var(--stream-soft);}
+  [data-layer="stream"]{--c:var(--stream);--c-soft:var(--stream-soft);}
+  [data-layer="ai"]{--c:var(--ai);--c-soft:var(--ai-soft);}
+  [data-layer="analytics"]{--c:var(--analytics);--c-soft:var(--analytics-soft);}
+  [data-layer="reliability"]{--c:var(--reliability);--c-soft:var(--reliability-soft);}
+  [data-layer="archive"]{--c:var(--archive);--c-soft:var(--archive-soft);}
 
-    /* ══ CONTACT ══ */
-    #contact { background:var(--bg2); border-top:1px solid var(--border); }
-    .contact-grid { display:grid; grid-template-columns:1fr 1fr; gap:4rem; }
-    .contact-cta { font-size:1.7rem; font-weight:600; color:var(--text); line-height:1.3; margin-bottom:2rem; }
-    .c-label { font-size:10px; letter-spacing:.16em; color:var(--text3); text-transform:uppercase; margin-bottom:4px; }
-    .c-val { font-size:13px; color:var(--text); margin-bottom:1.4rem; }
-    .c-val a { color:var(--cyan); }
-    .term-box { background:var(--bg); border:1px solid var(--border2); border-radius:6px; overflow:hidden; }
-    .term-bar { background:var(--bg3); border-bottom:1px solid var(--border); padding:9px 14px; display:flex; gap:7px; align-items:center; }
-    .tb { width:11px; height:11px; border-radius:50%; }
-    .tb-r{background:#ff5f57;} .tb-y{background:#febc2e;} .tb-g{background:#28c840;}
-    .term-body { padding:18px; font-size:12px; line-height:2; }
-    .tp{color:var(--cyan);} .tc{color:var(--text3);} .tm{color:var(--text);} .to{color:var(--text2);display:block;}
-    .cursor-b { display:inline-block; width:8px; height:14px; background:var(--cyan); vertical-align:middle; margin-left:2px; animation:cursor-b 1s step-end infinite; }
+  .dna-item[data-layer]{border-top:3px solid var(--c);}
+  .dna-item[data-layer] .dna-tag{color:var(--c);}
+  .dna-item[data-layer]:hover{background:var(--c-soft);}
+  .dna-item{transition:background .25s ease;}
 
-    /* ══ FOOTER ══ */
-    footer { border-top:1px solid var(--border); padding:1.8rem 2.5rem; display:flex; align-items:center; justify-content:space-between; font-size:11px; color:var(--text3); }
+  .cs-card[data-layer]{border-left:3px solid var(--c);}
+  .cs-card[data-layer] .cs-eyebrow{color:var(--c);}
+  .cs-card[data-layer] .ticket-bar{background:var(--c-soft);}
+  .cs-card[data-layer] .ticket-id{color:var(--c);}
+  .cs-card[data-layer] .cs-pill[aria-selected="true"]{background:var(--c);border-color:var(--c);color:#fff;}
+  .cs-card[data-layer] .diagram-caption{border-left-color:var(--c);}
+  .cs-card[data-layer] .dnode:hover rect,
+  .cs-card[data-layer] .dnode:focus rect,
+  .cs-card[data-layer] .dnode.active rect{stroke:var(--c);fill:var(--c-soft);}
 
-    /* ══ RESPONSIVE ══ */
-    @media(max-width:960px){
-      .hero-grid,.about-grid,.contact-grid,.ai-top{grid-template-columns:1fr;}
-      .status-panel{display:none;}
-      .incidents-grid{grid-template-columns:1fr;}
-      .skills-grid{grid-template-columns:1fr 1fr;}
-      .metrics-grid{grid-template-columns:repeat(2,1fr);}
-      .metric:nth-child(2),.metric:nth-child(4){border-right:none;}
-      .ai-tools-grid{grid-template-columns:repeat(3,1fr);}
-      .timeline::before{left:80px;}
-      .tl-item{grid-template-columns:80px 1fr;}
-      .tl-node{left:75px;}
-    }
-    @media(max-width:540px){
-      .nav-links,.nav-clock{display:none;}
-      .wrap{padding:0 1.25rem;}
-      section{padding:3.5rem 0;}
-      .hero-name{font-size:3rem;}
-      .skills-grid,.ai-tools-grid{grid-template-columns:1fr;}
-      #chat-panel{width:calc(100vw - 32px); right:16px;}
-      #chat-toggle{right:16px; bottom:16px;}
-    }
+  .ticket-sev.p0{background:rgba(178,59,46,.14);color:#98301F;}
+  .ticket-sev.p1{background:rgba(180,118,28,.16);color:#8A5807;}
+  .ticket-sev.ai{background:rgba(107,76,168,.14);color:#553B8C;}
+  .ticket-status{color:var(--live);}
+  .ticket-status .dot{background:var(--live);}
+  .statusbar .dot{background:var(--live);}
+  .statusbar .dot::after{border-color:var(--live);}
 
-    /* ══ SCROLL PROGRESS ══ */
-    #scroll-progress { position:fixed; top:0; left:0; height:2px; z-index:600; background:linear-gradient(90deg,var(--cyan),var(--purple),var(--cyan)); background-size:200% 100%; animation:shimmer 3s linear infinite; width:0; pointer-events:none; transition:width .06s linear; }
+  .mnode[data-layer] rect{stroke:var(--c);}
+  .mnode[data-layer]:hover rect,.mnode[data-layer]:focus rect{fill:var(--c-soft);stroke:var(--c);}
+  .mnode[data-layer] .mdot{fill:var(--c);}
+  .mnode[data-layer] text{fill:var(--ink);}
 
-    /* ══ PHOTO ══ */
-    .hero-photo-wrap { display:flex; justify-content:center; margin-bottom:1.5rem; animation:fadein .7s .15s both; }
-    .hero-photo-frame { position:relative; display:inline-block; }
-    .hero-photo-ring { position:absolute; inset:-3px; border-radius:50%; background:conic-gradient(from 0deg, var(--cyan), var(--purple), var(--cyan)); animation:rotate 5s linear infinite; z-index:0; }
-    .hero-photo-mask { position:absolute; inset:0; border-radius:50%; background:var(--bg); z-index:1; }
-    .hero-photo { display:block; width:200px; height:200px; border-radius:50%; object-fit:cover; object-position:center top; position:relative; z-index:2; }
-    .hero-photo-fallback { display:none; width:200px; height:200px; border-radius:50%; background:linear-gradient(135deg,var(--bg3),var(--bg4)); align-items:center; justify-content:center; font-size:64px; position:relative; z-index:2; }
-    .hero-photo-decor { position:absolute; border-radius:50%; border:1px dashed; pointer-events:none; z-index:0; }
-    .hpd1 { inset:-22px; border-color:rgba(0,200,255,.12); animation:rotate 18s linear infinite; }
-    .hpd2 { inset:-42px; border-color:rgba(155,92,245,.08); animation:rotate 28s linear infinite reverse; }
-    .hero-photo-badge { position:absolute; bottom:8px; right:-8px; background:rgba(16,217,138,.12); border:1px solid rgba(16,217,138,.35); color:var(--green); font-size:9px; padding:4px 9px; border-radius:20px; font-family:var(--mono); letter-spacing:.08em; z-index:3; white-space:nowrap; display:flex; align-items:center; gap:5px; }
 
-    /* ══ SECTION HEADERS ══ */
-    .sec-head { margin-bottom:2.8rem; }
-    .sec-tag { font-size:10px; letter-spacing:.2em; color:var(--cyan); font-family:var(--mono); display:block; margin-bottom:.6rem; }
-    .sec-tag.purple { color:var(--purple); }
-    .sec-head h2 { font-size:clamp(1.9rem,3.5vw,2.8rem); font-weight:600; line-height:1.1; letter-spacing:-.02em; margin-bottom:.75rem; }
-    .sec-sub { font-family:var(--sans); font-size:15px; color:var(--text2); max-width:540px; line-height:1.7; }
-    .sec-num { font-size:10px; color:var(--text3); font-family:var(--mono); letter-spacing:.1em; margin-bottom:.4rem; display:block; }
-
-    /* ══ STAGGER ══ */
-    .stagger > * { opacity:0; transform:translateY(22px); transition:opacity .55s ease, transform .55s ease; }
-    .stagger.visible > *:nth-child(1) { transition-delay:.04s; }
-    .stagger.visible > *:nth-child(2) { transition-delay:.13s; }
-    .stagger.visible > *:nth-child(3) { transition-delay:.22s; }
-    .stagger.visible > *:nth-child(4) { transition-delay:.31s; }
-    .stagger.visible > *:nth-child(5) { transition-delay:.40s; }
-    .stagger.visible > *:nth-child(6) { transition-delay:.49s; }
-    .stagger.visible > * { opacity:1; transform:none; }
-
-    /* ══ ENHANCED CARD HOVER ══ */
-    .card { transition:transform .2s, border-color .2s, box-shadow .2s; }
-    .card:hover { box-shadow:0 12px 40px rgba(0,0,0,.4); }
-    .card-ai:hover { box-shadow:0 12px 40px rgba(155,92,245,.14); }
-    .tilt-wrap { perspective:800px; }
-
-    /* ══ NAV ACTIVE UNDERLINE ══ */
-    .nav-links li { position:relative; }
-    .nav-links a { position:relative; padding-bottom:2px; }
-    .nav-links a.active::after { content:''; position:absolute; bottom:-2px; left:0; right:0; height:1px; background:var(--cyan); border-radius:1px; }
-
-    /* ══ SECTION DIVIDER LINE ══ */
-    .sec-divider { display:flex; align-items:center; gap:14px; font-size:10px; letter-spacing:.2em; color:var(--text3); text-transform:uppercase; margin-bottom:2.5rem; }
-    .sec-divider .lbl { color:var(--cyan); }
-    .sec-divider.purple .lbl { color:var(--purple); }
-    .sec-divider::after { content:''; flex:1; height:1px; background:linear-gradient(90deg,var(--border2),transparent); }
-    .sec-divider::before { content:''; width:4px; height:4px; border-radius:50%; background:var(--cyan); flex-shrink:0; }
-    .sec-divider.purple::before { background:var(--purple); }
-  </style>
+  .map-legend{display:flex;flex-wrap:wrap;gap:1.1rem;padding:0 1.2rem .4rem;font-family:var(--mono);font-size:11.5px;color:var(--ink-soft);}
+  .map-legend span{display:flex;align-items:center;gap:.4rem;}
+  .map-legend i{width:9px;height:9px;border-radius:2px;display:inline-block;flex-shrink:0;}
+  @media(max-width:760px){
+    .map-inner{overflow-x:auto;-webkit-overflow-scrolling:touch;}
+    svg.sysmap{min-width:660px;}
+    .map-hint::after{content:' · scroll sideways to see it all';}
+  }
+</style>
 </head>
 <body>
 
-<div id="scroll-progress"></div>
+<div class="statusbar"><div class="wrap">
+  <span class="dot" aria-hidden="true"></span>
+  <span>venu-martha.dev</span>
+  <span class="sep">·</span>
+  <span class="fade">status: operational</span>
+  <span class="sep">·</span>
+  <span class="fade">open to senior / staff roles</span>
+</div></div>
 
-<!-- ══ NAV ══ -->
-<nav class="nav">
-  <div class="nav-id">
-    <span class="nav-logo grad">Venu Martha</span>
-    <span class="nav-sep">·</span>
-    <div class="nav-pill"><div class="dot-blink"></div>Open to Work</div>
+<header>
+  <div class="wrap nav-row">
+    <a class="brand" href="#top">Venu Martha</a>
+    <button class="nav-toggle" id="navToggle" aria-expanded="false" aria-controls="navLinks">Menu</button>
+    <ul class="nav-links" id="navLinks">
+      <li><a href="#dna">Engineering</a></li>
+      <li><a href="#journey">Journey</a></li>
+      <li><a href="#work">Tickets</a></li>
+      <li><a href="#ai">AI engineering</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
   </div>
-  <ul class="nav-links">
-    <li><a href="#about">About</a></li>
-    <li><a href="#ai">AI Work</a></li>
-    <li><a href="#projects">Projects</a></li>
-    <li><a href="#experience">Experience</a></li>
-    <li><a href="#incidents">Key Work</a></li>
-    <li><a href="#skills">Skills</a></li>
-    <li><a href="#contact">Contact</a></li>
-  </ul>
-  <div class="nav-right">
-    <div class="nav-clock" id="nav-clock">00:00:00 UTC</div>
-  </div>
-</nav>
+</header>
 
-<!-- ══ HERO ══ -->
-<section id="hero">
-  <canvas id="particle-canvas"></canvas>
-  <div class="hero-glow-1"></div>
-  <div class="hero-glow-2"></div>
-  <div class="wrap">
-    <div class="hero-grid">
-      <div style="position:relative;z-index:1;animation:fadein .7s ease both;">
-        <div class="hero-badge"><div class="dot-blink"></div>AVAILABLE · SAN DIEGO, CA</div>
-        <p style="font-family:var(--sans);font-size:15px;color:var(--text2);line-height:1.6;margin-bottom:1.2rem;max-width:500px;">Seven years of distributed systems work across fintech and medical devices. Somewhere along the way, AI started making the systems smarter — and that became the most interesting part of the job.</p>
-        <h1 class="hero-name">VENU<br><span class="grad">MARTHA</span></h1>
-        <div class="hero-sub">// <span id="typing-text"></span><span class="typing-cursor"></span></div>
-        <div class="hero-loc">📍 San Diego, CA &nbsp;·&nbsp; Backend · AI/LLM Systems · Distributed Infrastructure</div>
-        <p class="hero-desc">
-          Staff engineer who builds <strong>backend systems that teams depend on at scale</strong> — and
-          <strong>AI systems that extend what those backends can do</strong>. Seven years of Kafka pipelines, RAG architectures, and the reliability layer underneath all of it.
-          All P0s resolved. Open to the next mission.
-        </p>
-        <div class="hero-ctas">
-          <a href="#contact" class="btn-pri">▸ OPEN CHANNEL</a>
-          <a href="#ai" class="btn-sec">✦ AI SYSTEMS ↓</a>
-          <a href="https://linkedin.com/in/venu-gopal-martha" target="_blank" class="btn-sec">LinkedIn ↗</a>
-          <a href="https://github.com/venumartha" target="_blank" class="btn-sec">GitHub ↗</a>
-        </div>
-      </div>
+<main>
 
-      <div style="position:relative;z-index:1;display:flex;flex-direction:column;gap:1.5rem;">
-
-        <!-- PHOTO -->
-        <div class="hero-photo-wrap">
-          <div class="hero-photo-frame">
-            <div class="hero-photo-decor hpd1"></div>
-            <div class="hero-photo-decor hpd2"></div>
-            <div class="hero-photo-ring"></div>
-            <div class="hero-photo-mask"></div>
-            <img src="venu-photo.png"
-                 class="hero-photo"
-                 alt="Venu Martha"
-                 onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
-            <div class="hero-photo-fallback">👤</div>
-          </div>
-        </div>
-
-        <!-- STATUS PANEL -->
-        <div class="status-panel">
-        <div class="sp-head">
-          <span>SYSTEM STATUS · LIVE TELEMETRY</span>
-          <span class="sp-live"><div class="dot-blink" style="width:5px;height:5px;"></div>MONITORING</span>
-        </div>
-        <div class="sp-row"><span class="sp-key">platform.uptime</span><div class="sp-val"><div class="sdot sdot-g"></div><span style="color:var(--green)">99.99%</span></div></div>
-        <div class="sp-row"><span class="sp-key">rag.system.status</span><div class="sp-val"><div class="sdot sdot-p pulse-p"></div><span style="color:var(--purple)">production · live</span></div></div>
-        <div class="sp-row"><span class="sp-key">llm.integration</span><div class="sp-val"><div class="sdot sdot-p"></div><span style="color:var(--purple)">Claude 3 Sonnet</span></div></div>
-        <div class="sp-row"><span class="sp-key">vector.store</span><div class="sp-val"><div class="sdot sdot-p"></div><span style="color:var(--purple)">pgvector · cosine</span></div></div>
-        <div class="sp-row"><span class="sp-key">kafka.consumer.lag</span><div class="sp-val"><div class="sdot sdot-g"></div><span style="color:var(--green)">nominal</span></div></div>
-        <div class="sp-row"><span class="sp-key">api.p99.latency</span><div class="sp-val"><div class="sdot sdot-g"></div><span style="color:var(--green)">800ms</span></div></div>
-        <div class="sp-row"><span class="sp-key">deploy.pipeline</span><div class="sp-val"><div class="sdot sdot-g"></div><span style="color:var(--green)">automated · daily</span></div></div>
-        <div class="sp-row"><span class="sp-key">engineer.status</span><div class="sp-val"><div class="sdot sdot-c pulse-c"></div><span style="color:var(--cyan);font-weight:600">OPEN TO WORK</span></div></div>
-      </div>
-        </div><!-- /status-panel -->
-      </div><!-- /right col -->
-    </div>
+<section class="hero wrap" id="top">
+  <dl class="report-field">
+    <div><dt>role</dt><dd>Senior / Staff Software Engineer</dd></div>
+    <div><dt>focus</dt><dd>distributed systems · cloud · applied AI</dd></div>
+    <div><dt>location</dt><dd>San Diego, CA</dd></div>
+  </dl>
+  <h1>Builds the backend systems and AI infrastructure that healthcare platforms and trading platforms can't afford to have go down.</h1>
+  <p class="hero-lede">Working across distributed systems, cloud architecture, and applied AI. Seven years in production, currently at Outset Medical, previously at Vanguard. Most of what I've learned came from being on call.</p>
+  <div class="hero-links">
+    <a href="#work">Read the incident tickets</a>
+    <a href="mailto:venu.martha96@gmail.com">Email</a>
+    <a href="https://linkedin.com/in/venu-gopal-martha">LinkedIn</a>
+    <a href="https://github.com/venumartha">GitHub</a>
   </div>
 </section>
 
-<!-- ══ MARQUEE ══ -->
-<div class="marquee-strip">
-  <div class="marquee-inner" id="marquee-inner">
-    <div class="marquee-item ai-item"><span class="dot" style="background:var(--purple)"></span>RAG · AWS Bedrock</div>
-    <div class="marquee-item ai-item"><span class="dot"></span>Titan Embeddings v2</div>
-    <div class="marquee-item ai-item"><span class="dot"></span>Claude 3 Sonnet</div>
-    <div class="marquee-item ai-item"><span class="dot"></span>pgvector · Elasticsearch</div>
-    <div class="marquee-item ai-item"><span class="dot"></span>LangChain Orchestration</div>
-    <div class="marquee-item ai-item"><span class="dot"></span>Semantic Kernel</div>
-    <div class="marquee-item ai-item"><span class="dot"></span>Claude Code</div>
-    <div class="marquee-item ai-item"><span class="dot"></span>LLM Integration</div>
-    <div class="marquee-item ai-item"><span class="dot"></span>Agentic Workflows</div>
-    <div class="marquee-item ai-item"><span class="dot"></span>Prompt Engineering</div>
-    <div class="marquee-item be-item"><span class="dot"></span>Apache Kafka · MSK</div>
-    <div class="marquee-item be-item"><span class="dot"></span>AWS Lambda</div>
-    <div class="marquee-item be-item"><span class="dot"></span>Kinesis Firehose</div>
-    <div class="marquee-item be-item"><span class="dot"></span>DynamoDB · Redis</div>
-    <div class="marquee-item be-item"><span class="dot"></span>Spring Boot · Node.js</div>
-    <div class="marquee-item be-item"><span class="dot"></span>Angular · React</div>
-    <div class="marquee-item be-item"><span class="dot"></span>ECS Fargate</div>
-    <div class="marquee-item be-item"><span class="dot"></span>CDK TypeScript</div>
-    <div class="marquee-item be-item"><span class="dot"></span>EventBridge</div>
-    <div class="marquee-item be-item"><span class="dot"></span>CodePipeline</div>
-    <div class="marquee-item be-item"><span class="dot"></span>mTLS · SOC 2</div>
-    <div class="marquee-item be-item"><span class="dot"></span>Datadog · Splunk</div>
-    <div class="marquee-item be-item"><span class="dot"></span>CloudWatch RUM</div>
-    <!-- duplicate for seamless loop -->
-    <div class="marquee-item ai-item"><span class="dot" style="background:var(--purple)"></span>RAG · AWS Bedrock</div>
-    <div class="marquee-item ai-item"><span class="dot"></span>Titan Embeddings v2</div>
-    <div class="marquee-item ai-item"><span class="dot"></span>Claude 3 Sonnet</div>
-    <div class="marquee-item ai-item"><span class="dot"></span>pgvector · Elasticsearch</div>
-    <div class="marquee-item ai-item"><span class="dot"></span>LangChain Orchestration</div>
-    <div class="marquee-item ai-item"><span class="dot"></span>Semantic Kernel</div>
-    <div class="marquee-item ai-item"><span class="dot"></span>Claude Code</div>
-    <div class="marquee-item ai-item"><span class="dot"></span>LLM Integration</div>
-    <div class="marquee-item ai-item"><span class="dot"></span>Agentic Workflows</div>
-    <div class="marquee-item ai-item"><span class="dot"></span>Prompt Engineering</div>
-    <div class="marquee-item be-item"><span class="dot"></span>Apache Kafka · MSK</div>
-    <div class="marquee-item be-item"><span class="dot"></span>AWS Lambda</div>
-    <div class="marquee-item be-item"><span class="dot"></span>Kinesis Firehose</div>
-    <div class="marquee-item be-item"><span class="dot"></span>DynamoDB · Redis</div>
-    <div class="marquee-item be-item"><span class="dot"></span>Spring Boot · Node.js</div>
-    <div class="marquee-item be-item"><span class="dot"></span>Angular · React</div>
-    <div class="marquee-item be-item"><span class="dot"></span>ECS Fargate</div>
-    <div class="marquee-item be-item"><span class="dot"></span>CDK TypeScript</div>
-    <div class="marquee-item be-item"><span class="dot"></span>EventBridge</div>
-    <div class="marquee-item be-item"><span class="dot"></span>CodePipeline</div>
-    <div class="marquee-item be-item"><span class="dot"></span>mTLS · SOC 2</div>
-    <div class="marquee-item be-item"><span class="dot"></span>Datadog · Splunk</div>
-    <div class="marquee-item be-item"><span class="dot"></span>CloudWatch RUM</div>
-  </div>
-</div>
+<section id="map" class="wrap">
+  <h2>Platform status board</h2>
+  <p class="sec-intro">One connected system, not five disconnected projects. Click a component to open its ticket below.</p>
+  <div class="panel reveal">
+    <div class="panel-bar"><div class="panel-dots"><span></span><span></span><span></span></div><span class="panel-title">system-map — live</span></div>
+    <div class="map-inner">
+      <svg class="sysmap" viewBox="0 0 940 210" role="img" aria-label="Interactive map of the platform layers">
+        <defs><marker id="sarrow" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto"><path d="M0,0 L6,3 L0,6 z" fill="#82887F"/></marker></defs>
 
-<!-- ══ METRICS ══ -->
-<div class="metrics">
-  <div class="wrap" style="padding-top:0;padding-bottom:0;">
-    <div class="metrics-grid">
-      <div class="metric">
-        <div class="m-label">Enterprise Clients</div>
-        <div class="m-val"><span id="cnt-clients">0</span><span class="u">+</span></div>
-        <div class="m-sub c">▲ platform · all nominal</div>
+        <path class="medge" d="M210,53 H245" marker-end="url(#sarrow)"/>
+        <path class="medge" d="M345,82 V125" marker-end="url(#sarrow)"/>
+        <path class="medge" d="M115,130 V87" marker-end="url(#sarrow)"/>
+        <path class="medge" d="M210,159 H245" marker-end="url(#sarrow)"/>
+        <path class="medge" d="M440,159 H475" marker-end="url(#sarrow)"/>
+
+        <g class="mnode" data-layer="stream" tabindex="0" data-target="cs-2">
+          <rect x="20" y="24" width="190" height="58" rx="3"/><circle class="mdot" cx="198" cy="36" r="3"/>
+          <text x="115" y="50" text-anchor="middle">DEVICE TELEMETRY</text>
+          <text x="115" y="68" text-anchor="middle" class="msub">20,000+ devices · Kafka/MSK</text>
+        </g>
+
+        <g class="mnode" data-layer="stream" tabindex="0" data-target="cs-2">
+          <rect x="250" y="24" width="190" height="58" rx="3"/><circle class="mdot" cx="428" cy="36" r="3"/>
+          <text x="345" y="50" text-anchor="middle">STREAMING LAYER</text>
+          <text x="345" y="68" text-anchor="middle" class="msub">custom sink connector</text>
+        </g>
+
+        <g class="mnode" data-layer="reliability" tabindex="0" data-target="cs-4">
+          <rect x="20" y="130" width="190" height="58" rx="3"/><circle class="mdot" cx="198" cy="142" r="3"/>
+          <text x="115" y="156" text-anchor="middle">RELIABILITY LAYER</text>
+          <text x="115" y="174" text-anchor="middle" class="msub">observability · on-call</text>
+        </g>
+
+        <g class="mnode" data-layer="ai" tabindex="0" data-target="cs-1">
+          <rect x="250" y="130" width="190" height="58" rx="3"/><circle class="mdot" cx="428" cy="142" r="3"/>
+          <text x="345" y="156" text-anchor="middle">AI / RAG LAYER</text>
+          <text x="345" y="174" text-anchor="middle" class="msub">Bedrock · pgvector</text>
+        </g>
+
+        <g class="mnode" data-layer="analytics" tabindex="0" data-target="cs-3">
+          <rect x="480" y="130" width="190" height="58" rx="3"/><circle class="mdot" cx="658" cy="142" r="3"/>
+          <text x="575" y="156" text-anchor="middle">ANALYTICS LAYER</text>
+          <text x="575" y="174" text-anchor="middle" class="msub">QuickSight · 500+ clients</text>
+        </g>
+
+        <g class="mnode" data-layer="archive" tabindex="0" data-target="cs-5">
+          <rect x="710" y="130" width="210" height="58" rx="3"/><circle class="mdot" cx="908" cy="142" r="3"/>
+          <text x="815" y="156" text-anchor="middle">ARCHIVE: VANGUARD</text>
+          <text x="815" y="174" text-anchor="middle" class="msub">fintech reliability, 2019–2022</text>
+        </g>
+      </svg>
+    </div>
+    <div class="map-legend">
+      <span><i style="background:var(--stream)"></i>streaming &amp; IoT</span>
+      <span><i style="background:var(--ai)"></i>AI / RAG</span>
+      <span><i style="background:var(--analytics)"></i>analytics</span>
+      <span><i style="background:var(--reliability)"></i>reliability</span>
+      <span><i style="background:var(--archive)"></i>earlier work</span>
+    </div>
+    <p class="map-hint">click any box to open its ticket below</p>
+  </div>
+</section>
+
+<section id="iot" class="wrap">
+  <h2>What changed because I was there</h2>
+  <p class="sec-intro">The platform I work on carries 20,000+ connected devices across 1,500+ hospital locations. These are the numbers I moved on it, and the work behind them.</p>
+  <div class="panel reveal">
+    <div class="panel-bar"><div class="panel-dots"><span></span><span></span><span></span></div><span class="panel-title">impact — before / after</span></div>
+
+    <div class="tele-metrics">
+      <div class="tele-metric" data-layer="stream">
+        <span class="lbl">lambda p99, ingest path</span>
+        <span class="num">2.8s <em>&rarr;</em> 800ms</span>
+        <span class="sub">removed redundant DynamoDB reads inside a hard 3s Firehose timeout</span>
+        <div class="bar" data-before="100" data-after="29"><i class="b-before"></i><i class="b-after"></i></div>
       </div>
-      <div class="metric">
-        <div class="m-label">Connected Endpoints</div>
-        <div class="m-val"><span id="cnt-ep">0</span><span class="u">K+</span></div>
-        <div class="m-sub c">▲ real-time telemetry</div>
+      <div class="tele-metric" data-layer="reliability">
+        <span class="lbl">mean time to root cause</span>
+        <span class="num">2–4 hrs <em>&rarr;</em> &lt;20 min</span>
+        <span class="sub">CloudWatch RUM + Synthetics platform, adopted across all production services</span>
+        <div class="bar" data-before="100" data-after="13"><i class="b-before"></i><i class="b-after"></i></div>
       </div>
-      <div class="metric">
-        <div class="m-label">Platform Uptime</div>
-        <div class="m-val">99<span class="u">.99%</span></div>
-        <div class="m-sub c">▲ zero unplanned outages</div>
-      </div>
-      <div class="metric">
-        <div class="m-label">RAG System</div>
-        <div class="m-val" style="color:var(--purple)">1<span class="u"> prod</span></div>
-        <div class="m-sub p">✦ Bedrock · pgvector · live</div>
-      </div>
-      <div class="metric">
-        <div class="m-label">Years On-Call</div>
-        <div class="m-val">7<span class="u">+</span></div>
-        <div class="m-sub c">▲ <span id="days-live">-</span></div>
+      <div class="tele-metric" data-layer="archive">
+        <span class="lbl">api p95, trading platform</span>
+        <span class="num">1.4s <em>&rarr;</em> 600ms</span>
+        <span class="sub">one cache key redesign behind an AppSync GraphQL layer</span>
+        <div class="bar" data-before="100" data-after="43"><i class="b-before"></i><i class="b-after"></i></div>
       </div>
     </div>
-  </div>
-</div>
 
-<!-- ══ ABOUT ══ -->
-<section id="about">
-  <div class="wrap">
-    <div class="sec-head reveal">
-      <span class="sec-num">01 —</span>
-      <span class="sec-tag">// about</span>
-      <h2>Who I Am &amp; <span class="grad">What I Build</span></h2>
-      <p class="sec-sub">Staff engineer at the intersection of distributed systems and production AI — building backends that scale and AI pipelines that ship.</p>
-    </div>
-    <div class="about-grid reveal">
-      <div class="about-prose">
-        <p>My first real production incident was at Vanguard — a missing idempotency check, millions of dollars in transactions, a very bad Tuesday. I wrote the postmortem, fixed the root cause, and it never happened again. That experience shaped how I think: the interesting problems are almost never in the happy path.</p>
-        <p>I noticed clinical teams filing engineering tickets just to understand their own device data. It seemed like an obvious thing to fix. So I built a RAG system on AWS Bedrock — Titan Embeddings v2, Claude 3 Sonnet, pgvector with cosine similarity, and Elasticsearch for hybrid retrieval. They can now just ask questions in plain English. That was the first AI-native feature on the platform, and it changed how I thought about what backend work could look like going forward.</p>
-        <p>Now as Staff engineer I spend real time on architecture decisions, hiring, and setting direction across four teams. I'm fluent across the full stack — Java, TypeScript, Python, Angular, React — but what I care about most is whether the system is honest about its failure modes. The best decisions I've made were the ones that made the obviously correct approach also the easiest one to take.</p>
-      </div>
-      <div>
-        <div style="font-size:10px;letter-spacing:.16em;color:var(--text3);text-transform:uppercase;margin-bottom:12px;">Clearances &amp; Credentials</div>
-        <div class="cert-card"><span class="cert-arr">▸</span>AWS Certified Solutions Architect — Associate</div>
-        <div class="cert-card"><span class="cert-arr">▸</span>AWS Certified Developer — Associate</div>
-        <div class="cert-card"><span class="cert-arr">▸</span>M.S. Electrical Engineering · University of Cincinnati</div>
-        <div style="font-size:10px;letter-spacing:.16em;color:var(--text3);text-transform:uppercase;margin:16px 0 8px;">MTTR Before vs After Observability Layer</div>
-        <div class="mttr-card">
-          <div class="mttr-r bef"><span>before (log diving per incident)</span><span>2–4 hrs</span></div>
-          <div class="mttr-r aft"><span>after CloudWatch RUM + Synthetics</span><span>&lt;20 min</span></div>
-          <div class="mttr-track"><div class="mttr-fill"></div></div>
-          <div class="mttr-note">~87% reduction · all production services now instrumented</div>
-        </div>
+    <div class="tele-feed">
+      <div class="tele-feed-head">shipped</div>
+      <div class="ship-rows">
+        <div class="ship-row" data-layer="stream"><span class="sh-what">Custom MSK Kafka Connect sink connector</span><span class="sh-out">silent data loss eliminated</span></div>
+        <div class="ship-row" data-layer="reliability"><span class="sh-what">CloudWatch RUM + Synthetics observability platform</span><span class="sh-out">on-call incidents &minus;35%</span></div>
+        <div class="ship-row" data-layer="ai"><span class="sh-what">Production RAG system on Bedrock</span><span class="sh-out">clinical teams query without an engineer</span></div>
+        <div class="ship-row" data-layer="analytics"><span class="sh-what">Multi-account QuickSight embedding platform</span><span class="sh-out">500+ enterprise clients self-serve</span></div>
+        <div class="ship-row" data-layer="stream"><span class="sh-what">Transformer segment ordering fix</span><span class="sh-out">error rate &minus;25%</span></div>
+        <div class="ship-row" data-layer="ai"><span class="sh-what">AI-assisted compliance tooling, 20+ microservices</span><span class="sh-out">gap analysis cycles &minus;60%</span></div>
+        <div class="ship-row" data-layer="archive"><span class="sh-what">Idempotency + retry-cap pattern across 12 services</span><span class="sh-out">zero recurrence in 18 months</span></div>
       </div>
     </div>
   </div>
 </section>
 
-<!-- ══ AI SPOTLIGHT ══ -->
-<section id="ai">
-  <div class="wrap">
-    <div class="sec-head reveal">
-      <span class="sec-num">02 —</span>
-      <span class="sec-tag purple">// ai work</span>
-      <h2>Production <span class="grad">AI Systems</span></h2>
-      <p class="sec-sub">RAG pipelines, LLM integrations, and agentic workflows — shipped to production, not just prototyped.</p>
+<section id="dna" class="wrap">
+  <h2>Engineering DNA</h2>
+  <p class="sec-intro">What I actually spend my time on, not a keyword list.</p>
+  <div class="dna-grid reveal">
+    <div class="dna-item" data-layer="stream"><span class="dna-tag">Distributed systems &amp; IoT</span>
+      <h3>Streaming &amp; event-driven infra</h3>
+      <p>Kafka and MSK pipelines carrying continuous telemetry from 20,000+ connected medical devices across 1,500+ hospital locations. I've built the Connect infrastructure from scratch, diagnosed silent data loss under load, and designed around hard timeout constraints rather than around them.</p>
     </div>
-
-    <p class="reveal" style="font-family:var(--sans);font-size:15px;color:var(--text2);line-height:1.8;max-width:680px;margin-bottom:2.5rem;">The RAG system started as a practical frustration. Clinical teams were blocked from their own operational data — every question required an engineer. I started prototyping on a Friday, had a working retrieval pipeline by Sunday, and it went to production a few months later. It's been running in production since. That project changed how I think about the role AI plays in backend work — not as a replacement for the system, but as a layer that makes the system accessible to the people who actually need it.</p>
-    <div class="ai-top reveal">
-      <!-- RAG System Card -->
-      <div class="ai-highlight-card">
-        <div class="ai-card-title">
-          <div class="ai-card-icon">✦</div>
-          <div>
-            <div class="ai-card-name">Production RAG System</div>
-            <div class="ai-card-sub">AWS BEDROCK · PGVECTOR · ELASTICSEARCH · CLAUDE 3 SONNET</div>
-          </div>
-        </div>
-        <p class="ai-detail">Built and shipped a production RAG system enabling natural-language querying of live operational analytics. Combines pgvector cosine similarity with Elasticsearch semantic search for hybrid retrieval. Clinical and ops teams ask plain-English questions about device data — no engineer in the loop.</p>
-        <div class="ai-stat-row">
-          <div class="ai-stat"><div class="ai-stat-num">Titan v2</div><div class="ai-stat-lbl">Embedding Model</div></div>
-          <div class="ai-stat"><div class="ai-stat-num">Sonnet</div><div class="ai-stat-lbl">Claude 3 LLM</div></div>
-          <div class="ai-stat"><div class="ai-stat-num">pgvector</div><div class="ai-stat-lbl">Vector Store</div></div>
-          <div class="ai-stat"><div class="ai-stat-num">ES</div><div class="ai-stat-lbl">Semantic Search</div></div>
-        </div>
-        <div class="tag-row" style="margin-top:1rem;">
-          <span class="tag tag-ai">RAG</span><span class="tag tag-ai">AWS Bedrock</span><span class="tag tag-ai">Titan Embeddings v2</span><span class="tag tag-ai">pgvector</span><span class="tag tag-ai">Elasticsearch</span><span class="tag tag-ai">Claude 3 Sonnet</span><span class="tag tag-ai">Scheduled Indexing</span>
-        </div>
-      </div>
-
-      <!-- RAG Architecture Diagram -->
-      <div class="rag-pipeline">
-        <div class="rag-title">RAG Architecture · Data Flow</div>
-
-        <div style="font-size:9px;color:var(--text3);letter-spacing:.1em;margin-bottom:6px;">INDEXING PIPELINE</div>
-        <div class="rag-row">
-          <div class="rag-node">OPERATIONAL<br>DATA</div>
-          <div class="rag-arrow"></div>
-          <div class="rag-node">CHUNKER<br>Lambda</div>
-          <div class="rag-arrow"></div>
-          <div class="rag-node purple">TITAN v2<br>EMBEDDINGS</div>
-          <div class="rag-arrow"></div>
-          <div class="rag-node purple">pgvector<br>STORE</div>
-        </div>
-
-        <div style="font-size:9px;color:var(--text3);letter-spacing:.1em;margin:12px 0 6px;">QUERY PIPELINE</div>
-        <div class="rag-row">
-          <div class="rag-node cyan">USER<br>QUERY</div>
-          <div class="rag-arrow cyan-flow"></div>
-          <div class="rag-node purple">TITAN v2<br>EMBED</div>
-          <div class="rag-arrow cyan-flow"></div>
-          <div class="rag-node purple">COSINE<br>SIMILARITY</div>
-          <div class="rag-arrow cyan-flow"></div>
-          <div class="rag-node cyan">CLAUDE 3<br>SONNET</div>
-          <div class="rag-arrow green-flow"></div>
-          <div class="rag-node green">ANSWER</div>
-        </div>
-
-        <div style="margin-top:14px;font-size:10px;color:var(--text3);line-height:1.7;font-family:var(--sans);">
-          Scheduled Lambda indexer · RDS PostgreSQL + pgvector extension · Cosine similarity retrieval · Prompt-engineered context window injection
-        </div>
-      </div>
+    <div class="dna-item" data-layer="analytics"><span class="dna-tag">Cloud architecture</span>
+      <h3>Multi-account AWS platforms</h3>
+      <p>Cross-account IAM federation, provisioned as code with CDK. I design for the failure mode, then for the happy path.</p>
     </div>
-
-    <!-- AI Tooling Grid -->
-    <div class="sec-divider purple" style="margin-top:2rem;"><span class="lbl">// ai tooling used daily</span></div>
-    <div class="ai-tools-grid stagger reveal">
-      <div class="tool-card">
-        <span class="tool-icon">🤖</span>
-        <div class="tool-name">Claude Code</div>
-        <div class="tool-use">CDK construct generation, pipeline authoring, compliance doc acceleration</div>
-      </div>
-      <div class="tool-card">
-        <span class="tool-icon">🐙</span>
-        <div class="tool-name">GitHub Copilot</div>
-        <div class="tool-use">Day-to-day coding, boilerplate, test generation automation</div>
-      </div>
-      <div class="tool-card">
-        <span class="tool-icon">⚡</span>
-        <div class="tool-name">Amazon Q Developer</div>
-        <div class="tool-use">AWS-specific patterns, IAM policies, CDK constructs</div>
-      </div>
-      <div class="tool-card">
-        <span class="tool-icon">🔮</span>
-        <div class="tool-name">Cursor</div>
-        <div class="tool-use">Complex refactors, multi-file exploration, architecture review</div>
-      </div>
-      <div class="tool-card">
-        <span class="tool-icon">✦</span>
-        <div class="tool-name">LLM Integration</div>
-        <div class="tool-use">Prompt engineering, agentic workflows, RAG pipeline design, vector embeddings</div>
-      </div>
+    <div class="dna-item" data-layer="ai"><span class="dna-tag">Applied AI</span>
+      <h3>Production AI engineering</h3>
+      <p>A production RAG system on Bedrock that clinical teams use daily, not a demo. Claude Code is my primary AI coding tool, part of how I ship rather than a talking point.</p>
+    </div>
+    <div class="dna-item" data-layer="reliability"><span class="dna-tag">Reliability</span>
+      <h3>Incident response &amp; root cause</h3>
+      <p>I've led root cause analysis on P0s that cost real money and P1s that put a regulatory deadline at risk. The pattern is almost always the same: fix the class of bug, not the instance.</p>
     </div>
   </div>
 </section>
 
-<!-- ══ PROJECTS ══ -->
-<section id="projects">
-  <div class="wrap">
-    <div class="sec-head reveal">
-      <span class="sec-num">03 —</span>
-      <span class="sec-tag">// open_source</span>
-      <h2>AI <span class="grad">Projects</span></h2>
-      <p class="sec-sub">Production-grade systems built with LLMs, RAG, and real-time streaming — all open source on GitHub.</p>
-    </div>
+<section id="journey" class="wrap">
+  <h2>Career journey</h2>
+  <p class="sec-intro">Seven years, four roles, read like a deploy log: what shipped, in order.</p>
+  <div class="panel reveal">
+    <div class="panel-bar"><div class="panel-dots"><span></span><span></span><span></span></div><span class="panel-title">deploy-log — career.log</span></div>
+    <div class="tl2">
 
-    <div class="grid-3 stagger reveal">
-
-      <!-- PROJECT 1 -->
-      <div class="card card-ai" style="border-color:rgba(155,92,245,0.3); position:relative; overflow:hidden;">
-        <div style="position:absolute;top:0;left:0;right:0;height:2px;background:linear-gradient(90deg,var(--purple),var(--cyan));"></div>
-        <div style="display:flex;align-items:center;gap:10px;margin-bottom:14px;">
-          <div style="width:36px;height:36px;border-radius:8px;background:rgba(155,92,245,0.15);border:1px solid rgba(155,92,245,0.3);display:flex;align-items:center;justify-content:center;font-size:18px;">🤖</div>
-          <div>
-            <div style="font-size:11px;color:var(--purple);font-family:var(--mono);letter-spacing:1px;">ai-agent-framework</div>
-            <div style="font-size:10px;color:var(--text3);font-family:var(--sans);">Python · 100%</div>
-          </div>
-          <a href="https://github.com/venumartha/ai-agent-framework" target="_blank" rel="noopener" style="margin-left:auto;color:var(--text3);font-size:18px;line-height:1;" title="View on GitHub">↗</a>
-        </div>
-        <h3 style="font-size:15px;font-family:var(--sans);font-weight:600;margin-bottom:8px;color:var(--text);">Multi-Tool AI Agent Framework</h3>
-        <p style="font-size:12px;color:var(--text2);line-height:1.6;margin-bottom:14px;font-family:var(--sans);">Production-ready agentic system using Claude Sonnet 4 function calling. Supports multi-step reasoning, self-correction on failure, and full execution tracing across web search, code execution, and file operations.</p>
-        <div style="background:rgba(155,92,245,0.07);border:1px solid rgba(155,92,245,0.18);border-radius:8px;padding:10px 12px;margin-bottom:14px;font-family:var(--mono);font-size:11px;">
-          <div style="color:var(--text3);margin-bottom:6px;">// performance_metrics</div>
-          <div style="display:grid;grid-template-columns:1fr 1fr;gap:6px;">
-            <div><span style="color:var(--purple);">success_rate</span> <span style="color:var(--green);">85–95%</span></div>
-            <div><span style="color:var(--purple);">model</span> <span style="color:var(--cyan);">Claude Sonnet 4</span></div>
-            <div><span style="color:var(--purple);">interface</span> <span style="color:var(--amber);">FastAPI + Streamlit</span></div>
-            <div><span style="color:var(--purple);">pattern</span> <span style="color:var(--green);">ReAct + Self-Correct</span></div>
-          </div>
-        </div>
-        <div style="display:flex;flex-wrap:wrap;gap:6px;">
-          <span class="tag tag-ai">Claude Sonnet 4</span>
-          <span class="tag tag-ai">Function Calling</span>
-          <span class="tag">FastAPI</span>
-          <span class="tag">Streamlit</span>
-          <span class="tag">ReAct</span>
-          <span class="tag">Python</span>
-        </div>
-      </div>
-
-      <!-- PROJECT 2 -->
-      <div class="card card-ai" style="border-color:rgba(0,200,255,0.3); position:relative; overflow:hidden;">
-        <div style="position:absolute;top:0;left:0;right:0;height:2px;background:linear-gradient(90deg,var(--cyan),var(--green));"></div>
-        <div style="display:flex;align-items:center;gap:10px;margin-bottom:14px;">
-          <div style="width:36px;height:36px;border-radius:8px;background:rgba(0,200,255,0.12);border:1px solid rgba(0,200,255,0.3);display:flex;align-items:center;justify-content:center;font-size:18px;">⚡</div>
-          <div>
-            <div style="font-size:11px;color:var(--cyan);font-family:var(--mono);letter-spacing:1px;">streaming-analytics-llm</div>
-            <div style="font-size:10px;color:var(--text3);font-family:var(--sans);">Python · Shell</div>
-          </div>
-          <a href="https://github.com/venumartha/streaming-analytics-llm" target="_blank" rel="noopener" style="margin-left:auto;color:var(--text3);font-size:18px;line-height:1;" title="View on GitHub">↗</a>
-        </div>
-        <h3 style="font-size:15px;font-family:var(--sans);font-weight:600;margin-bottom:8px;color:var(--text);">Streaming Analytics + LLM Pipeline</h3>
-        <p style="font-size:12px;color:var(--text2);line-height:1.6;margin-bottom:14px;font-family:var(--sans);">Real-time medical device telemetry pipeline over Kafka/MSK with LLM-powered anomaly analysis. 5-minute tumbling windows feed Claude for pattern detection, surfaced via a live WebSocket dashboard.</p>
-        <div style="background:rgba(0,200,255,0.06);border:1px solid rgba(0,200,255,0.18);border-radius:8px;padding:10px 12px;margin-bottom:14px;font-family:var(--mono);font-size:11px;">
-          <div style="color:var(--text3);margin-bottom:6px;">// architecture</div>
-          <div style="display:grid;grid-template-columns:1fr 1fr;gap:6px;">
-            <div><span style="color:var(--cyan);">ingest</span> <span style="color:var(--text2);">Kafka / MSK</span></div>
-            <div><span style="color:var(--cyan);">window</span> <span style="color:var(--amber);">5-min tumbling</span></div>
-            <div><span style="color:var(--cyan);">analysis</span> <span style="color:var(--purple);">Claude via LangChain</span></div>
-            <div><span style="color:var(--cyan);">output</span> <span style="color:var(--green);">WebSocket + Kinesis</span></div>
-          </div>
-        </div>
-        <div style="display:flex;flex-wrap:wrap;gap:6px;">
-          <span class="tag tag-ai">LangChain</span>
-          <span class="tag tag-ai">LLM Anomaly Detection</span>
-          <span class="tag">Kafka / MSK</span>
-          <span class="tag">WebSocket</span>
-          <span class="tag">Kinesis Firehose</span>
-          <span class="tag">Docker</span>
-        </div>
-      </div>
-
-      <!-- PROJECT 3 -->
-      <div class="card card-ai" style="border-color:rgba(16,217,138,0.3); position:relative; overflow:hidden;">
-        <div style="position:absolute;top:0;left:0;right:0;height:2px;background:linear-gradient(90deg,var(--green),var(--cyan));"></div>
-        <div style="display:flex;align-items:center;gap:10px;margin-bottom:14px;">
-          <div style="width:36px;height:36px;border-radius:8px;background:rgba(16,217,138,0.12);border:1px solid rgba(16,217,138,0.3);display:flex;align-items:center;justify-content:center;font-size:18px;">🔍</div>
-          <div>
-            <div style="font-size:11px;color:var(--green);font-family:var(--mono);letter-spacing:1px;">rag-documentation-api</div>
-            <div style="font-size:10px;color:var(--text3);font-family:var(--sans);">Python · ⭐ 2</div>
-          </div>
-          <a href="https://github.com/venumartha/rag-documentation-api" target="_blank" rel="noopener" style="margin-left:auto;color:var(--text3);font-size:18px;line-height:1;" title="View on GitHub">↗</a>
-        </div>
-        <h3 style="font-size:15px;font-family:var(--sans);font-weight:600;margin-bottom:8px;color:var(--text);">RAG Documentation API</h3>
-        <p style="font-size:12px;color:var(--text2);line-height:1.6;margin-bottom:14px;font-family:var(--sans);">Production RAG system with LangChain + FAISS vector store, MMR retrieval for diversity, and a built-in evaluation suite. Ships with Docker and CI/CD — benchmarked at 87% relevance and 385 ms average latency.</p>
-        <div style="background:rgba(16,217,138,0.06);border:1px solid rgba(16,217,138,0.18);border-radius:8px;padding:10px 12px;margin-bottom:14px;font-family:var(--mono);font-size:11px;">
-          <div style="color:var(--text3);margin-bottom:6px;">// eval_results</div>
-          <div style="display:grid;grid-template-columns:1fr 1fr;gap:6px;">
-            <div><span style="color:var(--green);">relevance</span> <span style="color:var(--green);">87%</span></div>
-            <div><span style="color:var(--green);">latency_p50</span> <span style="color:var(--cyan);">385ms</span></div>
-            <div><span style="color:var(--green);">retrieval</span> <span style="color:var(--amber);">MMR diversity</span></div>
-            <div><span style="color:var(--green);">store</span> <span style="color:var(--purple);">FAISS</span></div>
-          </div>
-        </div>
-        <div style="display:flex;flex-wrap:wrap;gap:6px;">
-          <span class="tag tag-ai">RAG</span>
-          <span class="tag tag-ai">LangChain</span>
-          <span class="tag tag-ai">FAISS</span>
-          <span class="tag">OpenAI Embeddings</span>
-          <span class="tag">FastAPI</span>
-          <span class="tag">Docker</span>
-          <span class="tag">CI/CD</span>
-        </div>
-      </div>
-
-    </div><!-- /grid-3 -->
-
-    <div class="reveal" style="text-align:center;margin-top:40px;">
-      <a href="https://github.com/venumartha" target="_blank" rel="noopener"
-         style="display:inline-flex;align-items:center;gap:8px;padding:10px 24px;border:1px solid var(--border2);border-radius:8px;color:var(--text2);font-size:12px;font-family:var(--mono);transition:all .2s;"
-         onmouseover="this.style.borderColor='var(--cyan)';this.style.color='var(--cyan)'"
-         onmouseout="this.style.borderColor='var(--border2)';this.style.color='var(--text2)'">
-        ↗ &nbsp;view all on github
-      </a>
-    </div>
-  </div>
-</section>
-
-<!-- ══ EXPERIENCE ══ -->
-<section id="experience">
-  <div class="wrap">
-    <div class="sec-head reveal">
-      <span class="sec-num">04 —</span>
-      <span class="sec-tag">// experience</span>
-      <h2>Career <span class="grad">History</span></h2>
-      <p class="sec-sub">Seven years building distributed backends and AI systems — from financial transaction platforms to medical device infrastructure.</p>
-    </div>
-    <div class="timeline reveal">
-
-      <div class="tl-item">
-        <div class="tl-period">FEB 2026<br>PRESENT</div>
-        <div class="tl-node tl-node-on"></div>
+      <details class="tl-item" open>
+        <summary>
+          <span class="tl-date">2026-02 → present</span>
+          <span><span class="tl-role">Staff Software Engineer</span><br><span class="tl-org">Outset Medical, San Diego</span></span>
+          <span class="tl-plus">+</span>
+        </summary>
         <div class="tl-body">
-          <div class="tl-head">
-            <div><div class="tl-role">Staff Software Engineer</div><div class="tl-company">Outset Medical · San Diego, CA</div></div>
-            <span class="badge b-active">● ACTIVE</span>
-          </div>
-          <p style="font-family:var(--sans);font-size:13px;color:var(--text2);line-height:1.7;margin-bottom:12px;">The Staff role is less about individual output and more about multiplying everyone else's. I spend my time on architecture decisions, cross-team alignment, hiring loops, and making sure the teams have the context they need to make good calls independently.</p>
-          <ul class="tl-bullets">
-            <li>Designed and shipped a CloudWatch RUM + Synthetics canary observability platform adopted across all production microservices; reduced mean time to root cause from hours to under 20 minutes, cut on-call incidents 35%.</li>
-            <li class="ai-bullet">Designed and delivered <strong style="color:var(--purple)">GenAI-powered developer tooling</strong> using LLM integration and agentic workflows; applied AI-assisted automation to compress compliance gap analysis cycles by 60% across 20+ microservices in a regulated environment.</li>
-            <li>Driving technical roadmap and engineering standards across 4 teams on a distributed backend platform; architecting API-first, event-driven systems with strong reliability and security postures.</li>
-            <li>Conducting Staff and Principal Engineer hiring loops; mentoring engineers through architecture reviews and structured feedback.</li>
+          <p>The Staff role is less about individual output and more about multiplying everyone else's. I spend my time on architecture decisions, cross-team alignment, hiring loops, and making sure teams have the context to make good calls independently.</p>
+          <ul>
+            <li>Designed and shipped a CloudWatch RUM and Synthetics observability platform adopted across all production microservices, cutting mean time to root cause from hours to under 20 minutes and on-call incidents by 35%.</li>
+            <li>Delivered AI-assisted developer tooling using LLM integration and agentic workflows, compressing compliance gap analysis cycles by 60% across 20+ microservices in a regulated environment.</li>
+            <li>Drive technical roadmap and engineering standards across four teams on a distributed backend platform.</li>
+            <li>Run Staff and Principal Engineer hiring loops, mentor engineers through architecture review.</li>
           </ul>
-          <div class="tag-row"><span class="tag">AWS CDK</span><span class="tag">CloudWatch RUM</span><span class="tag">Synthetics</span><span class="tag">Java</span><span class="tag">TypeScript</span><span class="tag">ECS Fargate</span><span class="tag tag-ai">AI-Assisted Tooling</span></div>
+          <div class="tl-tags"><span class="tag">CDK</span><span class="tag">CloudWatch RUM</span><span class="tag">Java</span><span class="tag">TypeScript</span><span class="tag">ECS Fargate</span></div>
         </div>
-      </div>
+      </details>
 
-      <div class="tl-item">
-        <div class="tl-period">APR 2023<br>FEB 2026</div>
-        <div class="tl-node tl-node-off"></div>
+      <details class="tl-item">
+        <summary>
+          <span class="tl-date">2023-04 → 2026-02</span>
+          <span><span class="tl-role">Senior Software Engineer</span><br><span class="tl-org">Outset Medical, San Diego</span></span>
+          <span class="tl-plus">+</span>
+        </summary>
         <div class="tl-body">
-          <div class="tl-head">
-            <div><div class="tl-role">Senior Software Engineer</div><div class="tl-company">Outset Medical · San Diego, CA</div></div>
-            <span class="badge b-done">COMPLETED</span>
-          </div>
-          <p style="font-family:var(--sans);font-size:13px;color:var(--text2);line-height:1.7;margin-bottom:12px;">Three years at the individual contributor level where most of the interesting work happened. I shipped the RAG system, diagnosed two P0 data pipeline bugs that had been silently corrupting records, and built the QuickSight platform that eventually served over 500 enterprise clients. The Kafka connector incident alone took two weeks of digging before I found the mTLS PEM normalization failure hiding under a 504 timeout.</p>
-          <ul class="tl-bullets">
-            <li class="ai-bullet">Built a <strong style="color:var(--purple)">production RAG system on AWS Bedrock</strong> (Titan Embeddings v2 + Claude 3 Sonnet) with pgvector cosine similarity search, Elasticsearch integration, and a scheduled indexing pipeline — enabling natural-language querying of live operational analytics for enterprise users.</li>
-            <li>Architected an end-to-end real-time device data pipeline using Kinesis Firehose, Lambda, S3, and DynamoDB; processed millions of records monthly with sub-minute latency and 99.9%+ delivery reliability.</li>
-            <li>Eliminated a class of silent data corruption by diagnosing a transformer segment ordering defect; cut error rate 25%, optimized Lambda p99 from 2.8s to 800ms by removing redundant DynamoDB reads within a hard 3-second Firehose timeout.</li>
-            <li>Resolved silent data loss on a high-throughput Kafka pipeline by engineering a custom MSK Kafka Connect sink connector with S3-sourced plugin and IAM auth; diagnosed 504 timeout under load with exponential backoff and PEM normalization.</li>
-            <li class="ai-bullet">Automated 40% of manual release workflows via CodePipeline CI/CD; applied <strong style="color:var(--purple)">Claude Code</strong> to accelerate pipeline authoring and CDK construct generation, enabling zero-downtime blue/green deployments.</li>
-            <li>Architected a multi-account QuickSight embedding platform with cross-account IAM role federation; 500+ enterprise clients, 500+ concurrent session capacity, provisioned via CDK TypeScript.</li>
+          <p>Three years at the individual contributor level, where most of the hardest problems lived. I shipped the RAG system, diagnosed two P0 data pipeline bugs that had been silently corrupting records, and built the QuickSight platform that now serves over 500 enterprise clients.</p>
+          <ul>
+            <li>Built a production RAG system on AWS Bedrock (Titan Embeddings v2 and Claude 3 Sonnet) with pgvector and Elasticsearch, enabling natural-language querying of live operational analytics.</li>
+            <li>Architected a real-time device data pipeline on Kinesis Firehose, Lambda, S3, and DynamoDB processing millions of records monthly with sub-minute latency and 99.9%+ delivery reliability.</li>
+            <li>Diagnosed a transformer segment ordering defect causing silent data corruption; cut error rate 25% and optimized Lambda p99 from 2.8s to 800ms.</li>
+            <li>Engineered a custom MSK Kafka Connect sink connector to resolve silent data loss under load.</li>
+            <li>Architected a multi-account QuickSight embedding platform with cross-account IAM federation, serving 500+ enterprise clients at 500+ concurrent sessions.</li>
           </ul>
-          <div class="tag-row"><span class="tag tag-ai">RAG</span><span class="tag tag-ai">AWS Bedrock</span><span class="tag tag-ai">pgvector</span><span class="tag tag-ai">Claude 3 Sonnet</span><span class="tag">Kafka</span><span class="tag">MSK</span><span class="tag">Lambda</span><span class="tag">DynamoDB</span><span class="tag">mTLS</span><span class="tag">QuickSight</span><span class="tag tag-ai">Claude Code</span></div>
+          <div class="tl-tags"><span class="tag">RAG</span><span class="tag">Bedrock</span><span class="tag">pgvector</span><span class="tag">Kafka / MSK</span><span class="tag">QuickSight</span></div>
         </div>
-      </div>
+      </details>
 
-      <div class="tl-item">
-        <div class="tl-period">APR 2022<br>APR 2023</div>
-        <div class="tl-node tl-node-off"></div>
+      <details class="tl-item">
+        <summary>
+          <span class="tl-date">2022-04 → 2023-04</span>
+          <span><span class="tl-role">Software Engineer</span><br><span class="tl-org">Outset Medical, San Diego</span></span>
+          <span class="tl-plus">+</span>
+        </summary>
         <div class="tl-body">
-          <div class="tl-head">
-            <div><div class="tl-role">Software Engineer</div><div class="tl-company">Outset Medical · San Diego, CA</div></div>
-            <span class="badge b-done">COMPLETED</span>
-          </div>
-          <p style="font-family:var(--sans);font-size:13px;color:var(--text2);line-height:1.7;margin-bottom:12px;">My first year at Outset. I came in and built the Kafka Connect infrastructure from scratch — custom S3-sourced plugin, tiered alarms, the works. That baseline became the foundation the whole streaming platform was later built on, which felt good to find out a year later.</p>
-          <ul class="tl-bullets">
-            <li>Built Lambda handlers and DynamoDB data models for continuous telemetry ingestion from 7,000+ connected devices across 1,200+ locations; owned Kinesis Firehose deduplication pipeline and IAM/Secrets Manager security posture.</li>
-            <li>Delivered MSK Kafka Connect infrastructure from scratch with a custom S3-sourced plugin and tiered CloudWatch alarms; established the streaming and observability baseline the org-wide platform was later built on.</li>
-            <li>Automated dynamic VPN tunnel modification detection, eliminating a manual per-deployment step and reducing misconfiguration risk across all enterprise client connections.</li>
+          <p>My first year at Outset. I built the Kafka Connect infrastructure from scratch, which became the foundation the whole streaming platform was later built on.</p>
+          <ul>
+            <li>Built Lambda handlers and DynamoDB data models for continuous telemetry ingestion from 20,000+ connected devices across 1,500+ locations.</li>
+            <li>Delivered MSK Kafka Connect infrastructure from scratch with a custom S3-sourced plugin and tiered CloudWatch alarms.</li>
+            <li>Automated dynamic VPN tunnel modification detection, eliminating a manual per-deployment step.</li>
           </ul>
-          <div class="tag-row"><span class="tag">Lambda</span><span class="tag">DynamoDB</span><span class="tag">Kinesis</span><span class="tag">Kafka Connect</span><span class="tag">CloudWatch</span><span class="tag">IAM</span><span class="tag">Secrets Manager</span></div>
+          <div class="tl-tags"><span class="tag">Lambda</span><span class="tag">DynamoDB</span><span class="tag">Kafka Connect</span><span class="tag">IAM</span></div>
         </div>
-      </div>
+      </details>
 
-      <div class="tl-item">
-        <div class="tl-period">NOV 2019<br>APR 2022</div>
-        <div class="tl-node tl-node-off"></div>
+      <details class="tl-item">
+        <summary>
+          <span class="tl-date">2019-11 → 2022-04</span>
+          <span><span class="tl-role">Software Engineer</span><br><span class="tl-org">Vanguard, Malvern PA</span></span>
+          <span class="tl-plus">+</span>
+        </summary>
         <div class="tl-body">
-          <div class="tl-head">
-            <div><div class="tl-role">Software Engineer</div><div class="tl-company">Vanguard · Malvern, PA</div></div>
-            <span class="badge b-done">COMPLETED</span>
-          </div>
-          <p style="font-family:var(--sans);font-size:13px;color:var(--text2);line-height:1.7;margin-bottom:12px;">Vanguard is where I got serious about reliability. When your microservices are processing billions of dollars in transactions, a missing idempotency guard is not an abstract concern. I led the RCA on three P1 incidents and the root cause was the same each time. I fixed them, documented the pattern, and they didn't come back.</p>
-          <ul class="tl-bullets">
-            <li>Built Java/Spring Boot microservices for high-throughput transaction processing; sustained 99.99% uptime across 1,500+ ECS Fargate tasks processing billions of dollars in transactions via circuit breakers and idempotency guards.</li>
-            <li>Designed a GraphQL API layer with AWS AppSync and Redis caching; reduced DB call volume 20%, cut p95 latency from 1.4s to 600ms — most of the gain from one cache key design decision.</li>
-            <li>Led RCA on three P1 incidents across 12 services — root cause always missing idempotency or uncapped retry loops. Fixed both. Zero recurrence over 18 months. Clean SOC 2 audit cycle.</li>
+          <p>Where I got serious about reliability. When your microservices process billions of dollars in transactions, a missing idempotency guard is not an abstract concern.</p>
+          <ul>
+            <li>Built Java/Spring Boot microservices sustaining 99.99% uptime across 1,500+ ECS Fargate tasks processing billions of dollars in transactions.</li>
+            <li>Designed a GraphQL API layer with AWS AppSync and Redis caching, cutting DB call volume 20% and p95 latency from 1.4s to 600ms.</li>
+            <li>Led root cause analysis on three P1 incidents across 12 services, all tracing to the same pattern; zero recurrence over 18 months.</li>
           </ul>
-          <div class="tag-row"><span class="tag">Java</span><span class="tag">Spring Boot</span><span class="tag">GraphQL</span><span class="tag">AppSync</span><span class="tag">Redis</span><span class="tag">PostgreSQL</span><span class="tag">Liquibase</span><span class="tag">ECS Fargate</span></div>
+          <div class="tl-tags"><span class="tag">Java</span><span class="tag">Spring Boot</span><span class="tag">GraphQL</span><span class="tag">AppSync</span><span class="tag">Redis</span></div>
         </div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- ══ INCIDENTS ══ -->
-<section id="incidents">
-  <div class="wrap">
-    <div class="sec-head reveal">
-      <span class="sec-num">05 —</span>
-      <span class="sec-tag purple">// key_work</span>
-      <h2>Selected <span class="grad">Impact</span></h2>
-      <p class="sec-sub">The incidents that defined the platform — P0 outages diagnosed, data loss eliminated, and AI systems shipped to production.</p>
-    </div>
-    <div class="incidents-grid stagger reveal">
-
-      <div class="inc-card ai">
-        <div class="inc-head">
-          <div><div class="inc-id">INC-AI-001 · AI SYSTEM · RAG</div>
-          <div class="inc-badges"><span class="badge b-ai">✦ AI SHIPPED</span><span class="badge b-res">✓ PRODUCTION</span></div></div>
-          <div class="inc-clear"><div style="width:5px;height:5px;border-radius:50%;background:var(--purple);"></div>LIVE</div>
-        </div>
-        <div class="inc-body">
-          <div class="inc-title">No Natural-Language Access to Live Operational Analytics — Clinical Teams Blocked</div>
-          <div class="inc-row"><span class="inc-k">PROBLEM</span><span class="inc-v">Clinical and ops teams required engineer involvement to query device operational data; no self-serve analytics capability</span></div>
-          <div class="inc-row"><span class="inc-k">BUILT</span><span class="inc-v">Production RAG on AWS Bedrock: Titan Embeddings v2 + Claude 3 Sonnet + pgvector cosine similarity + scheduled Lambda indexer</span></div>
-          <div class="inc-row"><span class="inc-k">RESULT</span><span class="inc-v">Clinical and ops teams query live analytics in plain English with no engineer in the loop</span></div>
-          <div class="inc-impact purple">✦ First AI-native feature on the platform · Natural language ops queries in production</div>
-        </div>
-      </div>
-
-      <div class="inc-card ai">
-        <div class="inc-head">
-          <div><div class="inc-id">INC-AI-002 · AI TOOLING · COMPLIANCE</div>
-          <div class="inc-badges"><span class="badge b-ai">✦ AI-AUGMENTED</span><span class="badge b-res">✓ DELIVERED</span></div></div>
-          <div class="inc-clear"><div style="width:5px;height:5px;border-radius:50%;background:var(--purple);"></div>COMPLETE</div>
-        </div>
-        <div class="inc-body">
-          <div class="inc-title">Regulatory Submission Deadline at Risk — Compliance Gap Analysis Too Slow</div>
-          <div class="inc-row"><span class="inc-k">PROBLEM</span><span class="inc-v">Security rollout across 20+ microservices blocking regulatory submission; manual compliance analysis too slow</span></div>
-          <div class="inc-row"><span class="inc-k">SOLUTION</span><span class="inc-v">Applied AI-assisted tooling (Claude Code) to compress compliance gap analysis and audit documentation cycles dramatically</span></div>
-          <div class="inc-row"><span class="inc-k">RESULT</span><span class="inc-v">Security controls rolled out across 20+ microservices; regulatory deadline unblocked; zero production incidents</span></div>
-          <div class="inc-impact purple">✦ Regulatory deadline met · AI compressed documentation cycles</div>
-        </div>
-      </div>
-
-      <div class="inc-card p0">
-        <div class="inc-head">
-          <div><div class="inc-id">INC-001 · SEVERITY P0 · CORRECTNESS</div>
-          <div class="inc-badges"><span class="badge b-p0">P0 CRITICAL</span><span class="badge b-res">✓ RESOLVED</span></div></div>
-          <div class="inc-clear"><div style="width:5px;height:5px;border-radius:50%;background:var(--green);"></div>CLEAR</div>
-        </div>
-        <div class="inc-body">
-          <div class="inc-title">Silent Correctness Bug — Duplicate Records with Identical Field Identifiers</div>
-          <div class="inc-row"><span class="inc-k">ROOT CAUSE</span><span class="inc-v">Transformer segment ordering defect; wire format mismatch generating identical field IDs; output looked valid so no alarms fired</span></div>
-          <div class="inc-row"><span class="inc-k">RESOLUTION</span><span class="inc-v">Read the actual wire format; fixed ordering defect and removed redundant DynamoDB reads + reused KMS context within 3s Firehose timeout</span></div>
-          <div class="inc-impact">▲ Error rate −25% &nbsp;·&nbsp; Lambda p99: 2.8s → 800ms</div>
-        </div>
-      </div>
-
-      <div class="inc-card p0">
-        <div class="inc-head">
-          <div><div class="inc-id">INC-002 · SEVERITY P0 · DATA INTEGRITY</div>
-          <div class="inc-badges"><span class="badge b-p0">P0 CRITICAL</span><span class="badge b-res">✓ RESOLVED</span></div></div>
-          <div class="inc-clear"><div style="width:5px;height:5px;border-radius:50%;background:var(--green);"></div>CLEAR</div>
-        </div>
-        <div class="inc-body">
-          <div class="inc-title">Invisible Data Loss — Kafka Replication Lag + mTLS 504 Timeout Under Load</div>
-          <div class="inc-row"><span class="inc-k">ROOT CAUSE</span><span class="inc-v">Third-party MSK Kafka Connect sink had replication lag bug; 504 timeout under load from missing exponential backoff and PEM normalization failure</span></div>
-          <div class="inc-row"><span class="inc-k">RESOLUTION</span><span class="inc-v">Custom sink connector with S3-sourced plugin, IAM auth, exponential backoff; PEM normalization to eliminate mTLS failures</span></div>
-          <div class="inc-impact">▲ Data loss eliminated &nbsp;·&nbsp; mTLS failures resolved &nbsp;·&nbsp; Full delivery audit trail</div>
-        </div>
-      </div>
-
-      <div class="inc-card p1">
-        <div class="inc-head">
-          <div><div class="inc-id">INC-003 · SEVERITY P1 · OBSERVABILITY</div>
-          <div class="inc-badges"><span class="badge b-p1">P1 HIGH</span><span class="badge b-res">✓ RESOLVED</span></div></div>
-          <div class="inc-clear"><div style="width:5px;height:5px;border-radius:50%;background:var(--green);"></div>CLEAR</div>
-        </div>
-        <div class="inc-body">
-          <div class="inc-title">Observability Blindspot — Engineers Spending 2–4 Hours Log Diving Per Incident</div>
-          <div class="inc-row"><span class="inc-k">ROOT CAUSE</span><span class="inc-v">No unified observability layer; alarms not bucketed by severity; no synthetic monitors across production services</span></div>
-          <div class="inc-row"><span class="inc-k">RESOLUTION</span><span class="inc-v">Shipped CloudWatch RUM + Synthetics canary platform adopted across all production microservices; severity-bucketed alerting</span></div>
-          <div class="inc-impact">▲ MTTR: hours → &lt;20 min &nbsp;·&nbsp; On-call incidents −35%</div>
-        </div>
-      </div>
-
-      <div class="inc-card p1">
-        <div class="inc-head">
-          <div><div class="inc-id">INC-004 · SEVERITY P1 · SELF-SERVE ANALYTICS</div>
-          <div class="inc-badges"><span class="badge b-p1">P1 HIGH</span><span class="badge b-res">✓ RESOLVED</span></div></div>
-          <div class="inc-clear"><div style="width:5px;height:5px;border-radius:50%;background:var(--green);"></div>CLEAR</div>
-        </div>
-        <div class="inc-body">
-          <div class="inc-title">No Self-Serve Analytics — 500+ Enterprise Clients Blocked from Dashboards</div>
-          <div class="inc-row"><span class="inc-k">ROOT CAUSE</span><span class="inc-v">No embedded analytics capability; clients required custom engineering work for each dashboard request</span></div>
-          <div class="inc-row"><span class="inc-k">RESOLUTION</span><span class="inc-v">Multi-account QuickSight embedding platform: cross-account IAM federation, anonymous + user-based modes, CDK TypeScript provisioned</span></div>
-          <div class="inc-impact">▲ 500+ enterprise clients self-serve &nbsp;·&nbsp; 500+ concurrent sessions</div>
-        </div>
-      </div>
+      </details>
 
     </div>
   </div>
 </section>
 
-<!-- ══ SKILLS ══ -->
-<section id="skills">
-  <div class="wrap">
-    <div class="sec-head reveal">
-      <span class="sec-num">06 —</span>
-      <span class="sec-tag">// skills</span>
-      <h2>Full <span class="grad">Tech Stack</span></h2>
-      <p class="sec-sub">Deep expertise across AI/LLM systems, distributed backends, AWS cloud, and production observability.</p>
+<section id="work" class="wrap">
+  <h2>Incident tickets</h2>
+  <p class="sec-intro">Five systems from production, filed the way we actually track them. Each ticket is explorable: problem, constraints, architecture, decisions, trade-offs, lessons.</p>
+
+  <div class="cs-card panel reveal" id="cs-1" data-cs data-layer="ai">
+    <div class="ticket-bar">
+      <span class="ticket-id">INC-AI-001</span><span class="sep">·</span>
+      <span class="ticket-sev ai">AI SYSTEM</span>
+      <span class="ticket-status"><span class="dot"></span>SHIPPED</span>
     </div>
-    <div class="skills-grid stagger reveal" id="skills-grid">
+    <div class="cs-head">
+      <p class="cs-eyebrow">Applied AI · Production RAG system</p>
+      <h3>Giving clinical teams plain-English access to their own device data</h3>
+      <p>AWS Bedrock, Titan Embeddings v2, Claude 3 Sonnet, pgvector, Elasticsearch</p>
+    </div>
+    <div class="cs-pills" role="tablist">
+      <button class="cs-pill" role="tab" aria-selected="true" data-panel="problem">Problem</button>
+      <button class="cs-pill" role="tab" aria-selected="false" data-panel="constraints">Constraints</button>
+      <button class="cs-pill" role="tab" aria-selected="false" data-panel="architecture">Architecture</button>
+      <button class="cs-pill" role="tab" aria-selected="false" data-panel="decisions">Key decisions</button>
+      <button class="cs-pill" role="tab" aria-selected="false" data-panel="tradeoffs">Trade-offs</button>
+      <button class="cs-pill" role="tab" aria-selected="false" data-panel="lessons">Lessons</button>
+    </div>
+    <div class="cs-panel">
+      <p data-panel-content="problem">Clinical and ops teams needed engineers to answer basic questions about their own device data. Every question meant filing a ticket and waiting on someone with database access.</p>
+      <p data-panel-content="constraints" hidden>Healthcare data, so the whole pipeline had to stay inside the platform's existing AWS account boundary and security posture. The source data updates on a schedule, not once, so the index had to stay current, not just accurate on day one.</p>
+      <p data-panel-content="architecture" hidden>A scheduled Lambda indexer chunks operational data and embeds it with Titan v2 into pgvector on RDS Postgres. Elasticsearch runs alongside for hybrid keyword and semantic retrieval. On query, the question is embedded, matched by cosine similarity, and the retrieved context is passed to Claude 3 Sonnet to answer in plain English.</p>
+      <p data-panel-content="decisions" hidden>Chose Bedrock over a third-party LLM API specifically to keep the pipeline inside the account boundary the rest of the platform already operates under. Chose pgvector over standing up a dedicated vector database, since Postgres was already the operational store and it kept hybrid retrieval to one additional extension instead of one additional system to run and secure.</p>
+      <p data-panel-content="tradeoffs" hidden>pgvector doesn't match a purpose-built vector database at very large scale, but at this corpus size it removed an entire system from the operating surface. Running Elasticsearch and pgvector together added a second retrieval path to maintain in exchange for better recall than either alone.</p>
+      <p data-panel-content="lessons" hidden>The prototype went from a Friday start to a working retrieval pipeline by Sunday, which worked because the retrieval problem was already well scoped, not because RAG itself is simple. The harder part was operational: keeping the index current on schedule and making the system honest when it doesn't know an answer.</p>
+    </div>
+    <div class="diagram-wrap">
+      <svg class="diagram" viewBox="0 0 720 210" role="img" aria-label="RAG system architecture diagram">
+        <text x="10" y="18" class="mono" font-size="10.5" fill="#82887F">INDEXING PIPELINE</text>
+        <g class="dnode" tabindex="0" data-note="Raw operational data pulled from the platform's device and analytics tables on a schedule.">
+          <rect x="10" y="30" width="120" height="46" rx="3"/><text x="70" y="49" text-anchor="middle">OPERATIONAL</text><text x="70" y="64" text-anchor="middle">DATA</text>
+        </g>
+        <path class="dedge" d="M130,53 H175" marker-end="url(#arrow)"/>
+        <g class="dnode" tabindex="0" data-note="A scheduled Lambda function chunks operational records into passages sized for embedding.">
+          <rect x="175" y="30" width="110" height="46" rx="3"/><text x="230" y="49" text-anchor="middle">CHUNKER</text><text x="230" y="64" text-anchor="middle">LAMBDA</text>
+        </g>
+        <path class="dedge" d="M285,53 H330" marker-end="url(#arrow)"/>
+        <g class="dnode" tabindex="0" data-note="Each chunk is embedded with Titan Embeddings v2 on Bedrock.">
+          <rect x="330" y="30" width="110" height="46" rx="3"/><text x="385" y="49" text-anchor="middle">TITAN V2</text><text x="385" y="64" text-anchor="middle">EMBED</text>
+        </g>
+        <path class="dedge" d="M440,53 H485" marker-end="url(#arrow)"/>
+        <g class="dnode" tabindex="0" data-note="Embeddings are stored in RDS Postgres using the pgvector extension, indexed for cosine similarity search.">
+          <rect x="485" y="30" width="110" height="46" rx="3"/><text x="540" y="49" text-anchor="middle">PGVECTOR</text><text x="540" y="64" text-anchor="middle">STORE</text>
+        </g>
+        <text x="10" y="112" class="mono" font-size="10.5" fill="#82887F">QUERY PIPELINE</text>
+        <g class="dnode" tabindex="0" data-note="A clinical or ops user asks a plain-English question through the interface.">
+          <rect x="10" y="124" width="110" height="46" rx="3"/><text x="65" y="143" text-anchor="middle">USER</text><text x="65" y="158" text-anchor="middle">QUERY</text>
+        </g>
+        <path class="dedge" d="M120,147 H165" marker-end="url(#arrow)"/>
+        <g class="dnode" tabindex="0" data-note="The question is embedded with the same Titan v2 model used for indexing.">
+          <rect x="165" y="124" width="110" height="46" rx="3"/><text x="220" y="143" text-anchor="middle">TITAN V2</text><text x="220" y="158" text-anchor="middle">EMBED</text>
+        </g>
+        <path class="dedge" d="M275,147 H320" marker-end="url(#arrow)"/>
+        <g class="dnode" tabindex="0" data-note="Cosine similarity search against pgvector retrieves the most relevant chunks, combined with Elasticsearch keyword matches.">
+          <rect x="320" y="124" width="130" height="46" rx="3"/><text x="385" y="143" text-anchor="middle">COSINE</text><text x="385" y="158" text-anchor="middle">SIMILARITY</text>
+        </g>
+        <path class="dedge" d="M450,147 H495" marker-end="url(#arrow)"/>
+        <g class="dnode" tabindex="0" data-note="Retrieved context is injected into a prompt and sent to Claude 3 Sonnet on Bedrock.">
+          <rect x="495" y="124" width="110" height="46" rx="3"/><text x="550" y="143" text-anchor="middle">CLAUDE 3</text><text x="550" y="158" text-anchor="middle">SONNET</text>
+        </g>
+        <path class="dedge" d="M605,147 H650" marker-end="url(#arrow)"/>
+        <g class="dnode" tabindex="0" data-note="The model returns a plain-English answer, grounded in the retrieved operational data, with no engineer in the loop.">
+          <rect x="650" y="124" width="60" height="46" rx="3"/><text x="680" y="151" text-anchor="middle">ANSWER</text>
+        </g>
+        <defs><marker id="arrow" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto"><path d="M0,0 L6,3 L0,6 z" fill="#82887F"/></marker></defs>
+      </svg>
+      <p class="diagram-caption" data-caption>Hover or focus a node to see what it does.</p>
+    </div>
+    <div class="cs-scale">
+      <div><span class="num">Production</span>first AI-native feature on the platform</div>
+      <div><span class="num">0</span>engineers in the loop for a clinical query, once shipped</div>
+    </div>
+  </div>
 
-      <div class="skill-group ai-group">
-        <div class="sg-title p">AI &amp; GenAI Systems</div>
-        <div class="sk-item"><div class="sk-header"><span class="sk-name">RAG / Vector Embeddings</span><span class="sk-level">Production</span></div><div class="sk-track"><div class="sk-fill p" data-w="93"></div></div></div>
-        <div class="sk-item"><div class="sk-header"><span class="sk-name">LangChain / Semantic Kernel</span><span class="sk-level">Advanced</span></div><div class="sk-track"><div class="sk-fill p" data-w="85"></div></div></div>
-        <div class="sk-item"><div class="sk-header"><span class="sk-name">AWS Bedrock / LLM APIs</span><span class="sk-level">Advanced</span></div><div class="sk-track"><div class="sk-fill p" data-w="87"></div></div></div>
-        <div class="sk-item"><div class="sk-header"><span class="sk-name">Agentic Workflows / Prompt Eng.</span><span class="sk-level">Daily</span></div><div class="sk-track"><div class="sk-fill p" data-w="89"></div></div></div>
-      </div>
+  <div class="cs-card panel reveal" id="cs-2" data-cs data-layer="stream">
+    <div class="ticket-bar">
+      <span class="ticket-id">INC-002</span><span class="sep">·</span>
+      <span class="ticket-sev p0">P0 CRITICAL</span>
+      <span class="ticket-status"><span class="dot"></span>RESOLVED</span>
+    </div>
+    <div class="cs-head">
+      <p class="cs-eyebrow">Distributed systems · Data integrity</p>
+      <h3>Finding invisible data loss inside a third-party Kafka Connect sink</h3>
+      <p>MSK, Kafka Connect, custom sink connector, mTLS, IAM auth</p>
+    </div>
+    <div class="cs-pills" role="tablist">
+      <button class="cs-pill" role="tab" aria-selected="true" data-panel="problem">Problem</button>
+      <button class="cs-pill" role="tab" aria-selected="false" data-panel="constraints">Constraints</button>
+      <button class="cs-pill" role="tab" aria-selected="false" data-panel="architecture">Architecture</button>
+      <button class="cs-pill" role="tab" aria-selected="false" data-panel="decisions">Key decisions</button>
+      <button class="cs-pill" role="tab" aria-selected="false" data-panel="tradeoffs">Trade-offs</button>
+      <button class="cs-pill" role="tab" aria-selected="false" data-panel="lessons">Lessons</button>
+    </div>
+    <div class="cs-panel">
+      <p data-panel-content="problem">A production Kafka pipeline was silently losing data. Output looked valid, so no alarms fired. Underneath, a third-party MSK Kafka Connect sink had a replication lag bug that surfaced as a generic 504 timeout under load.</p>
+      <p data-panel-content="constraints" hidden>20,000+ connected medical devices across 1,500+ hospital locations feed this pipeline continuously. Downtime or silent loss has direct clinical impact, so any fix had to ship without a maintenance window. The root cause was inside a third-party connector, outside our own code.</p>
+      <p data-panel-content="architecture" hidden>Replaced the vendor sink with a custom Kafka Connect sink connector: S3-sourced plugin, IAM auth instead of static credentials, exponential backoff on retries, and PEM certificate normalization to eliminate mTLS handshake failures.</p>
+      <p data-panel-content="decisions" hidden>Rather than wait on the vendor to patch the replication bug on their own timeline, built and owned a custom connector so the fix and its testing were fully in house and verifiable.</p>
+      <p data-panel-content="tradeoffs" hidden>Owning a custom connector means owning its maintenance going forward, in exchange for not depending on a vendor fix with no committed timeline for a system feeding clinical infrastructure.</p>
+      <p data-panel-content="lessons" hidden>The bug hid under a generic 504 for two weeks before the actual cause, a PEM normalization mismatch, surfaced. The lesson that stuck: read the actual wire format before trusting a library's abstraction of it.</p>
+    </div>
+    <div class="diagram-wrap">
+      <svg class="diagram" viewBox="0 0 720 130" role="img" aria-label="Kafka Connect pipeline diagram">
+        <g class="dnode" tabindex="0" data-note="20,000+ connected medical devices publish telemetry continuously.">
+          <rect x="10" y="42" width="120" height="46" rx="3"/><text x="70" y="61" text-anchor="middle">DEVICE</text><text x="70" y="76" text-anchor="middle">TELEMETRY</text>
+        </g>
+        <path class="dedge" d="M130,65 H175" marker-end="url(#arrow2)"/>
+        <g class="dnode" tabindex="0" data-note="Apache Kafka on MSK, the platform's central streaming backbone.">
+          <rect x="175" y="42" width="90" height="46" rx="3"/><text x="220" y="61" text-anchor="middle">KAFKA</text><text x="220" y="76" text-anchor="middle">/ MSK</text>
+        </g>
+        <path class="dedge" d="M265,65 H310" marker-end="url(#arrow2)"/>
+        <g class="dnode" tabindex="0" data-note="The custom sink connector built to replace the failing vendor plugin: IAM auth, exponential backoff, PEM normalization.">
+          <rect x="310" y="42" width="150" height="46" rx="3"/><text x="385" y="61" text-anchor="middle">CUSTOM SINK</text><text x="385" y="76" text-anchor="middle">CONNECTOR</text>
+        </g>
+        <path class="dedge" d="M460,65 H505" marker-end="url(#arrow2)"/>
+        <g class="dnode" tabindex="0" data-note="Data lands durably in S3 with a full delivery audit trail, no silent loss.">
+          <rect x="505" y="42" width="90" height="46" rx="3"/><text x="550" y="61" text-anchor="middle">S3</text><text x="550" y="76" text-anchor="middle">SINK</text>
+        </g>
+        <path class="dedge" d="M595,65 H640" marker-end="url(#arrow2)"/>
+        <g class="dnode" tabindex="0" data-note="Downstream consumers, including the RAG index and analytics pipelines, read from durable storage.">
+          <rect x="640" y="42" width="70" height="46" rx="3"/><text x="675" y="61" text-anchor="middle">DOWN-</text><text x="675" y="76" text-anchor="middle">STREAM</text>
+        </g>
+        <defs><marker id="arrow2" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto"><path d="M0,0 L6,3 L0,6 z" fill="#82887F"/></marker></defs>
+      </svg>
+      <p class="diagram-caption" data-caption>Hover or focus a node to see what it does.</p>
+    </div>
+    <div class="cs-scale">
+      <div><span class="num">20,000+</span>devices · 1,500+ locations feeding this pipeline</div>
+      <div><span class="num">0</span>data loss after the fix, full delivery audit trail</div>
+    </div>
+  </div>
 
-      <div class="skill-group">
-        <div class="sg-title c">Languages &amp; Frontend</div>
-        <div class="sk-item"><div class="sk-header"><span class="sk-name">Java</span><span class="sk-level">Expert</span></div><div class="sk-track"><div class="sk-fill c" data-w="95"></div></div></div>
-        <div class="sk-item"><div class="sk-header"><span class="sk-name">TypeScript / JavaScript</span><span class="sk-level">Advanced</span></div><div class="sk-track"><div class="sk-fill c" data-w="86"></div></div></div>
-        <div class="sk-item"><div class="sk-header"><span class="sk-name">Python / SQL / Bash</span><span class="sk-level">Advanced</span></div><div class="sk-track"><div class="sk-fill c" data-w="80"></div></div></div>
-        <div class="sk-item"><div class="sk-header"><span class="sk-name">Angular / React</span><span class="sk-level">Proficient</span></div><div class="sk-track"><div class="sk-fill c" data-w="72"></div></div></div>
-      </div>
+  <div class="cs-card panel reveal" id="cs-3" data-cs data-layer="analytics">
+    <div class="ticket-bar">
+      <span class="ticket-id">INC-004</span><span class="sep">·</span>
+      <span class="ticket-sev p1">P1 HIGH</span>
+      <span class="ticket-status"><span class="dot"></span>RESOLVED</span>
+    </div>
+    <div class="cs-head">
+      <p class="cs-eyebrow">Platform engineering · Multi-tenant analytics</p>
+      <h3>Self-serve dashboards for 500+ enterprise clients without a security model per client</h3>
+      <p>QuickSight, cross-account IAM federation, CDK TypeScript</p>
+    </div>
+    <div class="cs-pills" role="tablist">
+      <button class="cs-pill" role="tab" aria-selected="true" data-panel="problem">Problem</button>
+      <button class="cs-pill" role="tab" aria-selected="false" data-panel="constraints">Constraints</button>
+      <button class="cs-pill" role="tab" aria-selected="false" data-panel="architecture">Architecture</button>
+      <button class="cs-pill" role="tab" aria-selected="false" data-panel="decisions">Key decisions</button>
+      <button class="cs-pill" role="tab" aria-selected="false" data-panel="tradeoffs">Trade-offs</button>
+    </div>
+    <div class="cs-panel">
+      <p data-panel-content="problem">No embedded analytics capability existed. Every dashboard request from an enterprise client meant custom engineering work, one client at a time.</p>
+      <p data-panel-content="constraints" hidden>Enterprise clients are already isolated into separate AWS accounts for compliance reasons, so the platform had to respect that boundary rather than work around it.</p>
+      <p data-panel-content="architecture" hidden>A multi-account QuickSight embedding platform with cross-account IAM role federation, supporting both anonymous and user-based session modes, provisioned entirely through CDK TypeScript.</p>
+      <p data-panel-content="decisions" hidden>Chose cross-account IAM federation over duplicating dashboard infrastructure per client account, so one platform could serve every client inside their existing account boundary.</p>
+      <p data-panel-content="tradeoffs" hidden>Federated IAM is harder to reason about and debug than a single-account setup, but it matched how the rest of the platform was already segmented for compliance, avoiding a second security model to maintain.</p>
+    </div>
+    <div class="cs-scale">
+      <div><span class="num">500+</span>enterprise clients self-serve today</div>
+      <div><span class="num">500+</span>concurrent session capacity</div>
+    </div>
+  </div>
 
-      <div class="skill-group">
-        <div class="sg-title c">AWS &amp; Cloud</div>
-        <div class="sk-item"><div class="sk-header"><span class="sk-name">Lambda / ECS Fargate</span><span class="sk-level">Expert</span></div><div class="sk-track"><div class="sk-fill c" data-w="95"></div></div></div>
-        <div class="sk-item"><div class="sk-header"><span class="sk-name">MSK / Kinesis / EventBridge</span><span class="sk-level">Expert</span></div><div class="sk-track"><div class="sk-fill c" data-w="93"></div></div></div>
-        <div class="sk-item"><div class="sk-header"><span class="sk-name">DynamoDB / RDS / S3 / Cognito</span><span class="sk-level">Expert</span></div><div class="sk-track"><div class="sk-fill c" data-w="91"></div></div></div>
-        <div class="sk-item"><div class="sk-header"><span class="sk-name">CDK / CodePipeline / SecurityHub</span><span class="sk-level">Advanced</span></div><div class="sk-track"><div class="sk-fill c" data-w="85"></div></div></div>
-      </div>
+  <div class="cs-card panel reveal" id="cs-4" data-cs data-layer="reliability">
+    <div class="ticket-bar">
+      <span class="ticket-id">INC-003</span><span class="sep">·</span>
+      <span class="ticket-sev p1">P1 HIGH</span>
+      <span class="ticket-status"><span class="dot"></span>RESOLVED</span>
+    </div>
+    <div class="cs-head">
+      <p class="cs-eyebrow">Reliability · Observability</p>
+      <h3>Cutting root-cause time from hours to minutes across every production service</h3>
+      <p>CloudWatch RUM, Synthetics, severity-bucketed alerting</p>
+    </div>
+    <div class="cs-pills" role="tablist">
+      <button class="cs-pill" role="tab" aria-selected="true" data-panel="problem">Problem</button>
+      <button class="cs-pill" role="tab" aria-selected="false" data-panel="constraints">Constraints</button>
+      <button class="cs-pill" role="tab" aria-selected="false" data-panel="architecture">Architecture</button>
+      <button class="cs-pill" role="tab" aria-selected="false" data-panel="decisions">Key decisions</button>
+      <button class="cs-pill" role="tab" aria-selected="false" data-panel="tradeoffs">Trade-offs</button>
+    </div>
+    <div class="cs-panel">
+      <p data-panel-content="problem">Engineers spent two to four hours log diving per incident. There was no unified observability layer and no synthetic monitors across production services.</p>
+      <p data-panel-content="constraints" hidden>Had to work across every production microservice without asking each team to instrument by hand, or adoption would stall out team by team.</p>
+      <p data-panel-content="architecture" hidden>A CloudWatch RUM and Synthetics canary platform adopted across all production microservices, with severity-bucketed alerting so on-call engineers see what matters first.</p>
+      <p data-panel-content="decisions" hidden>Standardized observability at the platform level rather than leaving instrumentation up to each team's own choices.</p>
+      <p data-panel-content="tradeoffs" hidden>A standardized layer is less flexible than letting each team pick its own tools, but that consistency is what made a 20 minute MTTR achievable platform-wide instead of team by team.</p>
+    </div>
+    <div class="cs-scale">
+      <div><span class="num">87%</span>reduction in mean time to root cause</div>
+      <div><span class="num">-35%</span>on-call incidents</div>
+    </div>
+  </div>
 
-      <div class="skill-group">
-        <div class="sg-title c">Frameworks &amp; APIs</div>
-        <div class="sk-item"><div class="sk-header"><span class="sk-name">Spring Boot / Node.js</span><span class="sk-level">Expert</span></div><div class="sk-track"><div class="sk-fill c" data-w="95"></div></div></div>
-        <div class="sk-item"><div class="sk-header"><span class="sk-name">Apache Kafka</span><span class="sk-level">Expert</span></div><div class="sk-track"><div class="sk-fill c" data-w="93"></div></div></div>
-        <div class="sk-item"><div class="sk-header"><span class="sk-name">REST / GraphQL (AppSync)</span><span class="sk-level">Expert</span></div><div class="sk-track"><div class="sk-fill c" data-w="92"></div></div></div>
-        <div class="sk-item"><div class="sk-header"><span class="sk-name">API-First / Microservices / TDD</span><span class="sk-level">Expert</span></div><div class="sk-track"><div class="sk-fill c" data-w="90"></div></div></div>
-      </div>
+  <div class="cs-card panel reveal" id="cs-5" data-cs data-layer="archive">
+    <div class="ticket-bar">
+      <span class="ticket-id">ARCHIVE · VANGUARD</span><span class="sep">·</span>
+      <span class="ticket-sev p1">P1 HIGH</span>
+      <span class="ticket-status"><span class="dot"></span>RESOLVED · 2019–2022</span>
+    </div>
+    <div class="cs-head">
+      <p class="cs-eyebrow">Fintech · Reliability at scale</p>
+      <h3>Root-causing three P1 incidents to one recurring pattern in a billion-dollar transaction platform</h3>
+      <p>Java, Spring Boot, GraphQL, AppSync, Redis, ECS Fargate</p>
+    </div>
+    <div class="cs-pills" role="tablist">
+      <button class="cs-pill" role="tab" aria-selected="true" data-panel="problem">Problem</button>
+      <button class="cs-pill" role="tab" aria-selected="false" data-panel="constraints">Constraints</button>
+      <button class="cs-pill" role="tab" aria-selected="false" data-panel="architecture">Architecture</button>
+      <button class="cs-pill" role="tab" aria-selected="false" data-panel="decisions">Key decisions</button>
+      <button class="cs-pill" role="tab" aria-selected="false" data-panel="lessons">Lessons</button>
+    </div>
+    <div class="cs-panel">
+      <p data-panel-content="problem">A missing idempotency check caused a production incident processing millions of dollars in transactions. Two more P1 incidents followed later, on the surface unrelated.</p>
+      <p data-panel-content="constraints" hidden>Billions of dollars in transactions running through 1,500+ ECS Fargate tasks. Any fix had to ship without introducing new risk to a live financial platform under SOC 2 audit.</p>
+      <p data-panel-content="architecture" hidden>Java and Spring Boot microservices with circuit breakers and idempotency guards, a GraphQL API layer on AWS AppSync, and Redis caching in front of Postgres.</p>
+      <p data-panel-content="decisions" hidden>Instead of patching each P1 incident individually, traced all three across 12 services back to the same root pattern: missing idempotency or uncapped retry loops. Fixed the pattern once.</p>
+      <p data-panel-content="lessons" hidden>The postmortem discipline from the first incident, writing it down and fixing the root cause rather than the symptom, is what prevented the next two from recurring at all.</p>
+    </div>
+    <div class="cs-scale">
+      <div><span class="num">99.99%</span>uptime across 1,500+ ECS Fargate tasks</div>
+      <div><span class="num">1.4s → 600ms</span>p95 latency, via one cache key redesign</div>
+      <div><span class="num">0</span>recurrence over 18 months, clean SOC 2 cycle</div>
+    </div>
+  </div>
 
-      <div class="skill-group">
-        <div class="sg-title c">Data &amp; Search</div>
-        <div class="sk-item"><div class="sk-header"><span class="sk-name">Elasticsearch (indexing + tuning)</span><span class="sk-level">Advanced</span></div><div class="sk-track"><div class="sk-fill g" data-w="85"></div></div></div>
-        <div class="sk-item"><div class="sk-header"><span class="sk-name">PostgreSQL + pgvector</span><span class="sk-level">Expert</span></div><div class="sk-track"><div class="sk-fill g" data-w="91"></div></div></div>
-        <div class="sk-item"><div class="sk-header"><span class="sk-name">DynamoDB / Redis</span><span class="sk-level">Expert</span></div><div class="sk-track"><div class="sk-fill g" data-w="91"></div></div></div>
-        <div class="sk-item"><div class="sk-header"><span class="sk-name">Liquibase / Flyway</span><span class="sk-level">Advanced</span></div><div class="sk-track"><div class="sk-fill g" data-w="80"></div></div></div>
-      </div>
+</section>
 
-      <div class="skill-group">
-        <div class="sg-title c">Observability &amp; Practices</div>
-        <div class="sk-item"><div class="sk-header"><span class="sk-name">CloudWatch RUM / Datadog / Splunk</span><span class="sk-level">Expert</span></div><div class="sk-track"><div class="sk-fill c" data-w="92"></div></div></div>
-        <div class="sk-item"><div class="sk-header"><span class="sk-name">Distributed Systems / EDA</span><span class="sk-level">Expert</span></div><div class="sk-track"><div class="sk-fill c" data-w="96"></div></div></div>
-        <div class="sk-item"><div class="sk-header"><span class="sk-name">Zero-downtime / IaC</span><span class="sk-level">Expert</span></div><div class="sk-track"><div class="sk-fill c" data-w="94"></div></div></div>
-        <div class="sk-item"><div class="sk-header"><span class="sk-name">mTLS / SOC 2 / SonarQube</span><span class="sk-level">Advanced</span></div><div class="sk-track"><div class="sk-fill c" data-w="84"></div></div></div>
-      </div>
+<section id="ai" class="wrap">
+  <h2>AI engineering</h2>
+  <p class="sec-intro">Where AI fits into the actual job: one production system I built, and the tool I use daily to ship.</p>
+  <p>INC-AI-001 above is the clearest example, a real production system with a schedule, a security boundary, and users who depend on it. Beyond that one system, Claude Code is my primary AI coding tool, part of how I work day to day rather than a separate initiative.</p>
+  <div class="tool-row">
+    <div class="tool-chip"><strong>Claude Code</strong><span>CDK construct generation, pipeline authoring, compliance documentation, day-to-day coding and refactors</span></div>
+  </div>
+</section>
+
+<section id="philosophy" class="wrap">
+  <h2>How I think about the work</h2>
+  <p class="sec-intro">Two things that changed how I approach systems, both learned the hard way.</p>
+  <div class="quote-block reveal">My first real production incident was at Vanguard: a missing idempotency check, millions of dollars in transactions, a very bad Tuesday. I wrote the postmortem, fixed the root cause, and it never happened again.</div>
+  <p class="col">That experience shaped how I think about systems: the interesting problems are almost never in the happy path. The best decisions I've made were the ones that made the obviously correct approach also the easiest one to take, so the next engineer doesn't have to be a hero to do the right thing.</p>
+</section>
+
+<section id="skills" class="wrap">
+  <h2>Capabilities</h2>
+  <div class="skill-cols reveal">
+    <div>
+      <h4>Distributed systems &amp; data</h4>
+      <p>Apache Kafka, MSK, Kinesis Firehose, event-driven architecture, DynamoDB, RDS PostgreSQL, pgvector, Elasticsearch, Redis</p>
+    </div>
+    <div>
+      <h4>Cloud &amp; platform</h4>
+      <p>AWS Lambda, ECS Fargate, CDK, EventBridge, CodePipeline, IAM, cross-account architecture, mTLS, SOC 2</p>
+    </div>
+    <div>
+      <h4>AI engineering</h4>
+      <p>AWS Bedrock, RAG architecture, Titan Embeddings, LLM integration, prompt engineering, Claude Code, agentic tooling</p>
+    </div>
+    <div>
+      <h4>Backend &amp; APIs</h4>
+      <p>Java, Spring Boot, TypeScript, Python, GraphQL, AWS AppSync, REST, microservices</p>
+    </div>
+    <div>
+      <h4>Observability</h4>
+      <p>CloudWatch RUM, Synthetics, Datadog, Splunk, severity-bucketed alerting, incident response</p>
+    </div>
+    <div>
+      <h4>Leadership</h4>
+      <p>Architecture review, Staff and Principal hiring loops, cross-team technical standards, mentoring</p>
     </div>
   </div>
 </section>
 
-<!-- ══ CONTACT ══ -->
-<section id="contact">
-  <div class="wrap">
-    <div class="sec-head reveal">
-      <span class="sec-num">07 —</span>
-      <span class="sec-tag">// contact</span>
-      <h2>Open <span class="grad">Channel</span></h2>
-      <p class="sec-sub">Senior or Staff roles in distributed systems, AI/LLM integration, or backend infrastructure — let's talk.</p>
-    </div>
-    <div class="contact-grid reveal">
-      <div>
-        <p style="font-family:var(--sans);font-size:14px;color:var(--text2);line-height:1.8;margin-bottom:1.5rem;">Seven years in, and the problems are still genuinely interesting. Medical device telemetry, financial transaction pipelines, RAG systems that let clinicians query their own data without writing SQL. I'm looking for the next one.</p>
-        <div class="contact-cta">Looking for a <span class="grad">senior or staff SWE role</span> where the engineering actually matters.</div>
-        <div class="c-label">EMAIL</div><div class="c-val"><a href="mailto:venu.martha96@gmail.com">venu.martha96@gmail.com</a></div>
-        <div class="c-label">PHONE</div><div class="c-val"><a href="tel:5132231081" style="color:var(--text)">(513) 223-1081</a></div>
-        <div class="c-label">LINKEDIN</div><div class="c-val"><a href="https://linkedin.com/in/venu-gopal-martha" target="_blank">linkedin.com/in/venu-gopal-martha</a></div>
-        <div class="c-label">GITHUB</div><div class="c-val"><a href="https://github.com/venumartha" target="_blank">github.com/venumartha</a></div>
-        <div class="c-label">LOCATION</div><div class="c-val" style="color:var(--text2);">San Diego, CA &nbsp;·&nbsp; Open to Remote</div>
-      </div>
-      <div>
-        <div class="term-box">
-          <div class="term-bar"><div class="tb tb-r"></div><div class="tb tb-y"></div><div class="tb tb-g"></div></div>
-          <div class="term-body">
-            <div><span class="tp">venu@incident-room</span><span class="tc">:~$</span> <span class="tm">whoami</span></div>
-            <span class="to">Staff SWE · Backend Systems · AI/LLM Engineer</span>
-            <span class="to">&nbsp;</span>
-            <div><span class="tp">venu@incident-room</span><span class="tc">:~$</span> <span class="tm">cat ai-stack.txt</span></div>
-            <span class="to">rag_system: production (Bedrock + pgvector)</span>
-            <span class="to">llm: claude_3_sonnet · titan_embeddings_v2</span>
-            <span class="to">tooling: claude_code · copilot · cursor · amazon_q</span>
-            <span class="to">&nbsp;</span>
-            <div><span class="tp">venu@incident-room</span><span class="tc">:~$</span> <span class="tm">cat status.txt</span></div>
-            <span class="to">open_to_work: true</span>
-            <span class="to">prefer: remote | san_diego</span>
-            <span class="to">looking_for: senior | staff | ic_roles</span>
-            <span class="to">&nbsp;</span>
-            <div><span class="tp">venu@incident-room</span><span class="tc">:~$</span> <span class="tm">uptime</span></div>
-            <span class="to" id="uptime-out">calculating...</span>
-            <span class="to">&nbsp;</span>
-            <div><span class="tp">venu@incident-room</span><span class="tc">:~$</span> <span class="cursor-b"></span></div>
-          </div>
-        </div>
-      </div>
-    </div>
+<section id="contact" class="wrap">
+  <h2>Get in touch</h2>
+  <p class="sec-intro">Looking for a Senior or Staff role in distributed systems, IoT platforms, cloud architecture, or applied AI engineering.</p>
+  <div class="contact-grid reveal">
+    <div class="contact-item"><div class="label">email</div><a href="mailto:venu.martha96@gmail.com">venu.martha96@gmail.com</a></div>
+    <div class="contact-item"><div class="label">phone</div><a href="tel:5132231081">(513) 223-1081</a></div>
+    <div class="contact-item"><div class="label">linkedin</div><a href="https://linkedin.com/in/venu-gopal-martha">linkedin.com/in/venu-gopal-martha</a></div>
+    <div class="contact-item"><div class="label">github</div><a href="https://github.com/venumartha">github.com/venumartha</a></div>
   </div>
 </section>
 
-<!-- ══ FOOTER ══ -->
-<footer>
-  <div>VENU_MARTHA // INCIDENT_ROOM v2 · <span id="yr"></span> · AI + Backend</div>
-  <div>San Diego, CA · All P0s resolved · Open to work ✦</div>
-</footer>
+</main>
 
-<!-- ══ FLOATING AI CHAT ══ -->
-<button id="chat-toggle" onclick="toggleChat()">
-  <span class="chat-dot"></span> Ask Venu's AI
-</button>
-
-<div id="chat-panel">
-  <div class="chat-head">
-    <div class="chat-head-left">
-      <div class="chat-ai-dot">✦</div>
-      <div>
-        <div class="chat-title">Venu's RAG Assistant</div>
-        <div class="chat-subtitle">Vector search · AWS Bedrock · responds in character</div>
-      </div>
-    </div>
-    <button class="chat-close" onclick="toggleChat()">✕</button>
-  </div>
-  <div class="chat-msgs" id="chat-msgs">
-    <div class="msg msg-bot">Hi, I'm a chat assistant for Venu's portfolio. Ask me about his background, the RAG system he built, his AWS and Kafka experience, or what he's looking for next.</div>
-    <div class="suggestions">
-      <button class="sug-btn" onclick="sendSug('Tell me about your RAG system')">RAG system</button>
-      <button class="sug-btn" onclick="sendSug('What AI and GenAI tools do you use?')">GenAI tooling</button>
-      <button class="sug-btn" onclick="sendSug('Tell me about your Kafka and streaming experience')">Kafka</button>
-      <button class="sug-btn" onclick="sendSug('Are you open to work?')">Open to work?</button>
-      <button class="sug-btn" onclick="sendSug('Tell me about your Elasticsearch experience')">Elasticsearch</button>
-      <button class="sug-btn" onclick="sendSug('What is your AWS stack?')">AWS stack</button>
-    </div>
-  </div>
-  <div class="chat-input-row">
-    <input type="text" id="chat-input" placeholder="Ask anything about Venu..." onkeydown="handleChatKey(event)">
-    <button id="chat-mic" class="chat-mic" onclick="toggleMic()" title="Voice input">🎤</button>
-    <button id="chat-tts" class="chat-tts" onclick="toggleTTS()" title="Voice replies on/off">🔇</button>
-    <button class="chat-send" onclick="sendChat()">↗</button>
-  </div>
-</div>
-
+<footer>$ status --all &nbsp;→&nbsp; all systems operational. thanks for reading.</footer>
 
 <script>
-/* ── CLOCK ── */
-function tickClock(){
-  const n=new Date(),h=String(n.getUTCHours()).padStart(2,'0'),m=String(n.getUTCMinutes()).padStart(2,'0'),s=String(n.getUTCSeconds()).padStart(2,'0');
-  document.getElementById('nav-clock').textContent=h+':'+m+':'+s+' UTC';
-}
-setInterval(tickClock,1000); tickClock();
-document.getElementById('yr').textContent=new Date().getFullYear();
+  var toggle = document.getElementById('navToggle');
+  var links = document.getElementById('navLinks');
+  toggle.addEventListener('click', function(){
+    var open = links.classList.toggle('open');
+    toggle.setAttribute('aria-expanded', open ? 'true' : 'false');
+  });
+  links.querySelectorAll('a').forEach(function(a){
+    a.addEventListener('click', function(){ links.classList.remove('open'); toggle.setAttribute('aria-expanded','false'); });
+  });
 
-/* ── UPTIME ── */
-function calcUptime(){
-  const d=Math.floor((Date.now()-new Date('2019-11-01'))/86400000);
-  const h=Math.floor(((Date.now()-new Date('2019-11-01'))%86400000)/3600000);
-  const el=document.getElementById('uptime-out');
-  if(el) el.textContent=d.toLocaleString()+'d '+h+'h  (online since Nov 2019)';
-  const el2=document.getElementById('days-live');
-  if(el2) el2.textContent=d.toLocaleString()+' days';
-}
-calcUptime(); setInterval(calcUptime,60000);
-
-/* ── TYPING ANIMATION ── */
-const roles=['Staff Software Engineer','RAG Systems Builder','LLM Integration Engineer','Distributed Systems Architect','AI-Augmented Engineer'];
-let ri=0,ci=0,del=false;
-function typeStep(){
-  const el=document.getElementById('typing-text');
-  if(!el) return;
-  const word=roles[ri];
-  if(!del){
-    el.textContent=word.slice(0,ci+1); ci++;
-    if(ci===word.length){del=true;setTimeout(typeStep,2000);return;}
-  } else {
-    el.textContent=word.slice(0,ci-1); ci--;
-    if(ci===0){del=false;ri=(ri+1)%roles.length;setTimeout(typeStep,400);return;}
-  }
-  setTimeout(typeStep,del?40:80);
-}
-typeStep();
-
-/* ── PARTICLE CANVAS ── */
-(function(){
-  const canvas=document.getElementById('particle-canvas');
-  if(!canvas) return;
-  const ctx=canvas.getContext('2d');
-  let W,H,pts=[],mouse={x:-9999,y:-9999};
-  function resize(){W=canvas.width=canvas.offsetWidth;H=canvas.height=canvas.offsetHeight;}
-  window.addEventListener('resize',resize); resize();
-  for(let i=0;i<65;i++) pts.push({x:Math.random()*window.innerWidth,y:Math.random()*window.innerHeight,vx:(Math.random()-.5)*.3,vy:(Math.random()-.5)*.3});
-  document.addEventListener('mousemove',e=>{mouse.x=e.clientX;mouse.y=e.clientY;});
-  function draw(){
-    ctx.clearRect(0,0,W,H);
-    pts.forEach(p=>{
-      const dx=mouse.x-p.x,dy=mouse.y-p.y,dist=Math.sqrt(dx*dx+dy*dy);
-      if(dist<120){p.vx-=dx/dist*.015;p.vy-=dy/dist*.015;}
-      p.x+=p.vx; p.y+=p.vy;
-      if(p.x<0||p.x>W) p.vx*=-1;
-      if(p.y<0||p.y>H) p.vy*=-1;
-      p.vx=Math.max(-.6,Math.min(.6,p.vx));
-      p.vy=Math.max(-.6,Math.min(.6,p.vy));
-      ctx.beginPath(); ctx.arc(p.x,p.y,1.8,0,Math.PI*2);
-      ctx.fillStyle='rgba(0,200,255,0.55)'; ctx.fill();
-    });
-    for(let i=0;i<pts.length;i++) for(let j=i+1;j<pts.length;j++){
-      const dx=pts[i].x-pts[j].x,dy=pts[i].y-pts[j].y,d=Math.sqrt(dx*dx+dy*dy);
-      if(d<130){
-        ctx.beginPath(); ctx.moveTo(pts[i].x,pts[i].y); ctx.lineTo(pts[j].x,pts[j].y);
-        const g=ctx.createLinearGradient(pts[i].x,pts[i].y,pts[j].x,pts[j].y);
-        const a=(1-d/130)*.18;
-        g.addColorStop(0,'rgba(0,200,255,'+a+')'); g.addColorStop(1,'rgba(155,92,245,'+a+')');
-        ctx.strokeStyle=g; ctx.lineWidth=.8; ctx.stroke();
-      }
-    }
-    requestAnimationFrame(draw);
-  }
-  draw();
-})();
-
-/* ── COUNT-UP ── */
-function countUp(id,target,ms){
-  const el=document.getElementById(id); if(!el) return;
-  const t0=performance.now();
-  function tick(now){ const p=Math.min((now-t0)/ms,1),e=1-Math.pow(1-p,3); el.textContent=Math.round(e*target); if(p<1) requestAnimationFrame(tick); }
-  requestAnimationFrame(tick);
-}
-const metricsEl=document.querySelector('.metrics');
-const mDone={t:false};
-const mObs=new IntersectionObserver(ent=>{if(ent[0].isIntersecting&&!mDone.t){mDone.t=true;countUp('cnt-clients',500,1800);countUp('cnt-ep',7,1200);mObs.disconnect();}},{threshold:.3});
-if(metricsEl) mObs.observe(metricsEl);
-
-/* ── SKILL BARS ── */
-const skillsGrid=document.getElementById('skills-grid');
-const sDone={t:false};
-const sObs=new IntersectionObserver(ent=>{
-  if(ent[0].isIntersecting&&!sDone.t){sDone.t=true;
-    document.querySelectorAll('.sk-fill').forEach((b,i)=>{
-      const w=b.getAttribute('data-w')+'%';
-      setTimeout(()=>{b.style.width=w;},i*40);
-    });
-    sObs.disconnect();
-  }
-},{threshold:.15});
-if(skillsGrid) sObs.observe(skillsGrid);
-
-/* ── REVEAL ON SCROLL ── */
-const reveals=document.querySelectorAll('.reveal');
-const rObs=new IntersectionObserver(ents=>{ents.forEach(e=>{if(e.isIntersecting){e.target.classList.add('visible');}});},{threshold:.1});
-reveals.forEach(el=>rObs.observe(el));
-
-/* ── SCROLL PROGRESS BAR ── */
-(function(){
-  const sp=document.getElementById('scroll-progress');
-  function updateProgress(){
-    if(!sp) return;
-    const scrolled=window.scrollY;
-    const maxScroll=document.body.scrollHeight-window.innerHeight;
-    sp.style.width=(maxScroll>0?(scrolled/maxScroll*100):0)+'%';
-  }
-  window.addEventListener('scroll',updateProgress,{passive:true});
-  updateProgress();
-})();
-
-/* ── STAGGER OBSERVER ── */
-(function(){
-  const staggerEls=document.querySelectorAll('.stagger');
-  const staggerObs=new IntersectionObserver(ents=>{
-    ents.forEach(e=>{if(e.isIntersecting) e.target.classList.add('visible');});
-  },{threshold:.08});
-  staggerEls.forEach(el=>staggerObs.observe(el));
-})();
-
-/* ── 3D CARD TILT ── */
-(function(){
-  document.querySelectorAll('.card,.inc-card,.skill-group,.tool-card,.ai-highlight-card').forEach(card=>{
-    card.addEventListener('mousemove',e=>{
-      const r=card.getBoundingClientRect();
-      const x=(e.clientX-r.left)/r.width-.5;
-      const y=(e.clientY-r.top)/r.height-.5;
-      card.style.transform=`perspective(700px) rotateY(${x*8}deg) rotateX(${-y*8}deg) translateY(-4px)`;
-      card.style.transition='transform .1s';
-    });
-    card.addEventListener('mouseleave',()=>{
-      card.style.transform='';
-      card.style.transition='transform .35s ease';
+  document.querySelectorAll('[data-cs]').forEach(function(card){
+    var pills = card.querySelectorAll('.cs-pill');
+    var contents = card.querySelectorAll('[data-panel-content]');
+    pills.forEach(function(pill){
+      pill.addEventListener('click', function(){
+        pills.forEach(function(p){ p.setAttribute('aria-selected','false'); });
+        pill.setAttribute('aria-selected','true');
+        var key = pill.getAttribute('data-panel');
+        contents.forEach(function(c){
+          c.hidden = c.getAttribute('data-panel-content') !== key;
+        });
+      });
     });
   });
-})();
 
-/* ── NAV ACTIVE ── */
-const secs=document.querySelectorAll('section[id]');
-const nLinks=document.querySelectorAll('.nav-links a');
-window.addEventListener('scroll',()=>{
-  let cur='';
-  secs.forEach(s=>{if(window.scrollY>=s.offsetTop-80)cur=s.id;});
-  nLinks.forEach(a=>{a.classList.toggle('active',a.getAttribute('href')==='#'+cur);});
-},{passive:true});
+  document.querySelectorAll('svg.diagram').forEach(function(svg){
+    var wrap = svg.closest('.diagram-wrap');
+    var caption = wrap ? wrap.querySelector('[data-caption]') : null;
+    if(!caption) return;
+    var defaultText = caption.textContent;
+    svg.querySelectorAll('.dnode').forEach(function(node){
+      var note = node.getAttribute('data-note');
+      if(!note) return;
+      function show(){
+        svg.querySelectorAll('.dnode').forEach(function(n){ n.classList.remove('active'); });
+        node.classList.add('active');
+        caption.textContent = note;
+      }
+      node.addEventListener('mouseenter', show);
+      node.addEventListener('focus', show);
+      node.addEventListener('click', show);
+    });
+    svg.addEventListener('mouseleave', function(){
+      svg.querySelectorAll('.dnode').forEach(function(n){ n.classList.remove('active'); });
+      caption.textContent = defaultText;
+    });
+  });
 
-/* ══ CHAT WIDGET ══ */
-function toggleChat(){
-  const p=document.getElementById('chat-panel');
-  p.classList.toggle('open');
-}
+  document.querySelectorAll('svg.sysmap .mnode').forEach(function(node){
+    node.addEventListener('click', function(){
+      var id = node.getAttribute('data-target');
+      var el = document.getElementById(id);
+      if(!el) return;
+      el.scrollIntoView({behavior: window.matchMedia('(prefers-reduced-motion: reduce)').matches ? 'auto' : 'smooth', block:'center'});
+      el.classList.add('flash');
+      setTimeout(function(){ el.classList.remove('flash'); }, 1600);
+    });
+    node.addEventListener('keydown', function(e){ if(e.key==='Enter'||e.key===' '){ e.preventDefault(); node.click(); } });
+  });
 
-const ragKB = [
-  {keys:['rag','retrieval','vector','pgvector','bedrock','embedding','titan','cosine','elasticsearch','semantic search','hybrid'],
-   ans:`The RAG system started as a practical frustration. Clinical teams were filing tickets to engineers just to get answers about their own device data. I built a production RAG system on AWS Bedrock to fix that.\n\nThe stack: Titan Embeddings v2 for embedding, Claude 3 Sonnet for generation, pgvector on RDS PostgreSQL for cosine similarity retrieval, and Elasticsearch for hybrid semantic search alongside the dense vectors. A scheduled Lambda handles indexing on live operational analytics.\n\nIt's been running in production and was the first AI-native feature on the platform. Clinical and ops teams now just ask questions in plain English and get answers without any engineer in the loop.`},
-  {keys:['claude code','copilot','cursor','amazon q','ai tool','tooling','llm tool','prompt','agentic','workflow','genai','generative','developer tool'],
-   ans:`On the tooling side, I use Claude Code, GitHub Copilot, Amazon Q Developer, and Cursor daily. Claude Code in particular changed how I approach CDK generation and compliance documentation — work that used to take days got compressed significantly.\n\nBeyond using tools, I also design GenAI-powered developer tooling. At Outset I built agentic workflows that cut compliance gap analysis time by around 60% across 20+ microservices in a regulated environment.\n\nFor wiring LLMs into production systems, I work with LangChain-style orchestration and Semantic Kernel patterns — not just prompt engineering, but full pipeline design with retrieval layers, context injection, and response evaluation built in.`},
-  {keys:['kafka','msk','streaming','kinesis','pipeline','connector'],
-   ans:`Kafka has been a big part of my work for several years.I built the MSK infrastructure from scratch — custom S3-sourced Kafka Connect plugin, tiered CloudWatch alarms, the full setup.\n\nThe most memorable incident was a silent data loss bug on a high-throughput pipeline. The third-party MSK Kafka Connect sink had a replication lag issue, and we were hitting 504 timeouts under load from a combination of missing exponential backoff and a PEM normalization failure in the mTLS setup. Took me two weeks to trace it. Once I understood it, the fix was a custom connector with proper IAM auth and backoff logic. Data loss stopped, and we had a full delivery audit trail after that.\n\nI also built Kinesis Firehose pipelines processing millions of device telemetry records monthly at sub-minute latency with 99.9%+ delivery.`},
-  {keys:['aws','lambda','dynamo','cdk','fargate','ecs','s3','cloudwatch','quicksight','eventbridge','cognito','securityhub','appstream','secrets'],
-   ans:`AWS is my primary environment and has been for 7 years. The core services I work with daily: Lambda, ECS Fargate, MSK, Kinesis Firehose, DynamoDB, S3.\n\nI provision everything through CDK in TypeScript — I don't click-ops. For AI, I use Bedrock with Titan Embeddings v2 and Claude 3 Sonnet. I've built with EventBridge for event-driven inter-service communication, Cognito for identity, SecurityHub for compliance posture, and Secrets Manager and KMS for encryption.\n\nSome highlights: the QuickSight embedding platform I built serves 500+ enterprise clients with cross-account IAM federation. The CloudWatch RUM and Synthetics rollout cut mean time to root cause from hours down to under 20 minutes across all production services.\n\nCertified AWS Solutions Architect and AWS Developer Associate.`},
-  {keys:['open','hire','work','job','available','role','position','looking','hire','recruit','opportunity'],
-   ans:`Yes, actively looking. I'm interested in Senior or Staff SWE roles, ideally remote or in San Diego.\n\nMy strongest areas are distributed systems, backend infrastructure, and production AI/LLM work — not just prompting, but full pipeline design, RAG systems, agentic workflows. I've been doing Java and TypeScript for 7 years, and I've gotten increasingly serious about Python as the AI work has grown.\n\nI'm most excited by roles where the engineering actually matters — companies where the infrastructure is load-bearing, not just scaffolding.\n\nEmail: venu.martha96@gmail.com\nLinkedIn: linkedin.com/in/venu-gopal-martha`},
-  {keys:['experience','background','years','vanguard','outset','career','history','resume','summary'],
-   ans:`Seven years across fintech and medical devices. I started at Vanguard building Java microservices for financial transaction processing — that's where I learned what reliability actually costs when the stakes are real. Three P1 incidents, same root cause each time, zero recurrence after.\n\nFrom there I joined Outset Medical as a software engineer building the Kafka Connect infrastructure and device telemetry pipelines. Over time I moved to Senior, shipped the production RAG system, fixed two silent data pipeline bugs, built the QuickSight embedding platform for 500+ enterprise clients. Then Staff in early 2026, now focused on technical direction, architecture, and hiring across four teams.\n\nAlong the way: M.S. Electrical Engineering from University of Cincinnati, AWS Solutions Architect and Developer certifications.`},
-  {keys:['reliability','uptime','incident','rca','p0','on-call','oncall'],
-   ans:`Reliability is something I care about as a discipline, not just a metric. The pattern I've seen across every incident I've investigated is almost always the same: missing idempotency or an uncapped retry loop. Once you know what to look for, you start building those guards in from the start.\n\nSome specifics: I built the CloudWatch RUM and Synthetics observability platform at Outset that cut mean time to root cause from hours down to under 20 minutes, and reduced on-call incidents by 35%. I optimized Lambda p99 from 2.8 seconds to 800ms by removing redundant DynamoDB reads within a hard Firehose timeout. I eliminated silent Kafka data loss with a custom MSK connector.\n\nAt Vanguard I led RCA on three P1 incidents — same root cause each time. Zero recurrence for 18 months.`},
-  {keys:['langchain','semantic kernel','orchestration','llm pipeline','chain','agent framework'],
-   ans:`For LLM orchestration I work with LangChain-style patterns — chain construction, retrieval chains, memory management, output parsers — and Semantic Kernel's plugin and planner architecture.\n\nMy production RAG system uses a custom pipeline: embed the query, retrieve from both pgvector and Elasticsearch, inject the retrieved context, generate with Claude 3 Sonnet. The retrieval layer was the most interesting engineering problem — combining dense vector similarity with keyword-aware search improves recall significantly over either approach alone.\n\nI also built an open source AI agent framework on GitHub using Claude Sonnet 4 with function calling, the ReAct reasoning pattern, and self-correction on failure. It achieves 85 to 95% success rate on multi-step tasks.`},
-  {keys:['elasticsearch','search','indexing','full text','search engine','opensearch'],
-   ans:`I use Elasticsearch in the production RAG system, alongside pgvector, for hybrid retrieval. The combination is more powerful than either alone — pgvector handles dense semantic similarity while Elasticsearch covers keyword and BM25 matching, which matters when users ask questions with specific technical terms that the embeddings can dilute.\n\nOn the engineering side: index design, mapping configuration, relevance tuning, shard sizing, query optimization. I've done performance debugging on slow queries and know where the tuning levers actually are.\n\nIf pure dense retrieval is missing intent, Elasticsearch is usually the answer.`},
-  {keys:['angular','react','frontend','javascript','fullstack','full stack','ui','web'],
-   ans:`Backend-primary, but fullstack-capable. I've worked in Angular and React — mostly for internal dashboards and tooling rather than consumer-facing products. Java and TypeScript are where I'm most fluent, with Python growing as the AI work has expanded.\n\nI designed the GraphQL layer at Vanguard with AWS AppSync and Redis caching. One cache key design decision accounted for most of the latency improvement from 1.4s p95 down to 600ms. Frontend engineering for me is a tool for delivering complete solutions when needed.`},
-  {keys:['graphql','appsync','rest','api','grpc','microservice'],
-   ans:`I design APIs the same way I think about systems generally: be explicit about failure modes, build idempotency in from the start, version everything. The problems I've had to fix most often were the ones where someone didn't.\n\nI've worked with REST, GraphQL (AWS AppSync), and event-driven architectures using Kafka, EventBridge, and Kinesis. At Vanguard I built the GraphQL layer that served 1,500+ ECS Fargate tasks. At Outset the backend handles 7,000+ connected medical devices.\n\nFor security I work with mTLS, IAM, Cognito, and KMS — built into the API layer from the start, not added later.`},
-  {keys:['datadog','splunk','sonarqube','observability','monitoring','logging','tracing','alerting'],
-   ans:`I built the observability baseline at Outset Medical from scratch. Before that work, investigating an incident meant hours of log diving. After the CloudWatch RUM and Synthetics rollout, mean time to root cause dropped to under 20 minutes and on-call incidents went down by 35%.\n\nThe toolchain I've worked with: CloudWatch RUM and Synthetics as the primary platform, Datadog for APM and distributed tracing, Splunk for log aggregation, SonarQube for code quality gates in CI. For alerting I'm particular about severity bucketing — alarms should mean something, and on-call pages should never be noise.`},
-  {keys:['compliance','regulatory','security','soc2','soc 2','hipaa','fda','audit','control'],
-   ans:`Outset Medical is FDA-regulated, so I've been shipping in a compliance-heavy environment for four years. The big lesson: compliance that gets bolted on at the end always creates more work than compliance designed in from the start.\n\nRecently I led a security controls rollout across 20+ microservices that was blocking a regulatory submission deadline. I applied GenAI tooling to compress the compliance gap analysis work by around 60%, which made a meaningful difference in the timeline. Zero production incidents during the rollout.\n\nAt Vanguard I contributed to a clean SOC 2 audit cycle and hardened ECS and IAM security boundaries. My security defaults: IAM least-privilege, KMS for encryption at rest, Secrets Manager for credentials, SecurityHub for posture visibility.`},
-  {keys:['education','degree','ms','masters','university','cincinnati','study','school'],
-   ans:`M.S. Electrical Engineering from the University of Cincinnati in 2020, B.E. Electronics and Communication Engineering from Chaitanya Bharathi Institute of Technology in 2018.\n\nCertified AWS Solutions Architect and AWS Developer Associate.\n\nThe electrical engineering background shaped how I think about systems — understanding signal paths, failure modes, and tolerances. It translates pretty directly to distributed systems work once you make the mental model switch.`},
-  {keys:['vanguard','finance','transaction','banking','stock','investment'],
-   ans:`I was at Vanguard from November 2019 to April 2022. That's where I got serious about distributed systems and reliability. The stakes were real — 1,500+ ECS Fargate tasks processing billions of dollars in transactions. A correctness bug is not abstract in that environment.\n\nI built Java Spring Boot microservices, a GraphQL API layer with AppSync and Redis caching that cut p95 latency from 1.4 seconds to 600ms, and led RCA on three P1 incidents. Same root cause every time: missing idempotency or an uncapped retry loop. Fixed them, documented the pattern, zero recurrence over 18 months.\n\nI also contributed to a clean SOC 2 audit cycle and hardened ECS and IAM security boundaries.`},
-];
+  var reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
-function getBotResponse(msg){
-  const lower=msg.toLowerCase();
-  for(const entry of ragKB){
-    if(entry.keys.some(k=>lower.includes(k))) return entry.ans;
-  }
-  return `I can answer questions about Venu's background, AI and GenAI work, tech stack, or what he's looking for next.\n\nSome things you could ask: the RAG system, Kafka and streaming experience, AWS stack, Elasticsearch, compliance in regulated environments, or whether he's open to work.\n\nOr just reach out directly: venu.martha96@gmail.com`;
-}
-
-function addMsg(text,role){
-  const msgs=document.getElementById('chat-msgs');
-  const div=document.createElement('div');
-  div.className='msg '+(role==='bot'?'msg-bot':role==='think'?'msg-thinking':'msg-user');
-  div.textContent=text; msgs.appendChild(div);
-  msgs.scrollTop=msgs.scrollHeight;
-  return div;
-}
-
-function sendChat(){
-  const inp=document.getElementById('chat-input');
-  const msg=inp.value.trim(); if(!msg) return;
-  inp.value='';
-  addMsg(msg,'user');
-  const thinking=addMsg('⟳ Searching vector store...','think');
-  setTimeout(()=>{thinking.textContent='⟳ Retrieving context chunks...';},700);
-  setTimeout(()=>{thinking.textContent='⟳ Generating with Claude 3 Sonnet...';},1400);
-  setTimeout(()=>{
-    thinking.remove();
-    addMsg(getBotResponse(msg),'bot');
-  },2000);
-}
-
-function sendSug(text){
-  document.getElementById('chat-input').value=text;
-  sendChat();
-}
-
-function handleChatKey(e){if(e.key==='Enter') sendChat();}
-
-/* ── VOICE MODE ── */
-(function(){
-  const SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition;
-  const micBtn  = document.getElementById('chat-mic');
-  const ttsBtn  = document.getElementById('chat-tts');
-  const inp     = document.getElementById('chat-input');
-
-  let recognition = null;
-  let isListening = false;
-  let ttsEnabled  = false;
-
-  // ── TTS TOGGLE ──
-  window.toggleTTS = function(){
-    ttsEnabled = !ttsEnabled;
-    ttsBtn.textContent = ttsEnabled ? '🔊' : '🔇';
-    ttsBtn.classList.toggle('active', ttsEnabled);
-    ttsBtn.title = ttsEnabled ? 'Voice replies on (click to mute)' : 'Voice replies off (click to enable)';
-  };
-
-  // ── SPEAK BOT REPLY ──
-  window._speakReply = function(text){
-    if(!ttsEnabled) return;
-    if(!window.speechSynthesis) return;
-    window.speechSynthesis.cancel();
-    // strip markdown-ish symbols before speaking
-    const clean = text.replace(/[*_`#↗→]/g,' ').replace(/\s+/g,' ').trim();
-    const utt = new SpeechSynthesisUtterance(clean);
-    utt.rate  = 1.05;
-    utt.pitch = 1;
-    // pick a natural voice if available
-    const voices = window.speechSynthesis.getVoices();
-    const preferred = voices.find(v => /Google US English|Samantha|Alex|Daniel/.test(v.name));
-    if(preferred) utt.voice = preferred;
-    window.speechSynthesis.speak(utt);
-  };
-
-  // ── MIC TOGGLE ──
-  if(!SpeechRecognition){
-    micBtn.classList.add('no-support');
-    micBtn.title = 'Voice input not supported in this browser (try Chrome)';
-    window.toggleMic = function(){ alert('Voice input requires Chrome or Edge.'); };
-    return;
+  // scroll reveal
+  if (!reducedMotion && 'IntersectionObserver' in window) {
+    var revealIo = new IntersectionObserver(function(entries){
+      entries.forEach(function(e){ if(e.isIntersecting){ e.target.classList.add('in'); revealIo.unobserve(e.target); } });
+    }, {threshold:.12});
+    document.querySelectorAll('.reveal').forEach(function(el){ revealIo.observe(el); });
+  } else {
+    document.querySelectorAll('.reveal').forEach(function(el){ el.classList.add('in'); });
   }
 
-  recognition = new SpeechRecognition();
-  recognition.lang        = 'en-US';
-  recognition.interimResults = true;
-  recognition.maxAlternatives = 1;
+  // impact panel: before/after bars fill once the section scrolls into view
+  (function(){
+    var bars = document.querySelectorAll('.bar');
+    if (!bars.length) return;
+    var target = document.getElementById('iot');
+    var done = false;
 
-  recognition.onstart = function(){
-    isListening = true;
-    micBtn.classList.add('listening');
-    micBtn.title = 'Listening… click to stop';
-    inp.placeholder = '🎤 Listening…';
-  };
-
-  recognition.onend = function(){
-    isListening = false;
-    micBtn.classList.remove('listening');
-    micBtn.title = 'Voice input';
-    inp.placeholder = 'Ask anything about Venu…';
-  };
-
-  recognition.onerror = function(e){
-    isListening = false;
-    micBtn.classList.remove('listening');
-    inp.placeholder = 'Ask anything about Venu…';
-    if(e.error === 'not-allowed'){
-      inp.placeholder = '⚠ Mic permission denied';
-      setTimeout(()=>{ inp.placeholder='Ask anything about Venu…'; }, 3000);
+    function fill(){
+      if (done) return;
+      done = true;
+      bars.forEach(function(bar, i){
+        var before = bar.getAttribute('data-before') || 100;
+        var after = bar.getAttribute('data-after') || 50;
+        var b = bar.querySelector('.b-before');
+        var a = bar.querySelector('.b-after');
+        if (reducedMotion) {
+          b.style.width = before + '%';
+          a.style.width = after + '%';
+          return;
+        }
+        setTimeout(function(){
+          b.style.width = before + '%';
+          setTimeout(function(){ a.style.width = after + '%'; }, 260);
+        }, i * 140);
+      });
     }
-  };
 
-  let finalTranscript = '';
-  recognition.onresult = function(e){
-    let interim = '';
-    finalTranscript = '';
-    for(let i = e.resultIndex; i < e.results.length; i++){
-      const t = e.results[i][0].transcript;
-      if(e.results[i].isFinal) finalTranscript += t;
-      else interim += t;
-    }
-    inp.value = finalTranscript || interim;
-  };
-
-  recognition.onspeechend = function(){
-    recognition.stop();
-    // small delay so finalTranscript populates
-    setTimeout(()=>{
-      if(finalTranscript.trim()) sendChat();
-    }, 300);
-  };
-
-  window.toggleMic = function(){
-    if(isListening){
-      recognition.stop();
+    if (target && 'IntersectionObserver' in window) {
+      var io = new IntersectionObserver(function(entries){
+        entries.forEach(function(e){ if (e.isIntersecting) { fill(); io.disconnect(); } });
+      }, {threshold:.25});
+      io.observe(target);
     } else {
-      finalTranscript = '';
-      inp.value = '';
-      try { recognition.start(); }
-      catch(err){ /* already started */ }
+      fill();
     }
-  };
+  })();
 
-  // hook TTS into sendChat — patch addMsg to call _speakReply for bot msgs
-  const _origAddMsg = window.addMsg;
-  if(typeof _origAddMsg === 'function'){
-    window.addMsg = function(text, role){
-      const el = _origAddMsg(text, role);
-      if(role === 'bot') window._speakReply(text);
-      return el;
-    };
+  // animated flow dots along architecture diagram edges (skipped when reduced motion is preferred)
+  if (!reducedMotion) {
+    document.querySelectorAll('svg.diagram, svg.sysmap').forEach(function(svg){
+      svg.querySelectorAll('.dedge, .medge').forEach(function(path, idx){
+        var ns = 'http://www.w3.org/2000/svg';
+        var dot = document.createElementNS(ns, 'circle');
+        dot.setAttribute('r', '2.6');
+        dot.setAttribute('class', 'flowdot');
+        try {
+          var p0 = path.getPointAtLength(0);
+          dot.setAttribute('cx', p0.x);
+          dot.setAttribute('cy', p0.y);
+        } catch (err) {}
+        var themed = svg.closest('[data-layer]');
+        if (themed) {
+          var hue = getComputedStyle(themed).getPropertyValue('--c').trim();
+          if (hue) dot.setAttribute('fill', hue);
+        }
+        var anim = document.createElementNS(ns, 'animateMotion');
+        anim.setAttribute('dur', (3.2 + (idx % 3) * 0.6) + 's');
+        anim.setAttribute('repeatCount', 'indefinite');
+        anim.setAttribute('path', path.getAttribute('d'));
+        anim.setAttribute('begin', (idx * 0.35) + 's');
+        dot.appendChild(anim);
+        svg.appendChild(dot);
+      });
+    });
   }
-})();
 </script>
+
 </body>
 </html>
